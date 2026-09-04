@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -8,7 +10,12 @@
 
 <title>Zoya — PrvnNotes</title>
 
+
 <style>
+
+/* =========================================================
+   BASIC RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -19,639 +26,1062 @@ html {
 }
 
 body {
+
     margin: 0;
+
     background: #07111f;
+
     color: #e8edf5;
+
     font-family:
-        Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Arial,
         sans-serif;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
-    height: 64px;
-    background: #07111f;
-    border-bottom: 1px solid #1b2a3d;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: 64px;
 
     padding: 0 8%;
+
+    background: #07111f;
+
+    border-bottom:
+        1px solid #1d2b3d;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
     position: sticky;
+
     top: 0;
+
     z-index: 100;
+
 }
+
 
 .logo {
+
     font-size: 15px;
+
     font-weight: 700;
+
     letter-spacing: 1px;
+
 }
+
 
 .nav-links {
+
     display: flex;
-    gap: 28px;
+
+    gap: 26px;
+
     align-items: center;
+
 }
+
 
 .nav-links a {
-    color: #c7d0dc;
+
+    color: #aeb9c7;
+
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.2s;
+
+    font-size: 13px;
+
+    transition: .2s;
+
 }
+
 
 .nav-links a:hover {
+
     color: white;
+
 }
 
-/* =========================
-   MAIN
-========================= */
 
-.main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 70px 25px 100px;
-}
+/* =========================================================
+   PAGE
+========================================================= */
 
-.intro {
-    text-align: center;
-    margin-bottom: 40px;
-}
+.page {
 
-.intro-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #8291a5;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
+    min-height:
+        calc(100vh - 64px);
 
-.intro h1 {
-    margin: 0;
-    font-family: Georgia, serif;
-    font-size: clamp(42px, 7vw, 72px);
-    font-weight: 400;
-}
-
-.intro p {
-    color: #9eabbc;
-    margin-top: 12px;
-}
-
-/* =========================
-   ZOYA CHARACTER
-========================= */
-
-.zoya-stage {
     display: flex;
+
     justify-content: center;
-    margin-bottom: 25px;
+
+    padding:
+        45px 20px 70px;
+
 }
 
-.zoya-character {
-    width: 110px;
-    height: 110px;
 
-    border-radius: 50%;
+/* =========================================================
+   ZOYA WRAPPER
+========================================================= */
+
+.zoya-wrapper {
+
+    width:
+        min(720px, 100%);
+
+}
+
+
+/* =========================================================
+   SMALL INTRO
+========================================================= */
+
+.zoya-intro {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.zoya-intro h1 {
+
+    margin:
+        0 0 8px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        38px;
+
+    font-weight:
+        400;
+
+}
+
+
+.zoya-intro p {
+
+    margin: 0;
+
+    color:
+        #8492a5;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
+
+.chat-window {
 
     background:
-        radial-gradient(circle at 35% 30%, #ffffff 0%, #dce6f1 18%, #9aa9ba 19%, #1d2c40 60%, #101b2b 100%);
+        #0b1625;
 
-    border: 3px solid #34465d;
+    border:
+        1px solid #27374b;
 
-    position: relative;
+    border-radius:
+        14px;
 
-    box-shadow:
-        0 0 0 10px rgba(80, 110, 145, 0.06),
-        0 20px 50px rgba(0,0,0,0.35);
-
-    transition: 0.3s;
-}
-
-.zoya-character::before {
-    content: "Z";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    font-family: Georgia, serif;
-    font-size: 54px;
-    font-weight: bold;
-
-    color: #07111f;
-}
-
-.zoya-character.thinking {
-    animation: thinkPulse 1.2s infinite;
-}
-
-@keyframes thinkPulse {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.06);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.zoya-status {
-    text-align: center;
-    min-height: 25px;
-
-    color: #8fa0b4;
-    font-size: 13px;
-}
-
-/* =========================
-   CHAT BOX
-========================= */
-
-.chat-wrapper {
-    border: 1px solid #26364a;
-    background: #0b1625;
-
-    border-radius: 4px;
-
-    overflow: hidden;
+    overflow:
+        hidden;
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,0.2);
+        0 25px 80px rgba(0,0,0,.28);
+
 }
 
-.chat {
-    height: 520px;
-    overflow-y: auto;
 
-    padding: 25px;
+/* =========================================================
+   CHAT HEADER
+========================================================= */
+
+.chat-header {
+
+    height:
+        70px;
+
+    padding:
+        0 20px;
+
+    background:
+        #101c2c;
+
+    border-bottom:
+        1px solid #26364a;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
 }
+
+
+/* =========================================================
+   ZOYA AVATAR
+========================================================= */
+
+.avatar {
+
+    width:
+        43px;
+
+    height:
+        43px;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e8edf4,
+            #a9b5c4
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #162234;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-weight:
+        bold;
+
+    font-size:
+        21px;
+
+    position:
+        relative;
+
+}
+
+
+/* Online dot */
+
+.avatar::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    border-radius:
+        50%;
+
+    background:
+        #71a878;
+
+    border:
+        2px solid #101c2c;
+
+    right:
+        0;
+
+    bottom:
+        1px;
+
+}
+
+
+/* =========================================================
+   HEADER TEXT
+========================================================= */
+
+.header-info {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+}
+
+
+.header-name {
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+}
+
+
+.header-status {
+
+    font-size:
+        11px;
+
+    color:
+        #75869b;
+
+}
+
+
+/* =========================================================
+   CHAT AREA
+========================================================= */
+
+.chat-area {
+
+    height:
+        500px;
+
+    padding:
+        24px 20px;
+
+    overflow-y:
+        auto;
+
+    background:
+        #091522;
+
+}
+
 
 /* scrollbar */
 
-.chat::-webkit-scrollbar {
-    width: 8px;
+.chat-area::-webkit-scrollbar {
+
+    width:
+        7px;
+
 }
 
-.chat::-webkit-scrollbar-track {
-    background: #091321;
+
+.chat-area::-webkit-scrollbar-track {
+
+    background:
+        #091522;
+
 }
 
-.chat::-webkit-scrollbar-thumb {
-    background: #33445a;
-    border-radius: 10px;
+
+.chat-area::-webkit-scrollbar-thumb {
+
+    background:
+        #304156;
+
+    border-radius:
+        10px;
+
 }
 
-/* =========================
-   MESSAGE
-========================= */
+
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
 
 .message {
-    display: flex;
-    margin-bottom: 20px;
+
+    display:
+        flex;
+
+    margin-bottom:
+        16px;
+
+    animation:
+        messageIn .25s ease;
+
 }
+
 
 .message.zoya {
-    justify-content: flex-start;
+
+    justify-content:
+        flex-start;
+
 }
+
 
 .message.user {
-    justify-content: flex-end;
+
+    justify-content:
+        flex-end;
+
 }
+
+
+@keyframes messageIn {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(6px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   BUBBLE
+========================================================= */
 
 .bubble {
-    max-width: 75%;
 
-    padding: 16px;
+    max-width:
+        75%;
 
-    border: 1px solid #26364a;
+    padding:
+        11px 14px;
 
-    line-height: 1.6;
+    border-radius:
+        14px;
 
-    font-size: 14px;
+    font-size:
+        14px;
+
+    line-height:
+        1.55;
+
+    word-wrap:
+        break-word;
+
 }
+
+
+/* Zoya */
 
 .message.zoya .bubble {
-    background: #101d2d;
+
+    background:
+        #172537;
+
+    color:
+        #e1e7ef;
+
+    border-top-left-radius:
+        4px;
+
 }
+
+
+/* User */
 
 .message.user .bubble {
-    background: #202d3f;
+
+    background:
+        #26374b;
+
+    color:
+        #f0f3f7;
+
+    border-top-right-radius:
+        4px;
+
 }
 
-.label {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: #718198;
 
-    margin-bottom: 8px;
+/* =========================================================
+   MESSAGE LABEL
+========================================================= */
 
-    text-transform: uppercase;
+.message-label {
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .8px;
+
+    color:
+        #718197;
+
+    margin-bottom:
+        4px;
+
+    text-transform:
+        uppercase;
+
 }
 
-/* =========================
-   THINKING
-========================= */
+
+/* =========================================================
+   THINKING BUBBLE
+========================================================= */
 
 .thinking-bubble {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        13px 16px;
+
 }
 
-.dot {
-    width: 6px;
-    height: 6px;
 
-    border-radius: 50%;
+/* =========================================================
+   THINKING DOTS
+========================================================= */
 
-    background: #9aa9ba;
+.thinking-dot {
 
-    animation: thinkingDots 1.2s infinite;
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #8292a6;
+
+    animation:
+        thinking 1.25s infinite;
+
 }
 
-.dot:nth-child(2) {
-    animation-delay: 0.2s;
+
+.thinking-dot:nth-child(2) {
+
+    animation-delay:
+        .18s;
+
 }
 
-.dot:nth-child(3) {
-    animation-delay: 0.4s;
+
+.thinking-dot:nth-child(3) {
+
+    animation-delay:
+        .36s;
+
 }
 
-@keyframes thinkingDots {
 
-    0% {
-        opacity: 0.25;
-        transform: translateY(0);
-    }
+@keyframes thinking {
 
-    50% {
-        opacity: 1;
-        transform: translateY(-4px);
-    }
-
+    0%,
+    60%,
     100% {
-        opacity: 0.25;
-        transform: translateY(0);
+
+        opacity:
+            .25;
+
+        transform:
+            translateY(0);
+
     }
+
+    30% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-3px);
+
+    }
+
 }
 
-/* =========================
-   QUICK QUESTIONS
-========================= */
 
-.quick-questions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-
-    padding: 15px 25px 5px;
-}
-
-.quick-btn {
-    background: transparent;
-
-    color: #aab7c7;
-
-    border: 1px solid #26364a;
-
-    padding: 9px 12px;
-
-    font-size: 12px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.quick-btn:hover {
-    background: #182638;
-    color: white;
-}
-
-/* =========================
-   CONTROLS
-========================= */
-
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: 8px;
-
-    padding: 10px 25px;
-}
-
-.control-btn {
-    background: transparent;
-
-    color: #aeb9c8;
-
-    border: 1px solid #26364a;
-
-    padding: 8px 12px;
-
-    cursor: pointer;
-
-    font-size: 12px;
-}
-
-.control-btn:hover {
-    background: #172537;
-    color: white;
-}
-
-.control-btn.active {
-    background: #24364d;
-    color: white;
-}
-
-/* =========================
-   VOICE SELECTOR
-========================= */
-
-.voice-area {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 0 25px 15px;
-}
-
-.voice-area label {
-    font-size: 11px;
-    color: #718198;
-}
-
-#voiceSelect {
-    flex: 1;
-
-    max-width: 500px;
-
-    background: #101d2d;
-
-    color: #cbd5e1;
-
-    border: 1px solid #26364a;
-
-    padding: 8px;
-}
-
-/* =========================
-   INPUT
-========================= */
+/* =========================================================
+   INPUT AREA
+========================================================= */
 
 .input-area {
-    border-top: 1px solid #26364a;
 
-    padding: 15px;
+    padding:
+        12px 14px;
 
-    display: flex;
+    background:
+        #101c2c;
 
-    gap: 10px;
+    border-top:
+        1px solid #26364a;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
 }
 
-#zoyaInput {
-    flex: 1;
 
-    min-width: 0;
+/* =========================================================
+   INPUT
+========================================================= */
 
-    resize: none;
+#messageInput {
 
-    height: 50px;
+    flex:
+        1;
 
-    background: #111d2c;
+    height:
+        44px;
 
-    border: 1px solid #3a4a5e;
+    resize:
+        none;
 
-    color: white;
+    outline:
+        none;
 
-    padding: 14px;
+    border:
+        1px solid #2d3e53;
 
-    font-family: inherit;
+    border-radius:
+        22px;
 
-    outline: none;
+    background:
+        #0b1726;
+
+    color:
+        #edf2f7;
+
+    padding:
+        12px 17px;
+
+    font-family:
+        inherit;
+
+    font-size:
+        14px;
+
 }
 
-#zoyaInput:focus {
-    border-color: #61758e;
+
+#messageInput::placeholder {
+
+    color:
+        #68788d;
+
 }
 
-#zoyaInput::placeholder {
-    color: #66758a;
+
+#messageInput:focus {
+
+    border-color:
+        #4b5e75;
+
 }
 
-.send-btn {
-    width: 55px;
 
-    border: 1px solid #3a4a5e;
+/* =========================================================
+   SEND BUTTON
+========================================================= */
 
-    background: #162335;
+.send-button {
 
-    color: white;
+    width:
+        44px;
 
-    cursor: pointer;
+    height:
+        44px;
 
-    font-size: 20px;
+    border:
+        none;
+
+    border-radius:
+        50%;
+
+    background:
+        #26374b;
+
+    color:
+        #e7edf5;
+
+    cursor:
+        pointer;
+
+    font-size:
+        18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    transition:
+        .2s;
+
 }
 
-.send-btn:hover {
-    background: #24364d;
+
+.send-button:hover {
+
+    background:
+        #344961;
+
 }
 
-.send-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+
+.send-button:disabled {
+
+    opacity:
+        .4;
+
+    cursor:
+        not-allowed;
+
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer {
-    margin-top: 100px;
 
-    border-top: 1px solid #1b2a3d;
+    text-align:
+        center;
 
-    padding-top: 30px;
+    margin-top:
+        35px;
 
-    color: #65758b;
+    color:
+        #607087;
 
-    font-size: 12px;
+    font-size:
+        11px;
+
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
+
     .navbar {
-        padding: 0 20px;
+
+        padding:
+            0 18px;
+
     }
+
 
     .nav-links {
-        gap: 12px;
+
+        gap:
+            12px;
+
     }
+
 
     .nav-links a {
-        font-size: 12px;
+
+        font-size:
+            11px;
+
     }
 
-    .main {
-        padding: 50px 12px 70px;
+
+    .page {
+
+        padding:
+            25px 10px 50px;
+
     }
 
-    .chat {
-        height: 500px;
-        padding: 15px;
+
+    .zoya-intro {
+
+        margin-bottom:
+            18px;
+
     }
+
+
+    .zoya-intro h1 {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .chat-window {
+
+        border-radius:
+            12px;
+
+    }
+
+
+    .chat-area {
+
+        height:
+            520px;
+
+        padding:
+            18px 12px;
+
+    }
+
 
     .bubble {
-        max-width: 88%;
+
+        max-width:
+            85%;
+
+        font-size:
+            14px;
+
     }
 
-    .voice-area {
-        flex-direction: column;
-        align-items: stretch;
+
+    .input-area {
+
+        padding:
+            10px;
+
     }
 
-    #voiceSelect {
-        max-width: none;
-    }
-
-    .controls {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
 <nav class="navbar">
+
 
     <div class="logo">
         PRAVEEN SHARMA
     </div>
 
+
     <div class="nav-links">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="who-am-i.html">Who Am I?</a>
+        <a href="who-am-i.html">
+            Who Am I?
+        </a>
 
-        <a href="explore.html">Explore</a>
+        <a href="explore.html">
+            Explore
+        </a>
 
-        <a href="kaam-dhandha.html">Kaam-Dhandha</a>
+        <a href="kaam-dhandha.html">
+            Kaam-Dhandha
+        </a>
 
-        <a href="connect.html">Let's Connect</a>
+        <a href="connect.html">
+            Let's Connect
+        </a>
 
-        <a href="zoya.html">Zoya</a>
+        <a href="zoya.html">
+            Zoya
+        </a>
 
     </div>
+
 
 </nav>
 
 
-<!-- =========================
-     MAIN
-========================= -->
 
-<main class="main">
+<!-- =========================================================
+     PAGE
+========================================================= -->
+
+<main class="page">
 
 
-    <section class="intro">
+    <div class="zoya-wrapper">
 
-        <div class="intro-label">
-            MEET ZOYA
+
+        <!-- INTRO -->
+
+        <div class="zoya-intro">
+
+            <h1>
+                Zoya.
+            </h1>
+
+            <p>
+                Just a little corner for a conversation.
+            </p>
+
         </div>
 
-        <h1>
-            Zoya.
-        </h1>
-
-        <p>
-            Ask me anything about Praveen.
-        </p>
-
-    </section>
 
 
-    <!-- CHARACTER -->
+        <!-- CHAT -->
 
-    <div class="zoya-stage">
-
-        <div
-            id="zoyaCharacter"
-            class="zoya-character">
-        </div>
-
-    </div>
+        <div class="chat-window">
 
 
-    <div
-        id="zoyaStatus"
-        class="zoya-status">
-        Zoya is listening...
-    </div>
+            <!-- CHAT HEADER -->
+
+            <div class="chat-header">
 
 
-    <!-- CHAT -->
-
-    <div class="chat-wrapper">
-
-        <div
-            id="chat"
-            class="chat">
+                <div class="avatar">
+                    Z
+                </div>
 
 
-            <!-- Initial message -->
+                <div class="header-info">
 
-            <div class="message zoya">
-
-                <div class="bubble">
-
-                    <div class="label">
-                        ZOYA
+                    <div class="header-name">
+                        Zoya
                     </div>
 
-                    <div>
-                        Hi! I'm Zoya. 😊
-                        <br><br>
-                        I know quite a lot about Praveen.
-                        <br><br>
-                        Ask me something about him.
+                    <div
+                        class="header-status"
+                        id="headerStatus">
+
+                        online
+
                     </div>
 
                 </div>
+
+
+            </div>
+
+
+
+            <!-- CHAT MESSAGES -->
+
+            <div
+                class="chat-area"
+                id="chatArea">
+
+
+                <!-- ZOYA INTRODUCTION -->
+
+                <div class="message zoya">
+
+                    <div class="bubble">
+
+                        <div class="message-label">
+                            Zoya
+                        </div>
+
+                        <div>
+                            Hi! I'm Zoya. 😊
+                            <br><br>
+                            I'm a little AI tucked into
+                            Praveen's corner of the internet.
+                            <br><br>
+                            What's on your mind?
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INPUT -->
+
+            <div class="input-area">
+
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Type a message..."
+                    rows="1">
+                </textarea>
+
+
+                <button
+                    id="sendButton"
+                    class="send-button"
+                    onclick="sendMessage()">
+
+                    ➤
+
+                </button>
+
 
             </div>
 
@@ -659,169 +1089,13 @@ body {
         </div>
 
 
-        <!-- QUICK QUESTIONS -->
 
-        <div class="quick-questions">
+        <div class="footer">
 
-            <button
-                class="quick-btn"
-                onclick="askQuestion('Who is Praveen?')">
-
-                Who is Praveen?
-
-            </button>
-
-
-            <button
-                class="quick-btn"
-                onclick="askQuestion('What does Praveen do?')">
-
-                What does he do?
-
-            </button>
-
-
-            <button
-                class="quick-btn"
-                onclick="askQuestion('Where is Praveen from?')">
-
-                Where is he from?
-
-            </button>
-
-
-            <button
-                class="quick-btn"
-                onclick="askQuestion('Does Praveen like wrestling?')">
-
-                Does he like wrestling?
-
-            </button>
-
-
-            <button
-                class="quick-btn"
-                onclick="askQuestion('What is Praveen like?')">
-
-                What is he like?
-
-            </button>
+            A little corner of the internet by Praveen Sharma · 2026
 
         </div>
 
-
-        <!-- CONTROLS -->
-
-        <div class="controls">
-
-            <button
-                id="typeModeBtn"
-                class="control-btn"
-                onclick="setMode('type')">
-
-                ⌨️ Type
-
-            </button>
-
-
-            <button
-                id="talkModeBtn"
-                class="control-btn"
-                onclick="setMode('talk')">
-
-                🔊 Talk
-
-            </button>
-
-
-            <button
-                id="autoModeBtn"
-                class="control-btn active"
-                onclick="setMode('auto')">
-
-                ✨ Auto
-
-            </button>
-
-
-            <button
-                class="control-btn"
-                onclick="stopZoya()">
-
-                🛑 Stop Zoya
-
-            </button>
-
-
-            <button
-                class="control-btn"
-                onclick="testVoice()">
-
-                🔊 Test voice
-
-            </button>
-
-        </div>
-
-
-        <!-- VOICE -->
-
-        <div class="voice-area">
-
-            <label for="voiceSelect">
-                ZOYA VOICE
-            </label>
-
-            <select id="voiceSelect">
-
-                <option>
-                    Loading voices...
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <!-- INPUT -->
-
-        <div class="input-area">
-
-            <button
-                class="control-btn"
-                id="micButton"
-                title="Voice input"
-                onclick="startListening()">
-
-                🎙️
-
-            </button>
-
-
-            <textarea
-                id="zoyaInput"
-                placeholder="Type or talk to Zoya..."
-                onkeydown="handleInputKey(event)">
-            </textarea>
-
-
-            <button
-                id="sendButton"
-                class="send-btn"
-                onclick="sendMessage()">
-
-                →
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer">
-
-        A little corner of the internet by Praveen Sharma · 2026
 
     </div>
 
@@ -829,19 +1103,23 @@ body {
 </main>
 
 
+
 <script>
 
 /* =========================================================
-   ZOYA CONFIGURATION
+   ZOYA CHAT
 ========================================================= */
 
 
 /*
    IMPORTANT:
 
-   We do NOT put the Gemini API key here.
+   This connects to your existing Vercel API.
 
-   Zoya talks to your Vercel backend.
+   No voice.
+   No speech synthesis.
+   No microphone.
+   No additional API.
 */
 
 const API_URL =
@@ -849,534 +1127,40 @@ const API_URL =
 
 
 /* =========================================================
-   STATE
+   ELEMENTS
+========================================================= */
+
+const chatArea =
+    document.getElementById(
+        "chatArea"
+    );
+
+
+const messageInput =
+    document.getElementById(
+        "messageInput"
+    );
+
+
+const sendButton =
+    document.getElementById(
+        "sendButton"
+    );
+
+
+const headerStatus =
+    document.getElementById(
+        "headerStatus"
+    );
+
+
+/* =========================================================
+   CONVERSATION HISTORY
 ========================================================= */
 
 let conversationHistory = [];
 
 let isThinking = false;
-
-let currentMode = "auto";
-
-let voices = [];
-
-let selectedVoice = null;
-
-let recognition = null;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const chat =
-    document.getElementById("chat");
-
-const input =
-    document.getElementById("zoyaInput");
-
-const sendButton =
-    document.getElementById("sendButton");
-
-const character =
-    document.getElementById("zoyaCharacter");
-
-const statusText =
-    document.getElementById("zoyaStatus");
-
-const voiceSelect =
-    document.getElementById("voiceSelect");
-
-
-/* =========================================================
-   VOICE SYSTEM
-========================================================= */
-
-
-/*
-   Chrome loads voices asynchronously.
-
-   So we check multiple times until voices appear.
-*/
-
-function loadVoices() {
-
-    voices =
-        window.speechSynthesis.getVoices();
-
-    if (!voices.length) {
-
-        voiceSelect.innerHTML =
-            "<option>Loading voices...</option>";
-
-        return;
-
-    }
-
-
-    voiceSelect.innerHTML = "";
-
-
-    /*
-       Sort voices.
-
-       Indian English first.
-    */
-
-    const sorted =
-        [...voices].sort((a, b) => {
-
-            const aScore =
-                getVoiceScore(a);
-
-            const bScore =
-                getVoiceScore(b);
-
-            return bScore - aScore;
-
-        });
-
-
-    sorted.forEach((voice, index) => {
-
-        const option =
-            document.createElement("option");
-
-        option.value =
-            voices.indexOf(voice);
-
-        option.textContent =
-            `${voice.name} — ${voice.lang}`;
-
-        voiceSelect.appendChild(option);
-
-    });
-
-
-    /*
-       Automatically choose the best voice.
-    */
-
-    const bestVoice =
-        sorted[0];
-
-    selectedVoice =
-        bestVoice;
-
-
-    voiceSelect.value =
-        voices.indexOf(bestVoice);
-
-
-    voiceSelect.addEventListener(
-        "change",
-        function () {
-
-            const index =
-                parseInt(this.value);
-
-            selectedVoice =
-                voices[index];
-
-        }
-    );
-
-}
-
-
-function getVoiceScore(voice) {
-
-    let score = 0;
-
-    const name =
-        voice.name.toLowerCase();
-
-    const lang =
-        voice.lang.toLowerCase();
-
-
-    /*
-       Indian English is our first priority.
-    */
-
-    if (lang === "en-in") {
-        score += 100;
-    }
-
-    if (lang.startsWith("en-in")) {
-        score += 80;
-    }
-
-
-    /*
-       Common Indian female voice names.
-    */
-
-    const femaleIndianNames = [
-
-        "heera",
-        "neerja",
-        "raveena",
-        "aditi",
-        "veena",
-        "priya",
-        "swara",
-        "kavya",
-        "lekha",
-        "sangeeta",
-        "google हिन्दी",
-        "female"
-
-    ];
-
-
-    femaleIndianNames.forEach(keyword => {
-
-        if (name.includes(keyword)) {
-
-            score += 50;
-
-        }
-
-    });
-
-
-    /*
-       Avoid obvious male names where possible.
-    */
-
-    const maleNames = [
-
-        "ravi",
-        "hemant",
-        "prabhat",
-        "male",
-        "david",
-        "mark",
-        "daniel"
-
-    ];
-
-
-    maleNames.forEach(keyword => {
-
-        if (name.includes(keyword)) {
-
-            score -= 30;
-
-        }
-
-    });
-
-
-    /*
-       Prefer local voices because
-       they usually work more reliably.
-    */
-
-    if (voice.localService) {
-
-        score += 5;
-
-    }
-
-
-    return score;
-
-}
-
-
-/*
-   Chrome fires this event when voices become available.
-*/
-
-if ("speechSynthesis" in window) {
-
-    window.speechSynthesis.onvoiceschanged =
-        loadVoices;
-
-    loadVoices();
-
-}
-
-
-/* =========================================================
-   SET MODE
-========================================================= */
-
-function setMode(mode) {
-
-    currentMode =
-        mode;
-
-
-    document
-        .getElementById("typeModeBtn")
-        .classList.remove("active");
-
-    document
-        .getElementById("talkModeBtn")
-        .classList.remove("active");
-
-    document
-        .getElementById("autoModeBtn")
-        .classList.remove("active");
-
-
-    if (mode === "type") {
-
-        document
-            .getElementById("typeModeBtn")
-            .classList.add("active");
-
-        statusText.textContent =
-            "Zoya will type her replies.";
-
-    }
-
-
-    if (mode === "talk") {
-
-        document
-            .getElementById("talkModeBtn")
-            .classList.add("active");
-
-        statusText.textContent =
-            "Zoya will speak her replies.";
-
-    }
-
-
-    if (mode === "auto") {
-
-        document
-            .getElementById("autoModeBtn")
-            .classList.add("active");
-
-        statusText.textContent =
-            "Zoya will choose how to reply.";
-
-    }
-
-}
-
-
-/* =========================================================
-   STOP ZOYA
-========================================================= */
-
-function stopZoya() {
-
-    if ("speechSynthesis" in window) {
-
-        window.speechSynthesis.cancel();
-
-    }
-
-
-    character.classList.remove("thinking");
-
-    statusText.textContent =
-        "Zoya is listening...";
-
-}
-
-
-/* =========================================================
-   TEST VOICE
-========================================================= */
-
-function testVoice() {
-
-    stopZoya();
-
-
-    const text =
-        "Hi! I'm Zoya. This is how I sound. Nice to meet you!";
-
-
-    speak(text);
-
-}
-
-
-/* =========================================================
-   SPEAK
-========================================================= */
-
-function speak(text) {
-
-    if (!("speechSynthesis" in window)) {
-
-        alert(
-            "Your browser does not support voice playback."
-        );
-
-        return;
-
-    }
-
-
-    window.speechSynthesis.cancel();
-
-
-    const utterance =
-        new SpeechSynthesisUtterance(text);
-
-
-    /*
-       Use selected voice.
-    */
-
-    if (selectedVoice) {
-
-        utterance.voice =
-            selectedVoice;
-
-        utterance.lang =
-            selectedVoice.lang;
-
-    } else {
-
-        utterance.lang =
-            "en-IN";
-
-    }
-
-
-    /*
-       Natural-ish speaking settings.
-    */
-
-    utterance.rate =
-        0.94;
-
-    utterance.pitch =
-        1.05;
-
-    utterance.volume =
-        1;
-
-
-    utterance.onstart =
-        function () {
-
-            statusText.textContent =
-                "Zoya is talking...";
-
-        };
-
-
-    utterance.onend =
-        function () {
-
-            statusText.textContent =
-                "Zoya is listening...";
-
-        };
-
-
-    utterance.onerror =
-        function () {
-
-            statusText.textContent =
-                "Zoya is listening...";
-
-        };
-
-
-    window.speechSynthesis.speak(
-        utterance
-    );
-
-}
-
-
-/* =========================================================
-   THINKING INDICATOR
-========================================================= */
-
-function showThinking() {
-
-    isThinking =
-        true;
-
-
-    character.classList.add(
-        "thinking"
-    );
-
-
-    statusText.textContent =
-        "Zoya is thinking...";
-
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.id =
-        "thinkingMessage";
-
-    wrapper.className =
-        "message zoya";
-
-
-    wrapper.innerHTML = `
-
-        <div class="bubble">
-
-            <div class="label">
-                ZOYA
-            </div>
-
-            <div class="thinking-bubble">
-
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    chat.appendChild(wrapper);
-
-    scrollChat();
-
-}
-
-
-/* =========================================================
-   REMOVE THINKING
-========================================================= */
-
-function removeThinking() {
-
-    isThinking =
-        false;
-
-
-    character.classList.remove(
-        "thinking"
-    );
-
-
-    const thinking =
-        document.getElementById(
-            "thinkingMessage"
-        );
-
-
-    if (thinking) {
-
-        thinking.remove();
-
-    }
-
-}
 
 
 /* =========================================================
@@ -1385,31 +1169,53 @@ function removeThinking() {
 
 function addUserMessage(text) {
 
+
     const message =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     message.className =
         "message user";
 
 
-    message.innerHTML = `
+    const bubble =
+        document.createElement(
+            "div"
+        );
 
-        <div class="bubble">
 
-            <div class="label">
-                YOU
-            </div>
+    bubble.className =
+        "bubble";
 
-            <div>
-                ${escapeHTML(text)}
-            </div>
 
+    bubble.innerHTML = `
+
+        <div class="message-label">
+            You
         </div>
+
+        <div></div>
 
     `;
 
 
-    chat.appendChild(message);
+    bubble
+        .querySelector("div:last-child")
+        .textContent =
+        text;
+
+
+    message.appendChild(
+        bubble
+    );
+
+
+    chatArea.appendChild(
+        message
+    );
+
 
     scrollChat();
 
@@ -1422,95 +1228,112 @@ function addUserMessage(text) {
 
 function addZoyaMessage(text) {
 
+
     const message =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     message.className =
         "message zoya";
 
 
     const bubble =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     bubble.className =
         "bubble";
 
 
-    bubble.innerHTML = `
-
-        <div class="label">
-            ZOYA
-        </div>
-
-        <div class="zoya-text"></div>
-
-    `;
-
-
-    message.appendChild(bubble);
-
-    chat.appendChild(message);
-
-
-    const textElement =
-        bubble.querySelector(
-            ".zoya-text"
+    const label =
+        document.createElement(
+            "div"
         );
 
 
+    label.className =
+        "message-label";
+
+
+    label.textContent =
+        "Zoya";
+
+
+    const content =
+        document.createElement(
+            "div"
+        );
+
+
+    bubble.appendChild(
+        label
+    );
+
+
+    bubble.appendChild(
+        content
+    );
+
+
+    message.appendChild(
+        bubble
+    );
+
+
+    chatArea.appendChild(
+        message
+    );
+
+
     /*
-       Typing animation.
+       Give Zoya a small typing effect.
     */
 
-    typeText(
-        textElement,
+    typeMessage(
+        content,
         text
     );
 
 
     scrollChat();
 
-
-    return message;
-
 }
 
 
 /* =========================================================
-   TYPE TEXT
+   TYPING EFFECT
 ========================================================= */
 
-function typeText(element, text) {
-
-    let index = 0;
-
-
-    /*
-       Convert line breaks.
-    */
-
-    const safeText =
-        escapeHTML(text)
-            .replace(/\n/g, "<br>");
+function typeMessage(
+    element,
+    text
+) {
 
 
-    /*
-       If response is short,
-       type relatively quickly.
-    */
+    let index =
+        0;
+
 
     const speed =
-        text.length > 500
-            ? 8
-            : 18;
+        text.length > 400
+            ? 7
+            : 16;
 
 
     function typeNext() {
 
-        if (index >= text.length) {
 
-            element.innerHTML =
-                safeText;
+        if (
+            index >=
+            text.length
+        ) {
+
+            element.textContent =
+                text;
 
             scrollChat();
 
@@ -1519,20 +1342,11 @@ function typeText(element, text) {
         }
 
 
-        /*
-           Rebuild visible portion.
-        */
-
-        const current =
+        element.textContent =
             text.substring(
                 0,
                 index + 1
             );
-
-
-        element.innerHTML =
-            escapeHTML(current)
-                .replace(/\n/g, "<br>");
 
 
         index++;
@@ -1555,13 +1369,100 @@ function typeText(element, text) {
 
 
 /* =========================================================
-   SCROLL CHAT
+   THINKING
+========================================================= */
+
+function showThinking() {
+
+
+    removeThinking();
+
+
+    isThinking =
+        true;
+
+
+    headerStatus.textContent =
+        "typing...";
+
+
+    const message =
+        document.createElement(
+            "div"
+        );
+
+
+    message.id =
+        "thinkingMessage";
+
+
+    message.className =
+        "message zoya";
+
+
+    message.innerHTML = `
+
+        <div class="bubble thinking-bubble">
+
+            <span class="thinking-dot"></span>
+
+            <span class="thinking-dot"></span>
+
+            <span class="thinking-dot"></span>
+
+        </div>
+
+    `;
+
+
+    chatArea.appendChild(
+        message
+    );
+
+
+    scrollChat();
+
+}
+
+
+/* =========================================================
+   REMOVE THINKING
+========================================================= */
+
+function removeThinking() {
+
+
+    const thinking =
+        document.getElementById(
+            "thinkingMessage"
+        );
+
+
+    if (thinking) {
+
+        thinking.remove();
+
+    }
+
+
+    isThinking =
+        false;
+
+
+    headerStatus.textContent =
+        "online";
+
+}
+
+
+/* =========================================================
+   SCROLL
 ========================================================= */
 
 function scrollChat() {
 
-    chat.scrollTop =
-        chat.scrollHeight;
+    chatArea.scrollTop =
+        chatArea.scrollHeight;
 
 }
 
@@ -1572,8 +1473,9 @@ function scrollChat() {
 
 async function sendMessage() {
 
+
     const question =
-        input.value.trim();
+        messageInput.value.trim();
 
 
     if (!question) {
@@ -1590,27 +1492,58 @@ async function sendMessage() {
     }
 
 
+    /*
+       Show user's message.
+    */
+
     addUserMessage(
         question
     );
 
 
-    input.value =
+    /*
+       Clear input.
+    */
+
+    messageInput.value =
         "";
 
+
+    /*
+       Show thinking.
+    */
+
+    showThinking();
+
+
+    /*
+       Disable send.
+    */
 
     sendButton.disabled =
         true;
 
 
-    showThinking();
-
-
     try {
 
+
         /*
-           Send the message to your
-           existing Vercel backend.
+           Add user to history.
+        */
+
+        conversationHistory.push({
+
+            role:
+                "user",
+
+            content:
+                question
+
+        });
+
+
+        /*
+           Call existing API.
         */
 
         const response =
@@ -1618,7 +1551,8 @@ async function sendMessage() {
                 API_URL,
                 {
 
-                    method: "POST",
+                    method:
+                        "POST",
 
                     headers: {
 
@@ -1643,11 +1577,11 @@ async function sendMessage() {
 
 
         /*
-           Get raw text first.
+           Read response as text first.
 
-           This makes errors much easier
-           to understand than blindly calling
-           response.json().
+           This prevents the ugly
+           "Unexpected token <"
+           error from crashing the page.
         */
 
         const raw =
@@ -1662,179 +1596,108 @@ async function sendMessage() {
             data =
                 JSON.parse(raw);
 
-        } catch (jsonError) {
+        }
+
+        catch (jsonError) {
 
             throw new Error(
-                "The server returned something other than JSON."
+                "The server returned an invalid response."
             );
 
         }
 
+
+        /*
+           Check server error.
+        */
 
         if (!response.ok) {
 
             throw new Error(
+
                 data.error ||
                 data.message ||
                 `Server error ${response.status}`
+
             );
 
         }
 
 
         /*
-           Your backend may return different
-           property names depending on the
-           current version.
-
-           We safely check the common ones.
+           Support the response names
+           your existing backend may use.
         */
 
-        const reply =
+        const answer =
+            data.answer ||
             data.reply ||
             data.response ||
             data.message ||
-            data.text ||
-            data.answer;
+            data.text;
 
 
-        if (!reply) {
+        if (!answer) {
 
             throw new Error(
-                "Zoya received an empty response from the server."
+                "Zoya returned an empty response."
             );
 
         }
 
 
         /*
-           Save conversation.
+           Save Zoya's response.
         */
 
         conversationHistory.push({
 
-            role: "user",
+            role:
+                "assistant",
 
-            content: question
-
-        });
-
-
-        conversationHistory.push({
-
-            role: "assistant",
-
-            content: reply
+            content:
+                answer
 
         });
 
+
+        /*
+           Keep the conversation from
+           becoming unnecessarily huge.
+        */
+
+        if (
+            conversationHistory.length >
+            20
+        ) {
+
+            conversationHistory =
+                conversationHistory.slice(
+                    -20
+                );
+
+        }
+
+
+        /*
+           Remove thinking.
+        */
 
         removeThinking();
 
 
         /*
-           Decide whether to type or talk.
-        */
-
-        let shouldSpeak =
-            false;
-
-
-        if (currentMode === "talk") {
-
-            shouldSpeak =
-                true;
-
-        }
-
-
-        if (currentMode === "type") {
-
-            shouldSpeak =
-                false;
-
-        }
-
-
-        /*
-           AUTO MODE
-
-           Short answers:
-           speak them.
-
-           Longer answers:
-           type them.
-
-           This avoids Zoya speaking
-           for two minutes when she has
-           a long answer.
-        */
-
-        if (currentMode === "auto") {
-
-            shouldSpeak =
-                reply.length <= 240;
-
-        }
-
-
-        /*
-           Always show the response
-           on screen.
+           Show Zoya's response.
         */
 
         addZoyaMessage(
-            reply
+            answer
         );
 
-
-        /*
-           Speak when appropriate.
-        */
-
-        if (shouldSpeak) {
-
-            /*
-               Small delay makes it feel
-               more natural after thinking.
-            */
-
-            setTimeout(
-                () => {
-
-                    speak(reply);
-
-                },
-                250
-            );
-
-        } else {
-
-            statusText.textContent =
-                "Zoya is listening...";
-
-        }
 
     }
 
     catch (error) {
-
-        removeThinking();
-
-
-        const errorMessage =
-            "Umm... something went wrong on my side. 😭\n\n" +
-            "Technical message: " +
-            error.message;
-
-
-        addZoyaMessage(
-            errorMessage
-        );
-
-
-        statusText.textContent =
-            "Zoya is listening...";
 
 
         console.error(
@@ -1842,14 +1705,31 @@ async function sendMessage() {
             error
         );
 
+
+        removeThinking();
+
+
+        /*
+           Friendly error message.
+        */
+
+        addZoyaMessage(
+
+            "Hmm... I think I lost my train of thought for a second. 😅\n\n" +
+            "Give me a moment and try again."
+
+        );
+
     }
 
     finally {
 
+
         sendButton.disabled =
             false;
 
-        input.focus();
+
+        messageInput.focus();
 
     }
 
@@ -1857,204 +1737,58 @@ async function sendMessage() {
 
 
 /* =========================================================
-   QUICK QUESTION
+   ENTER TO SEND
 ========================================================= */
 
-function askQuestion(question) {
+messageInput.addEventListener(
 
-    input.value =
-        question;
+    "keydown",
 
-    sendMessage();
-
-}
+    function(event) {
 
 
-/* =========================================================
-   ENTER KEY
-========================================================= */
+        /*
+           Enter sends.
 
-function handleInputKey(event) {
+           Shift + Enter creates
+           a new line.
+        */
 
-    /*
-       Enter = send
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
 
-       Shift + Enter = new line
-    */
-
-    if (
-        event.key === "Enter" &&
-        !event.shiftKey
-    ) {
-
-        event.preventDefault();
-
-        sendMessage();
-
-    }
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   VOICE INPUT
-========================================================= */
-
-function startListening() {
-
-    /*
-       Chrome Speech Recognition.
-    */
-
-    const SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-
-
-    if (!SpeechRecognition) {
-
-        alert(
-            "Voice input is not supported in this browser."
-        );
-
-        return;
-
-    }
-
-
-    if (recognition) {
-
-        recognition.stop();
-
-    }
-
-
-    recognition =
-        new SpeechRecognition();
-
-
-    recognition.lang =
-        "en-IN";
-
-
-    recognition.continuous =
-        false;
-
-
-    recognition.interimResults =
-        false;
-
-
-    statusText.textContent =
-        "Zoya is listening to you...";
-
-
-    recognition.onresult =
-        function(event) {
-
-            const transcript =
-                event.results[0][0].transcript;
-
-
-            input.value =
-                transcript;
-
-
-            statusText.textContent =
-                "Got it. Sending...";
-
+            event.preventDefault();
 
             sendMessage();
 
-        };
+        }
 
+    }
 
-    recognition.onerror =
-        function(event) {
-
-            console.error(
-                "Voice input error:",
-                event.error
-            );
-
-
-            statusText.textContent =
-                "Zoya is listening...";
-
-        };
-
-
-    recognition.onend =
-        function() {
-
-            if (!isThinking) {
-
-                statusText.textContent =
-                    "Zoya is listening...";
-
-            }
-
-        };
-
-
-    recognition.start();
-
-}
+);
 
 
 /* =========================================================
-   INITIAL SETUP
+   INITIAL FOCUS
 ========================================================= */
 
 setTimeout(
-    loadVoices,
-    500
-);
 
-setTimeout(
-    loadVoices,
-    1500
-);
+    function() {
 
-setTimeout(
-    loadVoices,
-    3000
-);
+        messageInput.focus();
 
+    },
 
-/*
-   Default mode = AUTO
-*/
+    400
 
-setMode("auto");
-
-
-/*
-   Focus input when page opens.
-*/
-
-setTimeout(
-    () => input.focus(),
-    500
 );
 
 </script>
 
+
 </body>
+
 </html>
