@@ -8,643 +8,556 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    background: #f4f0e8;
-    color: #24221f;
-    font-family: "DM Sans", sans-serif;
-    overflow-x: hidden;
+body{
+    background:#f5f1e9;
+    color:#202020;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
 }
 
-::selection {
-    background: #24221f;
-    color: #f4f0e8;
+::selection{
+    background:#202020;
+    color:#f5f1e9;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* ---------------- NAV ---------------- */
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 24px 5vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
+/* NAVIGATION */
 
-    background: rgba(244,240,232,0.78);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(36,34,31,0.10);
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:20px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(245,241,233,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(32,32,32,.08);
 }
 
-.logo {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 1px;
+.logo{
+    font-weight:700;
+    letter-spacing:2px;
+    font-size:18px;
 }
 
-.logo span {
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-weight: 400;
+.navlinks{
+    display:flex;
+    gap:30px;
 }
 
-nav ul {
-    display: flex;
-    gap: 28px;
-    list-style: none;
+.navlinks a{
+    color:#202020;
+    text-decoration:none;
+    font-size:14px;
+    position:relative;
 }
 
-nav li {
-    font-size: 13px;
-    position: relative;
+.navlinks a:after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:1px;
+    left:0;
+    bottom:-5px;
+    background:#202020;
+    transition:.3s;
 }
 
-nav li::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 1px;
-    background: #24221f;
-    transition: width .3s ease;
+.navlinks a:hover:after{
+    width:100%;
 }
 
-nav li:hover::after {
-    width: 100%;
-}
+/* HERO */
 
-/* ---------------- GENERAL ---------------- */
-
-section {
-    padding: 120px 7vw;
+.hero{
+    min-height:100vh;
+    padding:150px 7% 80px;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:60px;
+    align-items:center;
+    position:relative;
 }
 
-.eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 11px;
-    color: #817b72;
-    margin-bottom: 25px;
+.hero-text{
+    animation:fadeUp 1s ease forwards;
 }
 
-.serif {
-    font-family: "Playfair Display", serif;
+.kicker{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:12px;
+    color:#777;
+    margin-bottom:25px;
 }
-
-/* ---------------- HERO ---------------- */
 
-.hero {
-    min-height: 100vh;
-    padding: 150px 7vw 80px;
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 6vw;
-    align-items: center;
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(70px,10vw,145px);
+    line-height:.86;
+    font-weight:500;
+    letter-spacing:-6px;
 }
 
-.hero-left {
-    animation: revealLeft 1s ease forwards;
+.hero h1 span{
+    font-style:italic;
 }
 
-.hero-title {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(65px, 9vw, 135px);
-    font-weight: 400;
-    line-height: .88;
-    letter-spacing: -5px;
-    margin-bottom: 42px;
+.tagline{
+    margin-top:38px;
+    font-size:20px;
+    max-width:600px;
+    line-height:1.6;
 }
 
-.hero-title em {
-    font-weight: 400;
+.tagline strong{
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:24px;
 }
 
-.hero-intro {
-    max-width: 620px;
-    font-size: 19px;
-    line-height: 1.7;
-    color: #575149;
+.hero-photo{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    animation:fadeIn 1.2s ease forwards;
 }
 
-.hero-intro strong {
-    color: #24221f;
-    font-weight: 500;
+.photo-frame{
+    width:min(390px,85vw);
+    height:510px;
+    overflow:hidden;
+    position:relative;
+    border-radius:210px 210px 15px 15px;
+    box-shadow:18px 20px 0 #ded7ca;
 }
 
-.hero-image-wrap {
-    position: relative;
-    animation: revealRight 1.2s ease forwards;
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .7s ease;
 }
 
-.hero-image {
-    width: 100%;
-    max-height: 680px;
-    object-fit: cover;
-    object-position: center 25%;
-
-    border-radius: 48% 48% 10px 10px;
-
-    filter: saturate(.85);
-    transition: transform .7s ease, filter .7s ease;
+.photo-frame:hover img{
+    transform:scale(1.05);
 }
 
-.hero-image-wrap:hover .hero-image {
-    transform: scale(1.025) rotate(1deg);
-    filter: saturate(1);
+.photo-note{
+    position:absolute;
+    bottom:25px;
+    right:-30px;
+    background:#202020;
+    color:white;
+    padding:13px 18px;
+    font-size:12px;
+    transform:rotate(-4deg);
 }
-
-.image-note {
-    position: absolute;
-    bottom: 18px;
-    left: -28px;
 
-    padding: 13px 17px;
-    background: #24221f;
-    color: #f4f0e8;
+/* FLOATING DETAILS */
 
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-    font-size: 14px;
+.circle{
+    position:absolute;
+    border:1px solid #aaa;
+    border-radius:50%;
+    width:80px;
+    height:80px;
+    right:5%;
+    top:18%;
+    animation:float 4s ease-in-out infinite;
+}
 
-    transform: rotate(-4deg);
-    box-shadow: 8px 8px 0 rgba(36,34,31,.12);
+.circle.small{
+    width:25px;
+    height:25px;
+    left:4%;
+    bottom:20%;
+    animation-delay:1s;
 }
 
-/* ---------------- MARQUEE ---------------- */
+/* SECTIONS */
 
-.marquee {
-    overflow: hidden;
-    border-top: 1px solid rgba(36,34,31,.18);
-    border-bottom: 1px solid rgba(36,34,31,.18);
-    padding: 17px 0;
-    white-space: nowrap;
+section{
+    padding:110px 7%;
 }
 
-.marquee-track {
-    display: inline-block;
-    animation: marquee 22s linear infinite;
+.section-label{
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+    color:#777;
+    margin-bottom:20px;
 }
 
-.marquee span {
-    margin-right: 45px;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.section-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,6vw,80px);
+    font-weight:500;
+    margin-bottom:55px;
 }
 
-/* ---------------- WHO AM I ---------------- */
-
-.about {
-    display: grid;
-    grid-template-columns: .7fr 1.3fr;
-    gap: 8vw;
+.section-title em{
+    font-style:italic;
 }
 
-.about-title {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(50px, 6vw, 85px);
-    font-weight: 400;
-    line-height: 1;
-}
+/* INTRO */
 
-.about-text {
-    max-width: 760px;
-    font-size: 20px;
-    line-height: 1.8;
-    color: #575149;
+.intro{
+    background:#202020;
+    color:#f5f1e9;
+    position:relative;
+    overflow:hidden;
 }
 
-.about-text p {
-    margin-bottom: 25px;
+.intro-text{
+    max-width:950px;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(30px,4vw,55px);
+    line-height:1.25;
 }
 
-.about-highlight {
-    font-family: "Playfair Display", serif;
-    font-size: 29px;
-    color: #24221f;
-    margin-top: 35px;
+.intro-text em{
+    color:#cfc5b5;
 }
 
-/* ---------------- WORLD ---------------- */
-
-.world {
-    background: #25231f;
-    color: #f4f0e8;
+.location{
+    margin-top:35px;
+    color:#aaa;
+    font-size:14px;
 }
 
-.world .eyebrow {
-    color: #a9a39a;
-}
+/* CARDS */
 
-.world-heading {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(55px, 8vw, 105px);
-    font-weight: 400;
-    line-height: .95;
-    margin-bottom: 70px;
+.explore{
+    background:#ebe5da;
 }
 
-.world-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border-top: 1px solid #56514a;
-    border-left: 1px solid #56514a;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
 }
 
-.world-card {
-    min-height: 310px;
-    padding: 42px;
-    border-right: 1px solid #56514a;
-    border-bottom: 1px solid #56514a;
-    position: relative;
-    overflow: hidden;
-    transition: background .4s ease;
+.card{
+    min-height:300px;
+    padding:32px;
+    background:#f8f5ef;
+    border:1px solid rgba(32,32,32,.1);
+    position:relative;
+    overflow:hidden;
+    transition:transform .4s ease,box-shadow .4s ease;
 }
 
-.world-card:hover {
-    background: #302e29;
+.card:hover{
+    transform:translateY(-10px) rotate(-1deg);
+    box-shadow:12px 15px 0 rgba(32,32,32,.1);
 }
 
-.world-number {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #938d84;
+.icon{
+    font-size:45px;
+    margin-bottom:30px;
+    display:inline-block;
+    animation:float 3s ease-in-out infinite;
 }
 
-.world-card h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    font-weight: 400;
-    margin-top: 50px;
+.card:nth-child(2) .icon{
+    animation:camera 2s infinite;
 }
 
-.world-card p {
-    color: #aaa49b;
-    max-width: 400px;
-    margin-top: 15px;
-    line-height: 1.6;
+.card:nth-child(3) .icon{
+    animation:toilet 2.5s ease-in-out infinite;
 }
-
-/* ---------------- ANIMATED ICONS ---------------- */
 
-.icon {
-    position: absolute;
-    right: 35px;
-    top: 35px;
-    width: 60px;
-    height: 60px;
+.card:nth-child(4) .icon{
+    animation:paint 2s infinite;
 }
 
-/* Work icon */
-
-.briefcase {
-    border: 1px solid #9e988e;
-    border-radius: 8px;
-    height: 35px;
-    top: 48px;
+.card:nth-child(5) .icon{
+    animation:pulse 2s infinite;
 }
 
-.briefcase::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 10px;
-    border: 1px solid #9e988e;
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-    left: 19px;
-    top: -11px;
+.card h3{
+    font-family:"Playfair Display",serif;
+    font-size:32px;
+    font-weight:500;
+    margin-bottom:15px;
 }
 
-.world-card:hover .briefcase {
-    transform: translateY(-5px);
+.card p{
+    color:#666;
+    line-height:1.7;
+    font-size:15px;
 }
 
-/* Camera */
-
-.camera {
-    border: 1px solid #9e988e;
-    border-radius: 10px;
-    height: 38px;
-    top: 48px;
+.card-number{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    color:rgba(32,32,32,.05);
 }
 
-.camera::before {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #9e988e;
-    border-radius: 50%;
-    left: 21px;
-    top: 10px;
-}
+/* WORK */
 
-.camera::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 5px;
-    border: 1px solid #9e988e;
-    border-bottom: none;
-    left: 8px;
-    top: -6px;
-    border-radius: 4px 4px 0 0;
+.work{
+    background:#f5f1e9;
 }
 
-.world-card:hover .camera::before {
-    animation: shutter .6s ease;
+.work-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
 }
 
-/* Book */
-
-.book {
-    border: 1px solid #9e988e;
-    width: 54px;
-    height: 40px;
-    top: 45px;
-    transform: skewY(-3deg);
+.work-copy{
+    font-size:20px;
+    line-height:1.8;
+    color:#555;
 }
 
-.book::after {
-    content: "";
-    position: absolute;
-    left: 26px;
-    top: 0;
-    height: 100%;
-    border-left: 1px solid #9e988e;
+.work-copy strong{
+    color:#202020;
 }
 
-.world-card:hover .book {
-    transform: skewY(-3deg) rotate(-4deg) translateY(-5px);
+.work-list{
+    border-top:1px solid #bbb;
 }
 
-/* Thought */
-
-.thought {
-    border: 1px solid #9e988e;
-    border-radius: 50%;
-    width: 60px;
-    height: 42px;
-    top: 43px;
+.work-item{
+    padding:25px 0;
+    border-bottom:1px solid #bbb;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    transition:.3s;
 }
 
-.thought::after {
-    content: "...";
-    position: absolute;
-    font-size: 24px;
-    left: 21px;
-    top: -7px;
+.work-item:hover{
+    padding-left:15px;
 }
 
-.world-card:hover .thought {
-    animation: float 1.2s ease infinite alternate;
+.work-item span{
+    font-family:"DM Sans",sans-serif;
+    font-size:12px;
+    color:#888;
 }
 
-/* Paint */
+/* ABOUT */
 
-.paint {
-    width: 8px;
-    height: 60px;
-    background: #9e988e;
-    border-radius: 5px;
-    transform: rotate(35deg);
+.about{
+    background:#ded7ca;
 }
 
-.paint::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 9px;
-    background: #9e988e;
-    left: -11px;
-    bottom: -3px;
-    border-radius: 50%;
+.about-grid{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+    gap:70px;
 }
-
-/* ---------------- CAREER ---------------- */
 
-.career {
-    background: #e9e4da;
+.about-big{
+    font-family:"Playfair Display",serif;
+    font-size:45px;
+    line-height:1.2;
 }
 
-.career-heading {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(55px, 7vw, 100px);
-    font-weight: 400;
-    line-height: .95;
-    margin-bottom: 70px;
+.about-copy{
+    font-size:18px;
+    line-height:1.9;
+    color:#555;
 }
 
-.timeline {
-    max-width: 1000px;
-    border-left: 1px solid #b7b0a5;
-    margin-left: 10px;
+.about-copy p{
+    margin-bottom:20px;
 }
 
-.timeline-item {
-    position: relative;
-    padding: 0 0 55px 50px;
+.quote{
+    margin-top:35px;
+    padding-left:25px;
+    border-left:2px solid #202020;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    font-style:italic;
+    color:#333;
 }
 
-.timeline-item::before {
-    content: "";
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    background: #25231f;
-    border-radius: 50%;
-    left: -5px;
-    top: 6px;
-}
+/* CONNECT */
 
-.timeline-year {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #817a70;
-    margin-bottom: 12px;
+.connect{
+    background:#202020;
+    color:#f5f1e9;
+    text-align:center;
 }
 
-.timeline-item h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 31px;
-    font-weight: 400;
+.connect .section-label{
+    color:#999;
 }
 
-.timeline-item p {
-    color: #625d55;
-    margin-top: 8px;
-    max-width: 650px;
+.connect h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(55px,8vw,110px);
+    font-weight:500;
+    line-height:1;
 }
 
-/* ---------------- CLOSING ---------------- */
-
-.closing {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
+.connect h2 em{
+    display:block;
+    color:#cfc5b5;
 }
 
-.closing h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(65px, 10vw, 140px);
-    font-weight: 400;
-    line-height: .9;
+.connect p{
+    margin:30px auto;
+    max-width:550px;
+    color:#aaa;
+    line-height:1.7;
 }
 
-.closing p {
-    font-size: 19px;
-    color: #625d55;
-    margin-top: 35px;
-    max-width: 600px;
+.connect-button{
+    display:inline-block;
+    padding:16px 30px;
+    border:1px solid #aaa;
+    color:#f5f1e9;
+    text-decoration:none;
+    transition:.3s;
 }
 
-.connect-link {
-    display: inline-block;
-    margin-top: 35px;
-    border-bottom: 1px solid #24221f;
-    padding-bottom: 5px;
+.connect-button:hover{
+    background:#f5f1e9;
+    color:#202020;
 }
-
-/* ---------------- FOOTER ---------------- */
 
-footer {
-    padding: 30px 7vw;
-    border-top: 1px solid rgba(36,34,31,.15);
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #817b72;
+footer{
+    padding:30px 7%;
+    background:#202020;
+    color:#777;
+    border-top:1px solid #333;
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
 }
 
-/* ---------------- ANIMATIONS ---------------- */
+/* ANIMATIONS */
 
-@keyframes revealLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-35px);
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
     }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-@keyframes revealRight {
-    from {
-        opacity: 0;
-        transform: translateX(35px);
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateX(30px);
     }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
+    to{
+        opacity:1;
+        transform:translateX(0);
     }
 }
 
-@keyframes shutter {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(.65);
-    }
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
 }
 
-@keyframes float {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-8px);
-    }
+@keyframes camera{
+    0%,100%{transform:rotate(0);}
+    25%{transform:rotate(-8deg);}
+    75%{transform:rotate(8deg);}
 }
 
-/* ---------------- MOBILE ---------------- */
+@keyframes toilet{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-7px) rotate(3deg);}
+}
 
-@media(max-width: 800px) {
+@keyframes paint{
+    0%,100%{transform:rotate(0);}
+    50%{transform:rotate(12deg);}
+}
 
-    nav {
-        padding: 19px 5vw;
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .navlinks{
+        gap:12px;
     }
 
-    nav ul {
-        display: none;
+    .navlinks a{
+        font-size:11px;
     }
 
-    section {
-        padding: 90px 6vw;
+    .logo{
+        font-size:14px;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-        padding-top: 130px;
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:130px;
     }
 
-    .hero-title {
-        font-size: clamp(58px, 17vw, 100px);
-        letter-spacing: -3px;
+    .hero h1{
+        font-size:72px;
+        letter-spacing:-3px;
     }
 
-    .hero-image {
-        max-height: 500px;
+    .hero-photo{
+        margin-top:20px;
     }
 
-    .image-note {
-        left: 10px;
+    .photo-frame{
+        height:430px;
     }
 
-    .about {
-        grid-template-columns: 1fr;
-        gap: 45px;
+    .cards{
+        grid-template-columns:1fr;
     }
 
-    .world-grid {
-        grid-template-columns: 1fr;
+    .work-grid,
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:40px;
     }
 
-    .world-card {
-        min-height: 280px;
+    section{
+        padding:80px 6%;
     }
 
-    footer {
-        flex-direction: column;
-        gap: 10px;
+    footer{
+        flex-direction:column;
+        gap:10px;
     }
 }
 
@@ -656,18 +569,15 @@ footer {
 <!-- NAVIGATION -->
 
 <nav>
+    <div class="logo">PRAVEEN SHARMA</div>
 
-    <div class="logo">
-        PRVN<span>.</span>
+    <div class="navlinks">
+        <a href="#home">Home</a>
+        <a href="#who">Who Am I?</a>
+        <a href="#explore">Explore</a>
+        <a href="#work">Kaam-Dhandha</a>
+        <a href="#connect">Let's Connect</a>
     </div>
-
-    <ul>
-        <li><a href="#about">Who Am I?</a></li>
-        <li><a href="#world">My World</a></li>
-        <li><a href="#career">Kaam-Dhanda</a></li>
-        <li><a href="#connect">Connect</a></li>
-    </ul>
-
 </nav>
 
 
@@ -675,117 +585,65 @@ footer {
 
 <section class="hero" id="home">
 
-    <div class="hero-left">
+    <div class="circle"></div>
+    <div class="circle small"></div>
 
-        <div class="eyebrow">
+    <div class="hero-text">
+
+        <div class="kicker">
             Welcome to my little corner of the internet
         </div>
 
-        <h1 class="hero-title">
-            Hello, I'm<br>
+        <h1>
             Praveen<br>
-            <em>Sharma.</em>
+            <span>Sharma.</span>
         </h1>
 
-        <p class="hero-intro">
-            <strong>HR by profession.</strong> Curious by nature.
-            I write stories, but I'm not a storyteller.
-            I click pictures, but I'm not a photographer.
-            I write raps, paint, play around with AI —
-            and occasionally pretend I know what I'm doing.
-        </p>
+        <div class="tagline">
+            HR by profession.
+            <br>
+            Loves to write stories but <strong>not a storyteller.</strong>
+            <br>
+            Loves to click but <strong>not a photographer.</strong>
+        </div>
 
     </div>
 
 
-    <div class="hero-image-wrap">
+    <div class="hero-photo">
 
-        <img
-            src="profile.jpg.jpeg"
-            alt="Praveen Sharma"
-            class="hero-image"
-        >
+        <div class="photo-frame">
 
-        <div class="image-note">
-            Master's in Overthinking
+            <img src="profile.jpg.jpeg" alt="Praveen Sharma">
+
+            <div class="photo-note">
+                Yes, this is me.
+            </div>
+
         </div>
 
     </div>
 
 </section>
-
-
-<!-- MARQUEE -->
-
-<div class="marquee">
-
-    <div class="marquee-track">
-
-        <span>HR</span>
-        <span>Writing</span>
-        <span>Photography</span>
-        <span>Raps</span>
-        <span>Painting</span>
-        <span>AI</span>
-        <span>Overthinking</span>
-
-        <span>HR</span>
-        <span>Writing</span>
-        <span>Photography</span>
-        <span>Raps</span>
-        <span>Painting</span>
-        <span>AI</span>
-        <span>Overthinking</span>
-
-    </div>
-
-</div>
 
 
 <!-- WHO AM I -->
 
-<section class="about" id="about">
+<section class="intro" id="who">
 
-    <div>
-
-        <div class="eyebrow">
-            01 — Who Am I?
-        </div>
-
-        <h2 class="about-title">
-            A Mumbai boy<br>
-            with roots<br>
-            in Darbhanga.
-        </h2>
-
+    <div class="section-label">
+        Who am I?
     </div>
 
+    <div class="intro-text">
 
-    <div class="about-text">
+        Hello, I'm Praveen Sharma —
+        <em>HR by profession, curious by nature
+        and slightly overqualified in the art of overthinking.</em>
 
-        <p>
-            Born and brought up in <strong>Mumbai</strong>,
-            but my roots trace back to Darbhanga, Bihar.
-        </p>
-
-        <p>
-            Mumbai has been home for as long as I can remember.
-            It's where I grew up, studied, started working,
-            met people, made mistakes, learned things,
-            and became... well, me.
-        </p>
-
-        <p>
-            Somewhere between all of that, I realised that
-            I'm interested in far more things than just my
-            day job.
-        </p>
-
-        <div class="about-highlight">
-            I don't necessarily call myself a writer,
-            photographer, artist or anything else.
-            <br><br>
-            <strong>I just like creating things.</strong>
+        <div class="location">
+            Born & brought up in Mumbai.
+            Roots in Darbhanga, Bihar.
         </div>
 
     </div>
@@ -793,140 +651,99 @@ footer {
 </section>
 
 
-<!-- MY WORLD -->
+<!-- EXPLORE -->
 
-<section class="world" id="world">
+<section class="explore" id="explore">
 
-    <div class="eyebrow">
-        02 — A few things that make me, me.
+    <div class="section-label">
+        Things I do when I'm not pretending to be busy
     </div>
 
-    <h2 class="world-heading">
-        My World.
+    <h2 class="section-title">
+        Explore my <em>other sides.</em>
     </h2>
 
 
-    <div class="world-grid">
+    <div class="cards">
 
+        <div class="card">
 
-        <!-- KAAM DHANDA -->
+            <div class="card-number">01</div>
 
-        <a href="#career" class="world-card">
+            <div class="icon">💼</div>
 
-            <div class="world-number">
-                01 / WORK
-            </div>
-
-            <div class="icon briefcase"></div>
-
-            <h3>Kaam-Dhanda</h3>
+            <h3>Kaam-Dhandha</h3>
 
             <p>
-                The professional side of things —
-                HR, people, experiences, learning
-                and the work that keeps me busy.
+                HR, People, Talent, hiring, career conversations
+                and all the professional things that pay the bills.
             </p>
 
-        </a>
+        </div>
 
 
-        <!-- TASVEERIEN -->
+        <div class="card">
 
-        <div class="world-card">
+            <div class="card-number">02</div>
 
-            <div class="world-number">
-                02 / CLICKS
-            </div>
-
-            <div class="icon camera"></div>
+            <div class="icon">📸</div>
 
             <h3>Tasveerien</h3>
 
             <p>
-                I like clicking things.
-                I'm still not calling myself a photographer.
+                I click things that catch my eye.
+                Photographer nahi hoon bhai,
+                bas camera mil gaya toh click kar diya.
             </p>
 
         </div>
 
 
-        <!-- KAHANIYAAN -->
+        <div class="card">
 
-        <div class="world-card">
+            <div class="card-number">03</div>
 
-            <div class="world-number">
-                03 / STORIES
-            </div>
-
-            <div class="icon book"></div>
-
-            <h3>Kahaniyaan</h3>
-
-            <p>
-                Stories that started somewhere between
-                an idea and too much imagination.
-            </p>
-
-        </div>
-
-
-        <!-- WASHROOM THOUGHTS -->
-
-        <div class="world-card">
-
-            <div class="world-number">
-                04 / THOUGHTS
-            </div>
-
-            <div class="icon thought"></div>
+            <div class="icon">🚽</div>
 
             <h3>Washroom Thoughts</h3>
 
             <p>
-                Some thoughts arrive at the most
-                unexpected — and inappropriate —
-                moments.
+                Some thoughts deserve a notebook.
+                Some arrive in the washroom.
+                Don't ask why. Just read them.
             </p>
 
         </div>
 
 
-        <!-- CREATIVE -->
+        <div class="card">
 
-        <div class="world-card">
+            <div class="card-number">04</div>
 
-            <div class="world-number">
-                05 / CREATE
-            </div>
+            <div class="icon">🎨</div>
 
-            <div class="icon paint"></div>
-
-            <h3>Banaya Kuch</h3>
+            <h3>Kahaniyaan</h3>
 
             <p>
-                Raps, paintings, experiments,
-                random ideas and whatever else
-                I feel like making.
+                Stories, ideas, observations and things
+                that somehow become words.
             </p>
 
         </div>
 
 
-        <!-- AI -->
+        <div class="card">
 
-        <div class="world-card">
+            <div class="card-number">05</div>
 
-            <div class="world-number">
-                06 / EXPERIMENT
-            </div>
+            <div class="icon">🤖</div>
 
-            <div class="icon thought"></div>
-
-            <h3>Playing With AI</h3>
+            <h3>Aur Bhi Kuch...</h3>
 
             <p>
-                These days, I'm discovering what happens
-                when curiosity meets artificial intelligence.
+                Raps. Paintings. AI experiments.
+                Random ideas. And whatever obsession
+                comes next.
             </p>
 
         </div>
@@ -936,72 +753,112 @@ footer {
 </section>
 
 
-<!-- CAREER -->
+<!-- WORK -->
 
-<section class="career" id="career">
+<section class="work" id="work">
 
-    <div class="eyebrow">
-        03 — Kaam-Dhanda
+    <div class="section-label">
+        The professional side
     </div>
 
-    <h2 class="career-heading">
-        The professional<br>
-        side of things.
+    <h2 class="section-title">
+        Kaam bhi karta hoon.<br>
+        <em>Seriously.</em>
     </h2>
 
 
-    <div class="timeline">
+    <div class="work-grid">
 
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-                EXPERIENCE
-            </div>
-
-            <h3>HR & People</h3>
+        <div class="work-copy">
 
             <p>
-                A journey through HR, people management,
-                talent acquisition and everything I've
-                learned while working with people.
+                By profession, I'm an <strong>HR professional</strong>
+                who enjoys working with people, solving problems,
+                building teams and making workplaces a little better.
+            </p>
+
+            <br>
+
+            <p>
+                Talent Acquisition is a big part of my journey,
+                but <strong>HR for me is much bigger than hiring.</strong>
             </p>
 
         </div>
 
 
-        <div class="timeline-item">
+        <div class="work-list">
 
-            <div class="timeline-year">
-                WHAT I DO
+            <div class="work-item">
+                People & HR
+                <span>01</span>
             </div>
 
-            <h3>People. Teams. Work.</h3>
+            <div class="work-item">
+                Talent Acquisition
+                <span>02</span>
+            </div>
 
-            <p>
-                We'll build this section around your
-                actual experience, responsibilities,
-                achievements and professional strengths.
-            </p>
+            <div class="work-item">
+                Employee Experience
+                <span>03</span>
+            </div>
+
+            <div class="work-item">
+                Leadership & Teams
+                <span>04</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div class="section-label">
+        A little more about me
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-big">
+
+            Not everything<br>
+            needs a <em>job title.</em>
 
         </div>
 
 
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-                MORE COMING
-            </div>
-
-            <h3>Still writing this chapter.</h3>
+        <div class="about-copy">
 
             <p>
-                Because apparently, a career is also
-                a work in progress.
+                I write stories but I'm not a storyteller.
+                I click photographs but I'm not a photographer.
             </p>
 
-        </div>
+            <p>
+                I write raps, try painting, experiment with AI
+                and occasionally convince myself that I should
+                learn something completely new.
+            </p>
 
+            <p>
+                Basically, curiosity has been doing overtime
+                for quite some time now.
+            </p>
+
+            <div class="quote">
+                "And yes, I have also completed my Masters
+                in Overthinking."
+            </div>
+
+        </div>
 
     </div>
 
@@ -1010,48 +867,42 @@ footer {
 
 <!-- CONNECT -->
 
-<section class="closing" id="connect">
+<section class="connect" id="connect">
 
-    <div>
-
-        <div class="eyebrow">
-            04 — Let's Connect
-        </div>
-
-        <h2>
-            Say hello.<br>
-            Start a conversation.
-        </h2>
-
-        <p>
-            Work, stories, ideas, photography,
-            AI, or simply something you wanted
-            to talk about.
-        </p>
-
-        <a href="mailto:your-email@example.com" class="connect-link">
-            Send me an email →
-        </a>
-
+    <div class="section-label">
+        Say hello
     </div>
+
+    <h2>
+        Let's
+        <em>connect.</em>
+    </h2>
+
+    <p>
+        If you want to talk about HR, stories, ideas,
+        photography, AI, careers — or absolutely nothing
+        important — I'm around.
+    </p>
+
+    <a class="connect-button"
+       href="mailto:your-email@example.com">
+        Start a conversation →
+    </a>
 
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
     <div>
-        PRVN.
+        © 2026 Praveen Sharma
     </div>
 
     <div>
-        © 2026 · Made with curiosity & unnecessary overthinking.
+        Made with curiosity & a little overthinking.
     </div>
 
 </footer>
-
 
 </body>
 </html>
