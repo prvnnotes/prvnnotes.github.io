@@ -1,483 +1,1057 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Praveen Sharma</title>
+<title>Praveen Sharma — More Than a Job Title</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
-        html {
-            scroll-behavior: smooth;
-        }
+<style>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f5f0;
-            color: #1d1d1b;
-            line-height: 1.6;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #dedbd4;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+body {
+    background: #f4f0e8;
+    color: #24221f;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
+::selection {
+    background: #24221f;
+    color: #f4f0e8;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #1d1d1b;
-            font-size: 14px;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        nav a:hover {
-            opacity: 0.55;
-        }
+/* ---------------- NAV ---------------- */
 
-        section {
-            padding: 110px 8%;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 140px;
-        }
+    background: rgba(244,240,232,0.78);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(36,34,31,0.10);
+}
 
-        .hero-content {
-            max-width: 900px;
-        }
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
-        .small-label {
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #77736c;
-            margin-bottom: 25px;
-        }
+.logo span {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 400;
+}
 
-        h1 {
-            font-family: Georgia, serif;
-            font-size: clamp(60px, 10vw, 145px);
-            font-weight: 400;
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 35px;
-        }
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
 
-        .hero-text {
-            max-width: 650px;
-            font-size: 22px;
-            color: #4d4a45;
-        }
+nav li {
+    font-size: 13px;
+    position: relative;
+}
 
-        .intro {
-            border-top: 1px solid #cfcac1;
-            border-bottom: 1px solid #cfcac1;
-        }
+nav li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 1px;
+    background: #24221f;
+    transition: width .3s ease;
+}
 
-        .intro h2,
-        .section-title {
-            font-family: Georgia, serif;
-            font-weight: 400;
-            font-size: clamp(42px, 6vw, 80px);
-            line-height: 1;
-            margin-bottom: 30px;
-        }
+nav li:hover::after {
+    width: 100%;
+}
 
-        .intro p {
-            max-width: 750px;
-            font-size: 21px;
-            color: #55514a;
-        }
+/* ---------------- GENERAL ---------------- */
 
-        .world {
-            background: #1d1d1b;
-            color: #f7f5f0;
-        }
+section {
+    padding: 120px 7vw;
+}
 
-        .world .small-label {
-            color: #aaa69e;
-        }
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: #817b72;
+    margin-bottom: 25px;
+}
 
-        .world-grid {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-top: 1px solid #55524d;
-            border-left: 1px solid #55524d;
-        }
+.serif {
+    font-family: "Playfair Display", serif;
+}
 
-        .world-card {
-            padding: 45px;
-            min-height: 230px;
-            border-right: 1px solid #55524d;
-            border-bottom: 1px solid #55524d;
-            transition: 0.3s ease;
-        }
+/* ---------------- HERO ---------------- */
 
-        .world-card:hover {
-            background: #292927;
-        }
+.hero {
+    min-height: 100vh;
+    padding: 150px 7vw 80px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 6vw;
+    align-items: center;
+}
 
-        .world-card h3 {
-            font-family: Georgia, serif;
-            font-size: 34px;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
+.hero-left {
+    animation: revealLeft 1s ease forwards;
+}
 
-        .world-card p {
-            color: #bcb8b0;
-            max-width: 400px;
-        }
+.hero-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(65px, 9vw, 135px);
+    font-weight: 400;
+    line-height: .88;
+    letter-spacing: -5px;
+    margin-bottom: 42px;
+}
 
-        .career {
-            background: #ebe8e1;
-        }
+.hero-title em {
+    font-weight: 400;
+}
 
-        .career-content {
-            max-width: 900px;
-        }
+.hero-intro {
+    max-width: 620px;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #575149;
+}
 
-        .career-item {
-            padding: 30px 0;
-            border-top: 1px solid #c5c1b9;
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 30px;
-        }
+.hero-intro strong {
+    color: #24221f;
+    font-weight: 500;
+}
 
-        .career-year {
-            color: #77736c;
-            font-size: 14px;
-        }
+.hero-image-wrap {
+    position: relative;
+    animation: revealRight 1.2s ease forwards;
+}
 
-        .career-item h3 {
-            font-family: Georgia, serif;
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
+.hero-image {
+    width: 100%;
+    max-height: 680px;
+    object-fit: cover;
+    object-position: center 25%;
 
-        .placeholder {
-            color: #77736c;
-        }
+    border-radius: 48% 48% 10px 10px;
 
-        .closing {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-        }
+    filter: saturate(.85);
+    transition: transform .7s ease, filter .7s ease;
+}
 
-        .closing h2 {
-            font-family: Georgia, serif;
-            font-size: clamp(50px, 8vw, 110px);
-            font-weight: 400;
-            line-height: 1;
-            margin-bottom: 30px;
-        }
+.hero-image-wrap:hover .hero-image {
+    transform: scale(1.025) rotate(1deg);
+    filter: saturate(1);
+}
 
-        .closing p {
-            font-size: 20px;
-            color: #55514a;
-            max-width: 600px;
-        }
+.image-note {
+    position: absolute;
+    bottom: 18px;
+    left: -28px;
 
-        footer {
-            padding: 30px 8%;
-            border-top: 1px solid #cfcac1;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: #77736c;
-        }
+    padding: 13px 17px;
+    background: #24221f;
+    color: #f4f0e8;
 
-        @media (max-width: 800px) {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 14px;
 
-            nav {
-                padding: 18px 5%;
-            }
+    transform: rotate(-4deg);
+    box-shadow: 8px 8px 0 rgba(36,34,31,.12);
+}
 
-            nav ul {
-                display: none;
-            }
+/* ---------------- MARQUEE ---------------- */
 
-            section {
-                padding: 90px 6%;
-            }
+.marquee {
+    overflow: hidden;
+    border-top: 1px solid rgba(36,34,31,.18);
+    border-bottom: 1px solid rgba(36,34,31,.18);
+    padding: 17px 0;
+    white-space: nowrap;
+}
 
-            h1 {
-                letter-spacing: -3px;
-            }
+.marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+}
 
-            .world-grid {
-                grid-template-columns: 1fr;
-            }
+.marquee span {
+    margin-right: 45px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-            .career-item {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
+/* ---------------- WHO AM I ---------------- */
 
-            footer {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+.about {
+    display: grid;
+    grid-template-columns: .7fr 1.3fr;
+    gap: 8vw;
+}
+
+.about-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(50px, 6vw, 85px);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.about-text {
+    max-width: 760px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: #575149;
+}
+
+.about-text p {
+    margin-bottom: 25px;
+}
+
+.about-highlight {
+    font-family: "Playfair Display", serif;
+    font-size: 29px;
+    color: #24221f;
+    margin-top: 35px;
+}
+
+/* ---------------- WORLD ---------------- */
+
+.world {
+    background: #25231f;
+    color: #f4f0e8;
+}
+
+.world .eyebrow {
+    color: #a9a39a;
+}
+
+.world-heading {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 105px);
+    font-weight: 400;
+    line-height: .95;
+    margin-bottom: 70px;
+}
+
+.world-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #56514a;
+    border-left: 1px solid #56514a;
+}
+
+.world-card {
+    min-height: 310px;
+    padding: 42px;
+    border-right: 1px solid #56514a;
+    border-bottom: 1px solid #56514a;
+    position: relative;
+    overflow: hidden;
+    transition: background .4s ease;
+}
+
+.world-card:hover {
+    background: #302e29;
+}
+
+.world-number {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #938d84;
+}
+
+.world-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    font-weight: 400;
+    margin-top: 50px;
+}
+
+.world-card p {
+    color: #aaa49b;
+    max-width: 400px;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* ---------------- ANIMATED ICONS ---------------- */
+
+.icon {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 60px;
+    height: 60px;
+}
+
+/* Work icon */
+
+.briefcase {
+    border: 1px solid #9e988e;
+    border-radius: 8px;
+    height: 35px;
+    top: 48px;
+}
+
+.briefcase::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    border: 1px solid #9e988e;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    left: 19px;
+    top: -11px;
+}
+
+.world-card:hover .briefcase {
+    transform: translateY(-5px);
+}
+
+/* Camera */
+
+.camera {
+    border: 1px solid #9e988e;
+    border-radius: 10px;
+    height: 38px;
+    top: 48px;
+}
+
+.camera::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #9e988e;
+    border-radius: 50%;
+    left: 21px;
+    top: 10px;
+}
+
+.camera::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 5px;
+    border: 1px solid #9e988e;
+    border-bottom: none;
+    left: 8px;
+    top: -6px;
+    border-radius: 4px 4px 0 0;
+}
+
+.world-card:hover .camera::before {
+    animation: shutter .6s ease;
+}
+
+/* Book */
+
+.book {
+    border: 1px solid #9e988e;
+    width: 54px;
+    height: 40px;
+    top: 45px;
+    transform: skewY(-3deg);
+}
+
+.book::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid #9e988e;
+}
+
+.world-card:hover .book {
+    transform: skewY(-3deg) rotate(-4deg) translateY(-5px);
+}
+
+/* Thought */
+
+.thought {
+    border: 1px solid #9e988e;
+    border-radius: 50%;
+    width: 60px;
+    height: 42px;
+    top: 43px;
+}
+
+.thought::after {
+    content: "...";
+    position: absolute;
+    font-size: 24px;
+    left: 21px;
+    top: -7px;
+}
+
+.world-card:hover .thought {
+    animation: float 1.2s ease infinite alternate;
+}
+
+/* Paint */
+
+.paint {
+    width: 8px;
+    height: 60px;
+    background: #9e988e;
+    border-radius: 5px;
+    transform: rotate(35deg);
+}
+
+.paint::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 9px;
+    background: #9e988e;
+    left: -11px;
+    bottom: -3px;
+    border-radius: 50%;
+}
+
+/* ---------------- CAREER ---------------- */
+
+.career {
+    background: #e9e4da;
+}
+
+.career-heading {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 7vw, 100px);
+    font-weight: 400;
+    line-height: .95;
+    margin-bottom: 70px;
+}
+
+.timeline {
+    max-width: 1000px;
+    border-left: 1px solid #b7b0a5;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 55px 50px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: #25231f;
+    border-radius: 50%;
+    left: -5px;
+    top: 6px;
+}
+
+.timeline-year {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #817a70;
+    margin-bottom: 12px;
+}
+
+.timeline-item h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 31px;
+    font-weight: 400;
+}
+
+.timeline-item p {
+    color: #625d55;
+    margin-top: 8px;
+    max-width: 650px;
+}
+
+/* ---------------- CLOSING ---------------- */
+
+.closing {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.closing h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(65px, 10vw, 140px);
+    font-weight: 400;
+    line-height: .9;
+}
+
+.closing p {
+    font-size: 19px;
+    color: #625d55;
+    margin-top: 35px;
+    max-width: 600px;
+}
+
+.connect-link {
+    display: inline-block;
+    margin-top: 35px;
+    border-bottom: 1px solid #24221f;
+    padding-bottom: 5px;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    padding: 30px 7vw;
+    border-top: 1px solid rgba(36,34,31,.15);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #817b72;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes revealLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes revealRight {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes shutter {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.65);
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width: 800px) {
+
+    nav {
+        padding: 19px 5vw;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    section {
+        padding: 90px 6vw;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+    }
+
+    .hero-title {
+        font-size: clamp(58px, 17vw, 100px);
+        letter-spacing: -3px;
+    }
+
+    .hero-image {
+        max-height: 500px;
+    }
+
+    .image-note {
+        left: 10px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .world-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .world-card {
+        min-height: 280px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-    <nav>
-        <div class="logo">PRAVEEN SHARMA</div>
+<nav>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Who Am I?</a></li>
-            <li><a href="#world">Explore</a></li>
-            <li><a href="#career">Kaam-Dhanda</a></li>
-            <li><a href="#connect">Let's Connect</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        PRVN<span>.</span>
+    </div>
+
+    <ul>
+        <li><a href="#about">Who Am I?</a></li>
+        <li><a href="#world">My World</a></li>
+        <li><a href="#career">Kaam-Dhanda</a></li>
+        <li><a href="#connect">Connect</a></li>
+    </ul>
+
+</nav>
 
 
-    <!-- HOME -->
+<!-- HERO -->
 
-    <section class="hero" id="home">
+<section class="hero" id="home">
 
-        <div class="hero-content">
+    <div class="hero-left">
 
-            <div class="small-label">
-                Welcome to my little corner of the internet
+        <div class="eyebrow">
+            Welcome to my little corner of the internet
+        </div>
+
+        <h1 class="hero-title">
+            Hello, I'm<br>
+            Praveen<br>
+            <em>Sharma.</em>
+        </h1>
+
+        <p class="hero-intro">
+            <strong>HR by profession.</strong> Curious by nature.
+            I write stories, but I'm not a storyteller.
+            I click pictures, but I'm not a photographer.
+            I write raps, paint, play around with AI —
+            and occasionally pretend I know what I'm doing.
+        </p>
+
+    </div>
+
+
+    <div class="hero-image-wrap">
+
+        <img
+            src="profile.jpg.jpeg"
+            alt="Praveen Sharma"
+            class="hero-image"
+        >
+
+        <div class="image-note">
+            Master's in Overthinking
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>HR</span>
+        <span>Writing</span>
+        <span>Photography</span>
+        <span>Raps</span>
+        <span>Painting</span>
+        <span>AI</span>
+        <span>Overthinking</span>
+
+        <span>HR</span>
+        <span>Writing</span>
+        <span>Photography</span>
+        <span>Raps</span>
+        <span>Painting</span>
+        <span>AI</span>
+        <span>Overthinking</span>
+
+    </div>
+
+</div>
+
+
+<!-- WHO AM I -->
+
+<section class="about" id="about">
+
+    <div>
+
+        <div class="eyebrow">
+            01 — Who Am I?
+        </div>
+
+        <h2 class="about-title">
+            A Mumbai boy<br>
+            with roots<br>
+            in Darbhanga.
+        </h2>
+
+    </div>
+
+
+    <div class="about-text">
+
+        <p>
+            Born and brought up in <strong>Mumbai</strong>,
+            but my roots trace back to Darbhanga, Bihar.
+        </p>
+
+        <p>
+            Mumbai has been home for as long as I can remember.
+            It's where I grew up, studied, started working,
+            met people, made mistakes, learned things,
+            and became... well, me.
+        </p>
+
+        <p>
+            Somewhere between all of that, I realised that
+            I'm interested in far more things than just my
+            day job.
+        </p>
+
+        <div class="about-highlight">
+            I don't necessarily call myself a writer,
+            photographer, artist or anything else.
+            <br><br>
+            <strong>I just like creating things.</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MY WORLD -->
+
+<section class="world" id="world">
+
+    <div class="eyebrow">
+        02 — A few things that make me, me.
+    </div>
+
+    <h2 class="world-heading">
+        My World.
+    </h2>
+
+
+    <div class="world-grid">
+
+
+        <!-- KAAM DHANDA -->
+
+        <a href="#career" class="world-card">
+
+            <div class="world-number">
+                01 / WORK
             </div>
 
-            <h1>
-                Praveen<br>
-                Sharma.
-            </h1>
+            <div class="icon briefcase"></div>
 
-            <p class="hero-text">
-                Work. Stories. Moments. And everything in between.
+            <h3>Kaam-Dhanda</h3>
+
+            <p>
+                The professional side of things —
+                HR, people, experiences, learning
+                and the work that keeps me busy.
+            </p>
+
+        </a>
+
+
+        <!-- TASVEERIEN -->
+
+        <div class="world-card">
+
+            <div class="world-number">
+                02 / CLICKS
+            </div>
+
+            <div class="icon camera"></div>
+
+            <h3>Tasveerien</h3>
+
+            <p>
+                I like clicking things.
+                I'm still not calling myself a photographer.
             </p>
 
         </div>
 
-    </section>
+
+        <!-- KAHANIYAAN -->
+
+        <div class="world-card">
+
+            <div class="world-number">
+                03 / STORIES
+            </div>
+
+            <div class="icon book"></div>
+
+            <h3>Kahaniyaan</h3>
+
+            <p>
+                Stories that started somewhere between
+                an idea and too much imagination.
+            </p>
+
+        </div>
 
 
-    <!-- WHO AM I -->
+        <!-- WASHROOM THOUGHTS -->
 
-    <section class="intro" id="about">
+        <div class="world-card">
 
-        <div class="small-label">
-            Who Am I?
+            <div class="world-number">
+                04 / THOUGHTS
+            </div>
+
+            <div class="icon thought"></div>
+
+            <h3>Washroom Thoughts</h3>
+
+            <p>
+                Some thoughts arrive at the most
+                unexpected — and inappropriate —
+                moments.
+            </p>
+
+        </div>
+
+
+        <!-- CREATIVE -->
+
+        <div class="world-card">
+
+            <div class="world-number">
+                05 / CREATE
+            </div>
+
+            <div class="icon paint"></div>
+
+            <h3>Banaya Kuch</h3>
+
+            <p>
+                Raps, paintings, experiments,
+                random ideas and whatever else
+                I feel like making.
+            </p>
+
+        </div>
+
+
+        <!-- AI -->
+
+        <div class="world-card">
+
+            <div class="world-number">
+                06 / EXPERIMENT
+            </div>
+
+            <div class="icon thought"></div>
+
+            <h3>Playing With AI</h3>
+
+            <p>
+                These days, I'm discovering what happens
+                when curiosity meets artificial intelligence.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CAREER -->
+
+<section class="career" id="career">
+
+    <div class="eyebrow">
+        03 — Kaam-Dhanda
+    </div>
+
+    <h2 class="career-heading">
+        The professional<br>
+        side of things.
+    </h2>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-year">
+                EXPERIENCE
+            </div>
+
+            <h3>HR & People</h3>
+
+            <p>
+                A journey through HR, people management,
+                talent acquisition and everything I've
+                learned while working with people.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-year">
+                WHAT I DO
+            </div>
+
+            <h3>People. Teams. Work.</h3>
+
+            <p>
+                We'll build this section around your
+                actual experience, responsibilities,
+                achievements and professional strengths.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-year">
+                MORE COMING
+            </div>
+
+            <h3>Still writing this chapter.</h3>
+
+            <p>
+                Because apparently, a career is also
+                a work in progress.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CONNECT -->
+
+<section class="closing" id="connect">
+
+    <div>
+
+        <div class="eyebrow">
+            04 — Let's Connect
         </div>
 
         <h2>
-            A little more<br>
-            than a job title.
+            Say hello.<br>
+            Start a conversation.
         </h2>
 
         <p>
-            I work in HR, spend a lot of time around people,
-            and somehow keep collecting stories, ideas and
-            moments along the way.
+            Work, stories, ideas, photography,
+            AI, or simply something you wanted
+            to talk about.
         </p>
 
-    </section>
+        <a href="mailto:your-email@example.com" class="connect-link">
+            Send me an email →
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- MY WORLD -->
+<!-- FOOTER -->
 
-    <section class="world" id="world">
+<footer>
 
-        <div class="small-label">
-            A few things about me
-        </div>
+    <div>
+        PRVN.
+    </div>
 
-        <h2 class="section-title">
-            My World.
-        </h2>
+    <div>
+        © 2026 · Made with curiosity & unnecessary overthinking.
+    </div>
 
-        <div class="world-grid">
+</footer>
 
-            <div class="world-card">
-                <h3>Kaam-Dhanda</h3>
-                <p>
-                    The professional side of things.
-                    Career, experience, work and everything
-                    I've learned along the way.
-                </p>
-            </div>
-
-            <div class="world-card">
-                <h3>Tasveerien</h3>
-                <p>
-                    Some clicks that were worth keeping.
-                </p>
-            </div>
-
-            <div class="world-card">
-                <h3>Kahaniyaan</h3>
-                <p>
-                    Fiction, imagination and stories that
-                    decided to stay.
-                </p>
-            </div>
-
-            <div class="world-card">
-                <h3>Washroom Thoughts</h3>
-                <p>
-                    Some thoughts arrive at inconveniently
-                    appropriate places.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CAREER -->
-
-    <section class="career" id="career">
-
-        <div class="small-label">
-            Kaam-Dhanda
-        </div>
-
-        <h2 class="section-title">
-            The professional<br>
-            side of things.
-        </h2>
-
-        <div class="career-content">
-
-            <div class="career-item">
-
-                <div class="career-year">
-                    EXPERIENCE
-                </div>
-
-                <div>
-                    <h3>Your Career Journey</h3>
-
-                    <p class="placeholder">
-                        We'll add your professional journey,
-                        roles and experience here.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="career-item">
-
-                <div class="career-year">
-                    WHAT I DO
-                </div>
-
-                <div>
-                    <h3>HR & People</h3>
-
-                    <p class="placeholder">
-                        We'll build this section around your
-                        actual responsibilities and expertise.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="career-item">
-
-                <div class="career-year">
-                    MILESTONES
-                </div>
-
-                <div>
-                    <h3>Things I've Worked On</h3>
-
-                    <p class="placeholder">
-                        Projects, achievements and professional
-                        milestones will live here.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONNECT -->
-
-    <section class="closing" id="connect">
-
-        <div>
-
-            <div class="small-label">
-                Let's Connect
-            </div>
-
-            <h2>
-                Say hello.
-            </h2>
-
-            <p>
-                Work, stories, ideas, photography — or simply
-                something you wanted to talk about.
-                Feel free to reach out.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div>PRAVEEN SHARMA</div>
-
-        <div>
-            © 2026 · Made with a little help from the internet.
-        </div>
-
-    </footer>
 
 </body>
 </html>
