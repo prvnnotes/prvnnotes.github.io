@@ -12,17 +12,22 @@
 
 <style>
 
-/* ================================
-   CONNECT PAGE
-================================ */
+/* =====================================================
+   CONNECT PAGE — PRVN NOTES
+===================================================== */
 
 .connect-page{
-    padding-bottom:80px;
+    padding-bottom:100px;
 }
 
+
+/* =====================================================
+   INTRO
+===================================================== */
+
 .connect-intro{
-    max-width:760px;
-    margin-top:30px;
+    max-width:720px;
+    margin-top:28px;
 }
 
 .connect-intro p{
@@ -31,146 +36,357 @@
 }
 
 
-/* ================================
-   CONTACT OPTIONS
-================================ */
+/* =====================================================
+   CONNECT GRID
+===================================================== */
 
 .connect-grid{
+
     margin-top:65px;
 
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
 
     gap:18px;
 }
 
+
+/* =====================================================
+   CARD
+===================================================== */
+
 .connect-card{
+
+    position:relative;
+
     display:block;
 
-    padding:30px;
+    min-height:260px;
 
-    border:1px solid rgba(255,255,255,.08);
+    padding:32px;
 
-    background:rgba(255,255,255,.025);
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
 
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        background .3s ease;
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
 
     opacity:0;
-    transform:translateY(20px);
 
-    animation:connectAppear .7s ease forwards;
+    transform:translateY(28px);
+
+    animation:
+        cardReveal .75s cubic-bezier(.2,.8,.2,1)
+        forwards;
 }
 
-.connect-card:nth-child(1){animation-delay:.1s;}
-.connect-card:nth-child(2){animation-delay:.2s;}
-.connect-card:nth-child(3){animation-delay:.3s;}
-.connect-card:nth-child(4){animation-delay:.4s;}
-.connect-card:nth-child(5){animation-delay:.5s;}
+
+/* stagger */
+
+.connect-card:nth-child(1){
+    animation-delay:.08s;
+}
+
+.connect-card:nth-child(2){
+    animation-delay:.16s;
+}
+
+.connect-card:nth-child(3){
+    animation-delay:.24s;
+}
+
+.connect-card:nth-child(4){
+    animation-delay:.32s;
+}
+
+.connect-card:nth-child(5){
+    animation-delay:.40s;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
 
 .connect-card:hover{
-    transform:translateY(-5px);
 
-    border-color:rgba(255,255,255,.22);
+    transform:translateY(-8px);
 
-    background:rgba(255,255,255,.045);
+    border-color:rgba(255,255,255,.24);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.18);
 }
 
-.connect-icon{
-    font-size:24px;
-    margin-bottom:22px;
+
+/* subtle light */
+
+.connect-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-100px;
+    right:-100px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.035);
+
+    transition:
+        transform .6s ease,
+        opacity .6s ease;
+
+    pointer-events:none;
 }
+
+.connect-card:hover::after{
+
+    transform:scale(2.2);
+
+    opacity:.5;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.social-logo{
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:42px;
+
+    opacity:.75;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        opacity .3s ease;
+}
+
+.social-logo svg{
+
+    width:28px;
+    height:28px;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:1.6;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+}
+
+
+/* brand-ish simple marks */
+
+.social-logo .filled{
+    fill:currentColor;
+    stroke:none;
+}
+
+.connect-card:hover .social-logo{
+
+    transform:
+        translateY(-4px)
+        scale(1.12);
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
 
 .connect-card h3{
-    margin-bottom:8px;
+
+    margin:0 0 10px;
+
+    font-size:30px;
+
+    letter-spacing:-.5px;
 }
 
 .connect-card p{
+
+    max-width:430px;
+
+    margin:0;
+
     font-size:14px;
-    line-height:1.7;
+
+    line-height:1.75;
+
+    opacity:.68;
 }
 
+
+/* =====================================================
+   ACTION
+===================================================== */
+
 .connect-action{
-    display:inline-block;
 
-    margin-top:18px;
+    position:absolute;
 
-    font-size:11px;
-    letter-spacing:1.5px;
+    left:32px;
+    bottom:28px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    font-size:10px;
+
+    letter-spacing:1.7px;
+
     text-transform:uppercase;
 
-    opacity:.65;
+    opacity:.55;
 
-    transition:.25s ease;
+    transition:
+        opacity .3s ease,
+        transform .4s ease;
+}
+
+.connect-action span{
+
+    display:inline-block;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1);
 }
 
 .connect-card:hover .connect-action{
+
     opacity:1;
-    transform:translateX(4px);
+
+    transform:translateX(3px);
+}
+
+.connect-card:hover .connect-action span{
+
+    transform:translateX(6px);
 }
 
 
-/* ================================
+/* =====================================================
    PERSONAL NOTE
-================================ */
+===================================================== */
 
 .personal-note{
-    margin-top:90px;
 
-    max-width:700px;
+    max-width:720px;
 
-    padding:45px 0;
+    margin-top:95px;
 
-    border-top:1px solid rgba(255,255,255,.08);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:42px 0;
+
+    border-top:1px solid rgba(255,255,255,.10);
+
+    border-bottom:1px solid rgba(255,255,255,.10);
 
     opacity:0;
-    animation:connectAppear .8s .6s ease forwards;
+
+    animation:
+        fadeUp .8s .65s ease forwards;
 }
 
 .personal-note h3{
-    margin-bottom:20px;
+
+    margin-bottom:18px;
+
+    font-size:25px;
 }
 
 .personal-note p{
+
     font-size:16px;
+
     line-height:1.9;
+
+    opacity:.78;
 }
 
 
-/* ================================
-   FINAL LINE
-================================ */
+/* =====================================================
+   ENDING
+===================================================== */
 
 .connect-ending{
-    margin-top:90px;
+
+    margin-top:100px;
 
     text-align:center;
 
     opacity:0;
-    animation:connectAppear .8s .8s ease forwards;
+
+    animation:
+        fadeUp .8s .85s ease forwards;
 }
 
 .connect-ending h2{
-    font-size:clamp(32px,5vw,55px);
+
+    margin:0;
+
+    font-size:
+        clamp(34px,5vw,58px);
 }
 
 .connect-ending p{
+
     margin-top:18px;
+
+    line-height:1.8;
+
+    opacity:.65;
 }
 
 
-/* ================================
-   ANIMATION
-================================ */
+/* =====================================================
+   ANIMATIONS
+===================================================== */
 
-@keyframes connectAppear{
+@keyframes cardReveal{
 
     from{
         opacity:0;
-        transform:translateY(25px);
+        transform:translateY(28px);
     }
 
     to{
@@ -181,22 +397,84 @@
 }
 
 
-/* ================================
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
    MOBILE
-================================ */
+===================================================== */
 
 @media(max-width:700px){
 
     .connect-grid{
+
         grid-template-columns:1fr;
+
+        gap:14px;
+
+        margin-top:45px;
     }
 
     .connect-card{
-        padding:25px;
+
+        min-height:245px;
+
+        padding:26px;
+    }
+
+    .connect-card h3{
+
+        font-size:27px;
+    }
+
+    .connect-action{
+
+        left:26px;
+        bottom:25px;
     }
 
     .connect-intro p{
+
         font-size:16px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    .connect-card,
+    .personal-note,
+    .connect-ending{
+
+        animation:none;
+
+        opacity:1;
+
+        transform:none;
+    }
+
+    .connect-card,
+    .social-logo,
+    .connect-action{
+
+        transition:none;
     }
 
 }
@@ -209,6 +487,10 @@
 <body>
 
 
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
 <header class="site-nav">
 
 <div class="nav-inner">
@@ -219,25 +501,15 @@ PRAVEEN SHARMA
 
 <nav class="nav-links">
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="who-am-i.html">
-Who Am I?
-</a>
+<a href="who-am-i.html">Who Am I?</a>
 
-<a href="explore.html">
-Explore
-</a>
+<a href="explore.html">Explore</a>
 
-<a href="kaam-dhandha.html">
-Kaam-Dhandha
-</a>
+<a href="kaam-dhandha.html">Kaam-Dhandha</a>
 
-<a class="active" href="connect.html">
-Let's Connect
-</a>
+<a class="active" href="connect.html">Let's Connect</a>
 
 </nav>
 
@@ -246,6 +518,10 @@ Let's Connect
 </header>
 
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="container">
 
@@ -271,32 +547,24 @@ Let's<br>
 <div class="connect-intro">
 
 <p>
-
 Whether you're here for work, a random conversation,
-or just happened to wander in —
-
+or you simply happened to wander into this little corner
+of the internet —
 <strong>say hello.</strong>
-
-</p>
-
-<p>
-
-I'm always happy to hear from people.
-
 </p>
 
 </div>
 
 
 
-<!-- ================================
-     CONTACT OPTIONS
-================================ -->
+<!-- =====================================================
+     SOCIAL / CONTACT CARDS
+===================================================== -->
 
 <div class="connect-grid">
 
 
-<!-- LINKEDIN -->
+<!-- ================= LINKEDIN ================= -->
 
 <a
 class="connect-card"
@@ -305,54 +573,76 @@ target="_blank"
 rel="noopener noreferrer"
 >
 
-<div class="connect-icon">
-💼
+<div class="social-logo">
+
+<svg viewBox="0 0 24 24">
+
+<rect x="3" y="3" width="18" height="18" rx="2"></rect>
+
+<path d="M8 10v7"></path>
+
+<path d="M8 7.5v.01"></path>
+
+<path d="M12 17v-4"></path>
+
+<path d="M12 13c0-2 1.2-3 3-3s3 1.2 3 3v4"></path>
+
+</svg>
+
 </div>
 
-<h3>
-LinkedIn
-</h3>
+
+<h3>LinkedIn</h3>
 
 <p>
-For HR, hiring, careers and professional conversations.
+HR, careers, hiring and professional conversations.
 </p>
 
-<span class="connect-action">
-Visit LinkedIn →
-</span>
+
+<div class="connect-action">
+Connect <span>→</span>
+</div>
 
 </a>
 
 
 
-<!-- EMAIL -->
+<!-- ================= EMAIL ================= -->
 
 <a
 class="connect-card"
 href="mailto:praveen.sharma9820@gmail.com"
 >
 
-<div class="connect-icon">
-✉️
+<div class="social-logo">
+
+<svg viewBox="0 0 24 24">
+
+<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+
+<path d="m4 7 8 6 8-6"></path>
+
+</svg>
+
 </div>
 
-<h3>
-Email Me
-</h3>
+
+<h3>Email</h3>
 
 <p>
 For something a little more direct.
 </p>
 
-<span class="connect-action">
-Send an email →
-</span>
+
+<div class="connect-action">
+Send a message <span>→</span>
+</div>
 
 </a>
 
 
 
-<!-- INSTAGRAM -->
+<!-- ================= INSTAGRAM ================= -->
 
 <a
 class="connect-card"
@@ -361,27 +651,38 @@ target="_blank"
 rel="noopener noreferrer"
 >
 
-<div class="connect-icon">
-📷
+<div class="social-logo">
+
+<svg viewBox="0 0 24 24">
+
+<rect x="3" y="3" width="18" height="18" rx="5"></rect>
+
+<circle cx="12" cy="12" r="4"></circle>
+
+<path d="M17.5 6.5v.01"></path>
+
+</svg>
+
 </div>
 
-<h3>
-Instagram
-</h3>
+
+<h3>Instagram</h3>
 
 <p>
-For the less-professional side of Praveen.
+The less-professional side of Praveen.
+Pictures, randomness and whatever catches my eye.
 </p>
 
-<span class="connect-action">
-Open Instagram →
-</span>
+
+<div class="connect-action">
+Say hello <span>→</span>
+</div>
 
 </a>
 
 
 
-<!-- FACEBOOK -->
+<!-- ================= FACEBOOK ================= -->
 
 <a
 class="connect-card"
@@ -390,27 +691,35 @@ target="_blank"
 rel="noopener noreferrer"
 >
 
-<div class="connect-icon">
-🌐
+<div class="social-logo">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="12" r="9"></circle>
+
+<path d="M13.5 20v-6h2l.5-2.5h-2.5V10c0-.8.4-1.5 1.5-1.5H16V6.2c-.5-.1-1-.2-1.8-.2-2.1 0-3.5 1.3-3.5 3.6v1.9H9v2.5h1.7v6"></path>
+
+</svg>
+
 </div>
 
-<h3>
-Facebook
-</h3>
+
+<h3>Facebook</h3>
 
 <p>
 Another little corner of the internet.
 </p>
 
-<span class="connect-action">
-Visit Facebook →
-</span>
+
+<div class="connect-action">
+Visit Facebook <span>→</span>
+</div>
 
 </a>
 
 
 
-<!-- WHATSAPP -->
+<!-- ================= WHATSAPP ================= -->
 
 <a
 class="connect-card"
@@ -419,22 +728,30 @@ target="_blank"
 rel="noopener noreferrer"
 >
 
-<div class="connect-icon">
-💬
+<div class="social-logo">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M20 11.5a8 8 0 0 1-11.7 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path>
+
+<path d="M9 8.5c.3-.4.6-.4.9-.1l1 1.2c.2.2.2.5 0 .8l-.5.6c.7 1.2 1.4 1.9 2.7 2.5l.6-.6c.2-.2.5-.2.8 0l1.2.9c.3.2.3.6.1.9l-.4.5c-.4.5-1 .7-1.6.5-3.2-1-5.6-3.4-6.6-6.5-.2-.6 0-1.2.4-1.7Z"></path>
+
+</svg>
+
 </div>
 
-<h3>
-WhatsApp Me
-</h3>
+
+<h3>WhatsApp</h3>
 
 <p>
 Messages are welcome. Please don't call unless
 we've already connected.
 </p>
 
-<span class="connect-action">
-Start a conversation →
-</span>
+
+<div class="connect-action">
+Start a conversation <span>→</span>
+</div>
 
 </a>
 
@@ -443,42 +760,31 @@ Start a conversation →
 
 
 
-<!-- ================================
+<!-- =====================================================
      PERSONAL NOTE
-================================ -->
+===================================================== -->
 
 <div class="personal-note">
 
-<h3>
-A small note.
-</h3>
+<h3>A small note.</h3>
 
 <p>
-
-Whether you're here for work, a random conversation,
-or just happened to wander in — say hello.
-
-I'm always happy to hear from people.
-
+I'm not always looking for a reason to connect.
+Sometimes a good conversation is reason enough.
 </p>
 
 <p>
-
-No formal introductions required.
-
-<strong>
-Just bring a good conversation.
-</strong>
-
+No formal introduction required.
+<strong>Just bring a good conversation.</strong>
 </p>
 
 </div>
 
 
 
-<!-- ================================
+<!-- =====================================================
      ENDING
-================================ -->
+===================================================== -->
 
 <div class="connect-ending">
 
@@ -487,13 +793,9 @@ Not sure what to say?
 </h2>
 
 <p>
-
-<strong>“Hi” works.</strong>
-
+<strong>"Hi" works.</strong>
 <br>
-
-We can figure out the rest from there. 😄
-
+We'll figure out the rest from there.
 </p>
 
 </div>
@@ -504,6 +806,10 @@ We can figure out the rest from there. 😄
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="footer">
 
@@ -516,6 +822,7 @@ A little corner of the internet by Praveen Sharma ·
 </div>
 
 </footer>
+
 
 
 <script src="script.js"></script>
