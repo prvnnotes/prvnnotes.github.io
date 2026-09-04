@@ -1,237 +1,969 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Praveen Sharma — More Than a Job Title</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #071426;
+    color: #f4f3ef;
+    font-family: "Open Sans", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    height: 76px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+
+    position: relative;
+    z-index: 20;
+}
+
+.logo {
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #d9dee7;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: calc(100vh - 76px);
+    padding: 80px 8% 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* subtle background glow */
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: 4%;
+    top: 5%;
+
+    background: radial-gradient(
+        circle,
+        rgba(42,74,115,0.18),
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-text {
+    width: 50%;
+    position: relative;
+    z-index: 5;
+}
+
+.eyebrow {
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #8f9caf;
+    margin-bottom: 35px;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(75px, 9vw, 145px);
+
+    font-weight: 400;
+    line-height: 0.80;
+    letter-spacing: -6px;
+
+    color: #f7f5ef;
+
+    margin-bottom: 45px;
+}
+
+.hero h1 span {
+    display: block;
+    font-style: italic;
+}
+
+.bio {
+    max-width: 620px;
+
+    font-family: "Open Sans", Arial, sans-serif;
+
+    font-size: 17px;
+    line-height: 1.9;
+
+    color: #c9d0da;
+}
+
+.bio p {
+    margin-bottom: 8px;
+}
+
+.bio em {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #ffffff;
+}
+
+.bio .ist {
+    margin-top: 17px;
+    color: #9faabd;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   THINKING PHOTO AREA
+========================================================= */
+
+.thinking-area {
+    width: 45%;
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* photo circle */
+
+.photo-orbit {
+    width: 310px;
+    height: 310px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    z-index: 5;
+
+    padding: 7px;
+
+    background: rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 30px 80px rgba(0,0,0,0.35);
+}
+
+.photo-orbit img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+
+/* =========================================================
+   ORBITING WORDS
+========================================================= */
+
+.orbit-word {
+    position: absolute;
+
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    color: #aeb8c8;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    z-index: 8;
+}
+
+
+/* individual positions */
+
+.word-1 {
+    top: 45px;
+    right: 235px;
+    transform: rotate(-15deg);
+}
+
+.word-2 {
+    top: 70px;
+    right: 45px;
+    transform: rotate(10deg);
+}
+
+.word-3 {
+    left: 45px;
+    top: 220px;
+    transform: rotate(-12deg);
+}
+
+.word-4 {
+    right: 20px;
+    top: 255px;
+    transform: rotate(-8deg);
+}
+
+.word-5 {
+    left: 135px;
+    bottom: 70px;
+    transform: rotate(-12deg);
+}
+
+.word-6 {
+    right: 125px;
+    bottom: 60px;
+    transform: rotate(8deg);
+}
+
+
+/* =========================================================
+   STAR / SPACE DETAILS
+========================================================= */
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: #dce4ef;
+
+    border-radius: 50%;
+
+    opacity: 0.65;
+}
+
+.star-1 {
+    top: 12%;
+    left: 12%;
+}
+
+.star-2 {
+    top: 28%;
+    right: 8%;
+}
+
+.star-3 {
+    top: 70%;
+    right: 15%;
+}
+
+.star-4 {
+    bottom: 13%;
+    left: 23%;
+}
+
+.star-5 {
+    top: 18%;
+    right: 32%;
+}
+
+
+/* =========================================================
+   EXPLORE SECTION
+========================================================= */
+
+.explore {
+    padding: 110px 8% 120px;
+
+    background: #0a1a2e;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.section-label {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #7f8ca0;
+
+    margin-bottom: 22px;
+}
+
+.explore h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 65px;
+}
+
+.explore h2 em {
+    font-style: italic;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.card {
+    min-height: 300px;
+
+    padding: 35px;
+
+    background: #0d2037;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    text-decoration: none;
+
+    color: inherit;
+
+    position: relative;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    background: #102842;
+
+    border-color: rgba(255,255,255,0.18);
+}
+
+.card-number {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 55px;
+
+    color: rgba(255,255,255,0.045);
+}
+
+.card-icon {
+    font-size: 28px;
+
+    margin-bottom: 65px;
+}
+
+.card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-family: "Open Sans", Arial, sans-serif;
+
+    color: #9caabd;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 35px 8%;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    color: #718096;
+
+    font-family: "Open Sans", Arial, sans-serif;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 0 6%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 65px 7%;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 76px;
+        letter-spacing: -4px;
+    }
+
+    .thinking-area {
+        width: 100%;
+        min-height: 430px;
+
+        margin-top: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    nav {
+        height: auto;
+        padding: 22px 6%;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 62px;
+    }
+
+    .photo-orbit {
+        width: 250px;
+        height: 250px;
+    }
+
+    .word-1 {
+        right: 170px;
+        top: 65px;
+    }
+
+    .word-2 {
+        right: 10px;
+        top: 90px;
+    }
+
+    .word-3 {
+        left: 5px;
+        top: 200px;
+    }
+
+    .word-4 {
+        right: 0;
+        top: 220px;
+    }
+
+    .word-5 {
+        left: 60px;
+        bottom: 70px;
+    }
+
+    .word-6 {
+        right: 65px;
+        bottom: 55px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<header class="site-nav">
-  <div class="nav-inner">
 
-    <a class="logo" href="index.html">
-      PRAVEEN SHARMA
-    </a>
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
 
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="who-am-i.html">Who Am I?</a>
-      <a href="explore.html">Explore</a>
-      <a href="kaam-dhandha.html">Kaam-Dhandha</a>
-      <a href="connect.html">Let's Connect</a>
-    </nav>
+<nav>
 
-  </div>
-</header>
+    <div class="logo">
+        PRAVEEN SHARMA
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="who-am-i.html">
+            Who Am I?
+        </a>
+
+        <a href="explore.html">
+            Explore
+        </a>
+
+        <a href="kaam-dhandha.html">
+            Kaam-Dhandha
+        </a>
+
+        <a href="connect.html">
+            Let's Connect
+        </a>
+
+    </div>
+
+</nav>
 
 
-<main class="container">
 
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     HERO
+====================================================== -->
 
 <section class="hero">
 
-  <div class="hero-copy reveal">
 
-    <div class="eyebrow">
-      WELCOME TO MY LITTLE CORNER OF THE INTERNET
-    </div>
+    <!-- stars -->
 
-    <h1>
-      Praveen<br>
-      <em>Sharma.</em>
-    </h1>
-
-    <div class="intro">
-
-      <span>HR by profession.</span>
-
-      <span>
-        Loves to write stories but
-        <i>not a storyteller.</i>
-      </span>
-
-      <span>
-        Loves to click but
-        <i>not a photographer.</i>
-      </span>
-
-      <span>
-        Writes raps, paints, plays with AI —
-        and has a Master's degree in
-        <i>Overthinking.</i>
-      </span>
-
-      <span class="location">
-        Born & brought up in Mumbai.
-        Roots somewhere around Darbhanga.
-      </span>
-
-    </div>
-
-  </div>
+    <span class="star star-1"></span>
+    <span class="star star-2"></span>
+    <span class="star star-3"></span>
+    <span class="star star-4"></span>
+    <span class="star star-5"></span>
 
 
-  <!-- ================= THINKING ORBIT ================= -->
+    <!-- TEXT -->
 
-  <div class="thinking-stage reveal delay">
+    <div class="hero-text">
 
-    <div class="thinking-orbit">
-
-      <!-- BACK HALF OF ORBIT -->
-      <div class="orbit-back"></div>
-
-      <!-- WORDS -->
-      <div class="orbit-words">
-
-        <span class="word word-1">OVERTHINKING</span>
-        <span class="word word-2">WORK</span>
-        <span class="word word-3">THOUGHTS</span>
-        <span class="word word-4">WWE</span>
-        <span class="word word-5">LOVE</span>
-        <span class="word word-6">WRITING</span>
-
-      </div>
+        <div class="eyebrow">
+            WELCOME TO MY LITTLE CORNER OF THE INTERNET
+        </div>
 
 
-      <!-- PHOTO -->
-
-      <div class="thinking-photo">
-
-        <img
-          src="Thinking.jpeg"
-          alt="Praveen thinking"
-        >
-
-      </div>
+        <h1>
+            Praveen
+            <span>Sharma.</span>
+        </h1>
 
 
-      <!-- FRONT HALF OF ORBIT -->
-      <div class="orbit-front"></div>
+        <div class="bio">
+
+            <p>
+                HR by profession.
+            </p>
+
+            <p>
+                Loves to write stories but
+                <em>not a storyteller.</em>
+            </p>
+
+            <p>
+                Loves to click but
+                <em>not a photographer.</em>
+            </p>
+
+            <p>
+                Plays with ideas, writes, observes,
+                creates — and overthinks almost everything.
+            </p>
+
+            <p class="ist">
+                Master's degree in Overthinking
+                from the
+                <em>International School of Thinking (IST).</em>
+            </p>
+
+            <p class="ist">
+                Born &amp; brought up in Mumbai.
+                Roots somewhere around Darbhanga.
+            </p>
+
+        </div>
 
     </div>
 
-  </div>
+
+
+    <!-- =================================================
+         PHOTO + WORDS
+    ================================================== -->
+
+    <div class="thinking-area">
+
+
+        <!-- orbiting words -->
+
+        <span class="orbit-word word-1">
+            OVERTHINKING
+        </span>
+
+        <span class="orbit-word word-2">
+            WORK
+        </span>
+
+        <span class="orbit-word word-3">
+            WRITING
+        </span>
+
+        <span class="orbit-word word-4">
+            THOUGHTS
+        </span>
+
+        <span class="orbit-word word-5">
+            LOVE
+        </span>
+
+        <span class="orbit-word word-6">
+            WWE
+        </span>
+
+
+        <!-- photo -->
+
+        <div class="photo-orbit">
+
+            <img
+                src="Thinking.jpeg"
+                alt="Praveen Sharma thinking"
+            >
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ================= MORE ABOUT ME ================= -->
 
-<section class="section">
+<!-- =====================================================
+     EXPLORE
+====================================================== -->
 
-  <div class="section-head">
+<section class="explore" id="explore">
+
+
+    <div class="section-label">
+        A LITTLE MORE OF ME
+    </div>
+
 
     <h2>
-      More than a<br>
-      <em>job title.</em>
+        Explore my <em>other sides.</em>
     </h2>
 
-    <p>
-      Work is one part of me. The rest lives somewhere between
-      a camera roll, random thoughts, unfinished stories and
-      too many ideas.
-    </p>
-
-  </div>
 
 
-  <div class="cards">
+    <div class="cards">
 
 
-    <a class="card" href="kaam-dhandha.html">
+        <!-- KAAM DHANDHA -->
 
-      <span class="icon">💼</span>
-      <span class="num">01</span>
+        <a
+            href="kaam-dhandha.html"
+            class="card"
+        >
 
-      <h3>Kaam-Dhandha</h3>
+            <div class="card-number">
+                01
+            </div>
 
-      <p>
-        HR, People, Talent, hiring, career conversations
-        and the professional journey that pays the bills.
-      </p>
+            <div class="card-icon">
+                💼
+            </div>
 
-      <span class="arrow">↗</span>
+            <h3>
+                Kaam-Dhandha
+            </h3>
 
-    </a>
+            <p>
+                HR, people, talent, hiring, career
+                conversations and all the professional
+                things that pay the bills.
+            </p>
 
-
-    <a class="card" href="tasveerien.html">
-
-      <span class="icon">📷</span>
-      <span class="num">02</span>
-
-      <h3>Tasveerien</h3>
-
-      <p>
-        Random clicks, places, people and moments
-        that made me stop and look twice.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+        </a>
 
 
-    <a class="card" href="washroom-thoughts.html">
 
-      <span class="icon">📝</span>
-      <span class="num">03</span>
+        <!-- TASVEERIEN -->
 
-      <h3>Washroom Thoughts</h3>
+        <a
+            href="tasveerien.html"
+            class="card"
+        >
 
-      <p>
-        Thoughts that arrive at the most unexpected time.
-        Don't ask why. Just read them.
-      </p>
+            <div class="card-number">
+                02
+            </div>
 
-      <span class="arrow">↗</span>
+            <div class="card-icon">
+                📷
+            </div>
 
-    </a>
+            <h3>
+                Tasveerien
+            </h3>
 
+            <p>
+                I click things that catch my eye.
+                Photographer nahi hoon bhai,
+                bas camera mil gaya to click kar diya.
+            </p>
 
-    <a class="card" href="kahaniyaan.html">
-
-      <span class="icon">✍️</span>
-      <span class="num">04</span>
-
-      <h3>Kahaniyaan</h3>
-
-      <p>
-        Stories, ideas, observations and things
-        that somehow become words.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+        </a>
 
 
-  </div>
+
+        <!-- WASHROOM THOUGHTS -->
+
+        <a
+            href="washroom-thoughts.html"
+            class="card"
+        >
+
+            <div class="card-number">
+                03
+            </div>
+
+            <div class="card-icon">
+                💭
+            </div>
+
+            <h3>
+                Washroom Thoughts
+            </h3>
+
+            <p>
+                Some thoughts deserve a notebook.
+                Some arrive in the washroom.
+                Don't ask why. Just read them.
+            </p>
+
+        </a>
+
+
+
+        <!-- KAHANIYAAN -->
+
+        <a
+            href="kahaniyaan.html"
+            class="card"
+        >
+
+            <div class="card-number">
+                04
+            </div>
+
+            <div class="card-icon">
+                ✍️
+            </div>
+
+            <h3>
+                Kahaniyaan
+            </h3>
+
+            <p>
+                Stories, ideas, observations and
+                things that somehow become words.
+            </p>
+
+        </a>
+
+
+
+        <!-- WHO AM I -->
+
+        <a
+            href="who-am-i.html"
+            class="card"
+        >
+
+            <div class="card-number">
+                05
+            </div>
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <h3>
+                Who Am I?
+            </h3>
+
+            <p>
+                The person behind the job title,
+                the opinions, the stories and
+                everything in between.
+            </p>
+
+        </a>
+
+
+
+        <!-- CONNECT -->
+
+        <a
+            href="connect.html"
+            class="card"
+        >
+
+            <div class="card-number">
+                06
+            </div>
+
+            <div class="card-icon">
+                ✉️
+            </div>
+
+            <h3>
+                Let's Connect
+            </h3>
+
+            <p>
+                Want to talk, collaborate, discuss
+                ideas or simply say hello?
+                Start a conversation.
+            </p>
+
+        </a>
+
+    </div>
 
 </section>
 
-</main>
 
 
-<footer class="footer">
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
-  <div class="container">
+<footer>
 
-    A little corner of the internet by Praveen Sharma ·
-    <span data-year></span>
+    <div>
+        © 2026 Praveen Sharma
+    </div>
 
-  </div>
+    <div>
+        Made with curiosity &amp; a little overthinking.
+    </div>
 
 </footer>
 
-
-<script src="script.js"></script>
 
 </body>
 </html>
