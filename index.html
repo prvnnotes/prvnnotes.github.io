@@ -1,217 +1,789 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Praveen Sharma — More Than a Job Title</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =====================================================
+   PERSONAL HOMEPAGE POLISH
+===================================================== */
+
+:root{
+    --nav-bg:#08111f;
+    --text:#edf2f7;
+    --muted:#91a0b3;
+    --accent:#8db4d9;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.site-nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(7,17,30,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-inner{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+/* Logo */
+
+.logo{
+    text-decoration:none;
+    color:#eef3f8;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1.6px;
+    transition:.3s ease;
+}
+
+.logo:hover{
+    letter-spacing:2.2px;
+    opacity:.85;
+}
+
+
+/* Navigation */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#b8c2cf;
+    text-decoration:none;
+    font-size:14px;
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:1px;
+    background:#dce8f5;
+    transition:width .3s ease;
+}
+
+.nav-links a:hover{
+    color:#ffffff;
+    transform:translateY(-2px);
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+
+/* Small personality dot */
+
+.nav-links a:last-child::before{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    margin-right:7px;
+    margin-bottom:2px;
+    border-radius:50%;
+    background:#8db4d9;
+    box-shadow:0 0 10px rgba(141,180,217,.7);
+    animation:navPulse 2.5s infinite;
+}
+
+@keyframes navPulse{
+
+    0%,100%{
+        opacity:.45;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+
+}
+
+
+/* =====================================================
+   HERO PHOTO
+===================================================== */
+
+.profile-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:430px;
+}
+
+
+/* IMPORTANT:
+   Force the thinking photo to remain circular.
+*/
+
+.profile{
+    position:relative !important;
+
+    width:320px !important;
+    height:320px !important;
+
+    max-width:none !important;
+
+    object-fit:cover !important;
+
+    border-radius:50% !important;
+
+    display:block !important;
+
+    z-index:3;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 0 10px rgba(255,255,255,.025),
+        0 25px 70px rgba(0,0,0,.35);
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+}
+
+.profile:hover{
+    transform:scale(1.025) rotate(.4deg);
+
+    box-shadow:
+        0 0 0 10px rgba(255,255,255,.035),
+        0 30px 80px rgba(0,0,0,.42);
+}
+
+
+/* =====================================================
+   FLOATING THOUGHTS
+   No orbit.
+   No circles.
+   Just thoughts appearing around him.
+===================================================== */
+
+.thought-words{
+    position:absolute;
+    inset:-85px;
+
+    pointer-events:none;
+
+    z-index:5;
+}
+
+.thought-words span{
+    position:absolute;
+
+    white-space:nowrap;
+
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:2px;
+
+    color:rgba(225,234,243,.68);
+
+    opacity:0;
+
+    animation:thoughtSequence 10s infinite;
+
+    transition:.3s ease;
+}
+
+
+/* Positions */
+
+.thought-words span:nth-child(1){
+    top:8%;
+    left:34%;
+    animation-delay:0s;
+}
+
+.thought-words span:nth-child(2){
+    top:18%;
+    right:8%;
+    animation-delay:1.6s;
+}
+
+.thought-words span:nth-child(3){
+    top:48%;
+    left:2%;
+    animation-delay:3.2s;
+}
+
+.thought-words span:nth-child(4){
+    top:53%;
+    right:1%;
+    animation-delay:4.8s;
+}
+
+.thought-words span:nth-child(5){
+    bottom:12%;
+    left:27%;
+    animation-delay:6.4s;
+}
+
+.thought-words span:nth-child(6){
+    bottom:9%;
+    right:25%;
+    animation-delay:8s;
+}
+
+
+/* Animation */
+
+@keyframes thoughtSequence{
+
+    0%{
+        opacity:0;
+        transform:translateY(10px) scale(.94);
+    }
+
+    7%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    18%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    27%{
+        opacity:0;
+        transform:translateY(-8px) scale(.98);
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   HERO TEXT PERSONALITY
+===================================================== */
+
+.eyebrow{
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.hero h1{
+    line-height:.95;
+}
+
+.hero h1 em{
+    font-style:italic;
+}
+
+.intro span{
+    display:block;
+}
+
+
+/* =====================================================
+   LITTLE MOVING DETAILS
+===================================================== */
+
+.reveal{
+    animation:softReveal .9s ease both;
+}
+
+.delay{
+    animation-delay:.15s;
+}
+
+@keyframes softReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card{
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:800px){
+
+    .nav-inner{
+        min-height:64px;
+    }
+
+    .logo{
+        font-size:12px;
+    }
+
+    .nav-links{
+        gap:14px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .nav-links a:nth-child(3){
+        display:none;
+    }
+
+    .profile-wrap{
+        min-height:360px;
+    }
+
+    .profile{
+        width:260px !important;
+        height:260px !important;
+    }
+
+    .thought-words{
+        inset:-50px;
+    }
+
+    .thought-words span{
+        font-size:8px;
+        letter-spacing:1.4px;
+    }
+
+}
+
+
+@media(max-width:520px){
+
+    .nav-links{
+        gap:11px;
+    }
+
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .nav-links a:nth-child(2){
+        display:none;
+    }
+
+    .profile{
+        width:230px !important;
+        height:230px !important;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
 <header class="site-nav">
-  <div class="nav-inner">
 
-    <a class="logo" href="index.html">PRAVEEN SHARMA</a>
+<div class="container nav-inner">
 
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="who-am-i.html">Who Am I?</a>
-      <a href="explore.html">Explore</a>
-      <a href="kaam-dhandha.html">Kaam-Dhandha</a>
-      <a href="zoya.html">Zoya</a>
-      <a href="connect.html">Let's Connect</a>
-    </nav>
+<a class="logo" href="index.html">
+PRAVEEN SHARMA
+</a>
 
-  </div>
+
+<nav class="nav-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="who-am-i.html">
+A Bit About Me
+</a>
+
+<a href="explore.html">
+Things I Like
+</a>
+
+<a href="kaam-dhandha.html">
+The Work Stuff
+</a>
+
+<a href="connect.html">
+Say Hello
+</a>
+
+</nav>
+
+</div>
+
 </header>
 
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <main class="container">
+
 
 <section class="hero">
 
-  <div class="reveal">
 
-    <div class="eyebrow">
-      WELCOME TO MY LITTLE CORNER OF THE INTERNET
-    </div>
+<!-- ================= LEFT ================= -->
 
-    <h1>
-      Praveen<br>
-      <em>Sharma.</em>
-    </h1>
-
-    <div class="intro">
-
-      <span>HR by profession.</span>
-
-      <span>
-        Loves to write stories but <i>not a storyteller.</i>
-      </span>
-
-      <span>
-        Loves to click but <i>not a photographer.</i>
-      </span>
-
-      <span>
-        Writes raps, paints, plays with AI —
-        and has a Master's degree in <i>Overthinking.</i>
-      </span>
-
-      <span class="location">
-        Born & brought up in Mumbai.
-        Roots somewhere around Darbhanga.
-      </span>
-
-    </div>
-
-  </div>
+<div class="reveal">
 
 
-  <div class="profile-wrap reveal delay">
+<div class="eyebrow">
+WELCOME TO MY LITTLE CORNER OF THE INTERNET
+</div>
 
-    <div class="orbit"></div>
 
-    <img
-      class="profile"
-      src="profile.jpg.jpeg"
-      alt="Praveen Sharma"
-    >
+<h1>
+Praveen<br>
+<em>Sharma.</em>
+</h1>
 
-  </div>
+
+<div class="intro">
+
+<span>
+HR by profession.
+</span>
+
+<span>
+Loves to write stories but
+<i>not a storyteller.</i>
+</span>
+
+<span>
+Loves to click but
+<i>not a photographer.</i>
+</span>
+
+<span>
+Plays with AI, paints, writes —
+and has a Master's degree in
+<i>Overthinking.</i>
+</span>
+
+<span class="location">
+Born & brought up in Mumbai.
+Roots somewhere around Darbhanga.
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ================= RIGHT ================= -->
+
+<div class="profile-wrap reveal delay">
+
+
+<img
+class="profile"
+src="Thinking.jpeg"
+alt="Praveen Sharma thinking"
+>
+
+
+<!-- ================= THOUGHTS ================= -->
+
+<div class="thought-words">
+
+<span>
+OVERTHINKING
+</span>
+
+<span>
+WORK
+</span>
+
+<span>
+WRITING
+</span>
+
+<span>
+THOUGHTS
+</span>
+
+<span>
+LOVE
+</span>
+
+<span>
+WWE
+</span>
+
+</div>
+
+
+</div>
+
 
 </section>
 
+
+
+<!-- =====================================================
+     MORE THAN A JOB TITLE
+===================================================== -->
 
 <section class="section">
 
-  <div class="section-head">
 
-    <h2>
-      More than a<br>
-      <em>job title.</em>
-    </h2>
-
-    <p>
-      Work is one part of me. The rest lives somewhere between
-      a camera roll, random thoughts, unfinished stories and
-      too many ideas.
-    </p>
-
-  </div>
+<div class="section-head">
 
 
-  <div class="cards">
+<h2>
+More than a<br>
+<em>job title.</em>
+</h2>
 
 
-    <a class="card" href="kaam-dhandha.html">
-
-      <span class="icon">💼</span>
-      <span class="num">01</span>
-
-      <h3>Kaam-Dhandha</h3>
-
-      <p>
-        HR, People, Talent, hiring, career conversations
-        and the professional journey that pays the bills.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+<p>
+Work is one part of me.
+The rest lives somewhere between
+a camera roll, random thoughts,
+unfinished stories and too many ideas.
+</p>
 
 
-    <a class="card" href="tasveerien.html">
-
-      <span class="icon">📷</span>
-      <span class="num">02</span>
-
-      <h3>Tasveerien</h3>
-
-      <p>
-        Random clicks, places, people and moments
-        that made me stop and look twice.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+</div>
 
 
-    <a class="card" href="washroom-thoughts.html">
 
-      <span class="icon">📝</span>
-      <span class="num">03</span>
+<!-- =====================================================
+     EXPLORE
+===================================================== -->
 
-      <h3>Washroom Thoughts</h3>
-
-      <p>
-        Thoughts that arrive at the most unexpected time.
-        Don't ask why. Just read them.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+<div class="cards">
 
 
-    <a class="card" href="kahaniyaan.html">
+<a
+class="card"
+href="kaam-dhandha.html"
+>
 
-      <span class="icon">✍️</span>
-      <span class="num">04</span>
+<span class="icon">
+💼
+</span>
 
-      <h3>Kahaniyaan</h3>
+<span class="num">
+01
+</span>
 
-      <p>
-        Stories, ideas, observations and things
-        that somehow become words.
-      </p>
+<h3>
+Kaam-Dhandha
+</h3>
 
-      <span class="arrow">↗</span>
+<p>
+HR, people, talent, hiring, career conversations
+and the professional journey that pays the bills.
+</p>
 
-    </a>
+<span class="arrow">
+↗
+</span>
 
-
-    <!-- ZOYA -->
-
-    <a class="card" href="zoya.html">
-
-      <span class="icon">💬</span>
-      <span class="num">05</span>
-
-      <h3>Zoya</h3>
-
-      <p>
-        Ask Zoya about Praveen.
-        She knows him probably better than he would like.
-      </p>
-
-      <span class="arrow">↗</span>
-
-    </a>
+</a>
 
 
-  </div>
+
+<a
+class="card"
+href="tasveerien.html"
+>
+
+<span class="icon">
+📷
+</span>
+
+<span class="num">
+02
+</span>
+
+<h3>
+Tasveerien
+</h3>
+
+<p>
+Random clicks, places, people and moments
+that made me stop and look twice.
+</p>
+
+<span class="arrow">
+↗
+</span>
+
+</a>
+
+
+
+<a
+class="card"
+href="washroom-thoughts.html"
+>
+
+<span class="icon">
+📝
+</span>
+
+<span class="num">
+03
+</span>
+
+<h3>
+Washroom Thoughts
+</h3>
+
+<p>
+Thoughts that arrive at the most unexpected time.
+
+Don't ask why.
+Just read them.
+</p>
+
+<span class="arrow">
+↗
+</span>
+
+</a>
+
+
+
+<a
+class="card"
+href="kahaniyaan.html"
+>
+
+<span class="icon">
+✍️
+</span>
+
+<span class="num">
+04
+</span>
+
+<h3>
+Kahaniyaan
+</h3>
+
+<p>
+Stories, ideas, observations and things
+that somehow become words.
+</p>
+
+<span class="arrow">
+↗
+</span>
+
+</a>
+
+
+</div>
+
 
 </section>
+
 
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
-  <div class="container">
+<div class="container">
 
-    A little corner of the internet by Praveen Sharma ·
-    <span data-year></span>
+A little corner of the internet by Praveen Sharma ·
+<span data-year></span>
 
-  </div>
+</div>
 
 </footer>
 
 
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
