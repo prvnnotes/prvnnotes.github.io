@@ -1,23 +1,649 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kahaniyaan — Praveen Sharma</title><link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kahaniyaan — Praveen Sharma</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #07111f;
+      color: #e9eef5;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      height: 64px;
+      padding: 0 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(7,17,31,0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #f3f5f8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #b9c2ce;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .zoya-link {
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .zoya-link::before {
+      content: "●";
+      font-size: 8px;
+      margin-right: 7px;
+      color: #8cc7ff;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      width: 78%;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 105px 0 75px;
+
+      position: relative;
+    }
+
+    /* soft floating glow */
+
+    .hero::after {
+      content: "";
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      right: -120px;
+      top: 20px;
+
+      border-radius: 50%;
+
+      background: radial-gradient(
+        circle,
+        rgba(60,130,190,0.10),
+        transparent 68%
+      );
+
+      pointer-events: none;
+
+      animation: breathe 7s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #7f91a7;
+      text-transform: uppercase;
+
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero h1 {
+      margin: 22px 0 20px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(62px, 8vw, 105px);
+
+      font-weight: 400;
+      line-height: 0.92;
+
+      letter-spacing: -4px;
+
+      color: #f2f4f7;
+
+      opacity: 0;
+      animation: titleReveal 1s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+    }
+
+    .intro {
+      max-width: 680px;
+
+      font-size: 18px;
+      line-height: 1.8;
+
+      color: #9eb0c5;
+
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    /* =========================
+       STORY CARDS
+    ========================= */
+
+    .stories {
+      width: 78%;
+      max-width: 1150px;
+      margin: 0 auto;
+
+      padding-bottom: 120px;
+    }
+
+    .story-card {
+      position: relative;
+
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 22px;
+
+      padding: 48px 48px 42px;
+
+      margin-bottom: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.025),
+          rgba(255,255,255,0.008)
+        );
+
+      overflow: hidden;
+
+      transition:
+        transform 0.45s ease,
+        border-color 0.45s ease,
+        background 0.45s ease;
+
+      opacity: 0;
+      animation: cardReveal 0.9s ease forwards;
+    }
+
+    .story-card:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .story-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(140,190,235,0.32);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.045),
+          rgba(255,255,255,0.012)
+        );
+    }
+
+    /* animated light passing through card */
+
+    .story-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -120%;
+
+      width: 70%;
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.035),
+        transparent
+      );
+
+      transform: skewX(-20deg);
+
+      transition: left 0.9s ease;
+
+      pointer-events: none;
+    }
+
+    .story-card:hover::before {
+      left: 140%;
+    }
+
+    .story-number {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 14px;
+
+      color: #7fa6ca;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 30px;
+    }
+
+    .story-card h2 {
+      margin: 0 0 18px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-weight: 400;
+
+      font-size: clamp(34px, 4vw, 52px);
+
+      line-height: 1.05;
+
+      color: #f0f2f5;
+
+      letter-spacing: -1.5px;
+    }
+
+    .story-card h2 em {
+      font-style: italic;
+    }
+
+    .story-description {
+      max-width: 700px;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+
+      color: #9eafc1;
+
+      margin-bottom: 35px;
+    }
+
+    .read-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      text-decoration: none;
+
+      color: #d9e8f7;
+
+      font-size: 14px;
+
+      padding-bottom: 7px;
+
+      border-bottom: 1px solid rgba(150,190,225,0.35);
+
+      transition:
+        gap 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .read-link:hover {
+      gap: 18px;
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .arrow {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .read-link:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* =========================
+       LITTLE DIVIDER
+    ========================= */
+
+    .between {
+      width: 78%;
+      max-width: 1150px;
+
+      margin: 0 auto 55px;
+
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      color: #61758c;
+
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .between::before,
+    .between::after {
+      content: "";
+      height: 1px;
+
+      background: rgba(255,255,255,0.07);
+
+      flex: 1;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+
+      padding: 38px 8%;
+
+      color: #728397;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes titleReveal {
+
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+        letter-spacing: -7px;
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: -4px;
+      }
+
+    }
+
+    @keyframes cardReveal {
+
+      from {
+        opacity: 0;
+        transform: translateY(45px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes breathe {
+
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.12);
+        opacity: 1;
+      }
+
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 750px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
+        display: none;
+      }
+
+      .hero,
+      .stories,
+      .between {
+        width: 90%;
+      }
+
+      .hero {
+        padding-top: 75px;
+      }
+
+      .hero h1 {
+        font-size: 62px;
+        letter-spacing: -3px;
+      }
+
+      .intro {
+        font-size: 16px;
+      }
+
+      .story-card {
+        padding: 32px 25px;
+        border-radius: 18px;
+      }
+
+      .story-card h2 {
+        font-size: 36px;
+      }
+
+      .story-description {
+        font-size: 15px;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
-<header class="site-nav"><div class="nav-inner">
-<a class="logo" href="index.html">PRAVEEN SHARMA</a>
-<nav class="nav-links">
-<a href="index.html">Home</a><a href="who-am-i.html">Who Am I?</a><a href="explore.html">Explore</a><a href="kaam-dhandha.html">Kaam-Dhandha</a><a href="connect.html">Let's Connect</a>
-</nav></div></header>
-<main class="container">
-<section class="page"><a class="back" href="index.html">← Back home</a>
-<div class="eyebrow">Kahaniyaan · Writing</div><h1>Little stories.<br><em>Big detours.</em></h1>
-<p class="page-lead">I love writing stories, but storyteller nahi hoon. So these are simply words I felt like putting somewhere.</p>
-<div class="story"><h3>Story #01 — Coming soon</h3><p>This is where your first story will live. A clean reading space, without distractions.</p></div>
-<div class="story"><h3>Story #02 — Another one</h3><p>Add fiction, real-life observations, short pieces, poetry or anything that deserves more than a WhatsApp status.</p></div>
-</section>
-</main>
-<footer class="footer"><div class="container">A little corner of the internet by Praveen Sharma · <span data-year></span></div></footer>
-<script src="script.js"></script>
-</body></html>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+
+    <div class="logo">
+      PRAVEEN SHARMA
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="who-am-i.html">Who Am I?</a>
+
+      <a href="explore.html">Explore</a>
+
+      <a href="kaam-dhandha.html">Kaam-Dhandha</a>
+
+      <a href="connect.html">Let's Connect</a>
+
+      <a href="zoya.html" class="zoya-link">Zoya</a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      A little corner for things I've written
+    </div>
+
+    <h1>
+      Kahaniyaan.<br>
+      <em>Thoughts & detours.</em>
+    </h1>
+
+    <p class="intro">
+      I write sometimes. About people, work, things I've noticed,
+      and occasionally things I probably overthought.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       STORIES
+  ========================= -->
+
+  <section class="stories">
+
+
+    <!-- STORY 01 -->
+
+    <article class="story-card">
+
+      <div class="story-number">
+        01 — RECRUITMENT
+      </div>
+
+      <h2>
+        Sometimes, You Have<br>
+        to <em>Speak Up.</em>
+      </h2>
+
+      <p class="story-description">
+        A candidate was rejected after the final round.
+        He kept following up because he genuinely believed
+        he deserved another opportunity. I decided to speak up for him.
+      </p>
+
+      <a
+        class="read-link"
+        href="https://lnkd.in/p/ddmWzbFx"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the story
+        <span class="arrow">→</span>
+      </a>
+
+    </article>
+
+
+    <!-- SMALL DIVIDER -->
+
+    <div class="between">
+      another thought
+    </div>
+
+
+    <!-- STORY 02 -->
+
+    <article class="story-card">
+
+      <div class="story-number">
+        02 — WORK & PEOPLE
+      </div>
+
+      <h2>
+        When Expectations<br>
+        Meet <em>Opportunity.</em>
+      </h2>
+
+      <p class="story-description">
+        Hiring isn't difficult because talent is missing.
+        It's difficult because expectations on both sides
+        have changed. Somewhere between ambition and opportunity
+        is where the right match happens.
+      </p>
+
+      <a
+        class="read-link"
+        href="https://lnkd.in/p/d3zbNkT8"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the story
+        <span class="arrow">→</span>
+      </a>
+
+    </article>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+    A little corner of the internet by Praveen Sharma · 2026
+  </footer>
+
+
+</body>
+</html>
