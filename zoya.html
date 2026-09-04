@@ -1,15 +1,16 @@
-
 <!doctype html>
 <html lang="en">
 
 <head>
 
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Zoya — PrvnNotes</title>
 
 <link rel="stylesheet" href="style.css">
+
 
 <style>
 
@@ -21,11 +22,6 @@
     min-height:75vh;
     padding-bottom:100px;
 }
-
-
-/* =====================================================
-   HEADER
-===================================================== */
 
 .zoya-intro{
     max-width:760px;
@@ -184,6 +180,8 @@
     font-size:14px;
 
     line-height:1.7;
+
+    white-space:pre-wrap;
 }
 
 
@@ -299,11 +297,8 @@
     font-size:18px;
 
     transition:
-
         transform .25s ease,
-
         background .25s ease,
-
         border-color .25s ease;
 }
 
@@ -399,10 +394,13 @@
 
 
 .typing span:nth-child(2){
+
     animation-delay:.15s;
 }
 
+
 .typing span:nth-child(3){
+
     animation-delay:.3s;
 }
 
@@ -414,12 +412,16 @@
 @keyframes zoyaAppear{
 
     from{
+
         opacity:0;
+
         transform:translateY(20px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
     }
 
@@ -429,12 +431,16 @@
 @keyframes messageIn{
 
     from{
+
         opacity:0;
+
         transform:translateY(8px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
     }
 
@@ -444,12 +450,16 @@
 @keyframes typingDot{
 
     0%,100%{
+
         transform:translateY(0);
+
         opacity:.25;
     }
 
     50%{
+
         transform:translateY(-4px);
+
         opacity:.8;
     }
 
@@ -459,12 +469,16 @@
 @keyframes zoyaPulse{
 
     0%,100%{
+
         opacity:.45;
+
         transform:scale(.9);
     }
 
     50%{
+
         opacity:1;
+
         transform:scale(1);
     }
 
@@ -478,32 +492,41 @@
 @media(max-width:700px){
 
     .zoya-chat{
+
         margin-top:45px;
     }
 
     .zoya-messages{
+
         min-height:350px;
+
         padding:22px 17px;
     }
 
     .zoya-bubble{
+
         max-width:84%;
     }
 
     .zoya-input-area{
+
         padding:10px;
     }
 
     .zoya-input{
+
         padding:13px;
     }
 
     .zoya-send{
+
         width:46px;
+
         height:46px;
     }
 
     .zoya-quick{
+
         padding:0 17px 18px;
     }
 
@@ -571,8 +594,11 @@ MEET ZOYA
 
 
 <h1>
+
 Ask<br>
+
 <em>Zoya.</em>
+
 </h1>
 
 
@@ -590,7 +616,7 @@ Praveen's favourite person to ask about Praveen.
 <div class="zoya-intro">
 
 <p>
-She knows quite a lot about him.
+She knows quite a lot about him.<br>
 Probably more than you need to know.
 </p>
 
@@ -624,7 +650,9 @@ Online
 
 
 
-<!-- MESSAGES -->
+<!-- =====================================================
+     MESSAGES
+===================================================== -->
 
 <div
 class="zoya-messages"
@@ -655,31 +683,40 @@ Ask me something about him.
 
 
 
-<!-- QUICK QUESTIONS -->
+<!-- =====================================================
+     QUICK QUESTIONS
+===================================================== -->
 
 <div class="zoya-quick">
+
 
 <button onclick="askZoya('Who is Praveen?')">
 Who is Praveen?
 </button>
 
+
 <button onclick="askZoya('What does Praveen do?')">
 What does he do?
 </button>
+
 
 <button onclick="askZoya('Where is Praveen from?')">
 Where is he from?
 </button>
 
+
 <button onclick="askZoya('Does Praveen like wrestling?')">
 Does he like wrestling?
 </button>
+
 
 </div>
 
 
 
-<!-- INPUT -->
+<!-- =====================================================
+     INPUT
+===================================================== -->
 
 <form
 class="zoya-input-area"
@@ -735,27 +772,45 @@ A little corner of the internet by Praveen Sharma ·
 <script src="script.js"></script>
 
 
+
 <script>
 
 /* =====================================================
-   TEMPORARY ZOYA BRAIN
-   AI CONNECTION COMES NEXT
+   ZOYA AI
+   Talks to /api/chat on Vercel
 ===================================================== */
+
 
 const zoyaMessages =
 document.getElementById("zoyaMessages");
 
+
 const zoyaInput =
 document.getElementById("zoyaInput");
+
 
 const zoyaForm =
 document.getElementById("zoyaForm");
 
 
+
+/* =====================================================
+   CONVERSATION MEMORY
+===================================================== */
+
+const zoyaHistory = [];
+
+
+
+/* =====================================================
+   ADD MESSAGE
+===================================================== */
+
 function addMessage(text,type){
 
     const message =
     document.createElement("div");
+
 
     message.className =
     "zoya-message " + type;
@@ -764,6 +819,7 @@ function addMessage(text,type){
     const bubble =
     document.createElement("div");
 
+
     bubble.className =
     "zoya-bubble";
 
@@ -771,8 +827,10 @@ function addMessage(text,type){
     const label =
     document.createElement("span");
 
+
     label.className =
     "zoya-label";
+
 
     label.textContent =
     type === "zoya"
@@ -786,13 +844,16 @@ function addMessage(text,type){
     const content =
     document.createElement("span");
 
+
     content.textContent =
     text;
 
 
     bubble.appendChild(content);
 
+
     message.appendChild(bubble);
+
 
     zoyaMessages.appendChild(message);
 
@@ -803,13 +864,20 @@ function addMessage(text,type){
 }
 
 
+
+/* =====================================================
+   TYPING INDICATOR
+===================================================== */
+
 function showTyping(){
 
     const message =
     document.createElement("div");
 
+
     message.className =
     "zoya-message zoya";
+
 
     message.id =
     "zoyaTyping";
@@ -826,7 +894,9 @@ function showTyping(){
             <div class="typing">
 
                 <span></span>
+
                 <span></span>
+
                 <span></span>
 
             </div>
@@ -838,114 +908,198 @@ function showTyping(){
 
     zoyaMessages.appendChild(message);
 
+
     zoyaMessages.scrollTop =
     zoyaMessages.scrollHeight;
 
 }
 
 
+
+/* =====================================================
+   REMOVE TYPING
+===================================================== */
+
 function removeTyping(){
 
     const typing =
     document.getElementById("zoyaTyping");
 
+
     if(typing){
+
         typing.remove();
+
     }
 
 }
 
 
-/* Temporary responses */
 
-function getTemporaryAnswer(question){
+/* =====================================================
+   ASK ZOYA
+===================================================== */
 
-    const q =
-    question.toLowerCase();
+async function askZoya(question){
 
+    if(!question || !question.trim()){
 
-    if(
-        q.includes("who is praveen") ||
-        q.includes("who's praveen")
-    ){
-
-        return "He's Praveen. HR by profession, curious by default, and a professional overthinker. 😄";
-
-    }
-
-
-    if(
-        q.includes("what does praveen do") ||
-        q.includes("what does he do") ||
-        q.includes("profession")
-    ){
-
-        return "He's in HR. That's the short answer. 😌";
-
-    }
-
-
-    if(
-        q.includes("where is praveen") ||
-        q.includes("where is he from") ||
-        q.includes("from")
-    ){
-
-        return "He's born and brought up in Mumbai. His roots are in Darbhanga, Bihar.";
-
-    }
-
-
-    if(
-        q.includes("wrestling") ||
-        q.includes("wwe") ||
-        q.includes("aew")
-    ){
-
-        return "Yes, he likes professional wrestling. Mostly for the storytelling. He'll happily explain the difference if you let him. 😂";
-
-    }
-
-
-    if(
-        q.includes("overthink")
-    ){
-
-        return "Oh, absolutely. He has basically done a Master's in it. 🙄";
-
-    }
-
-
-    return "Hmm... he hasn't told me that one yet. You should ask him. 😊";
-
-}
-
-
-function askZoya(question){
-
-    if(!question.trim()){
         return;
+
     }
 
 
-    addMessage(question,"user");
+    question =
+    question.trim();
+
+
+    /* Show user's message */
+
+    addMessage(
+        question,
+        "user"
+    );
+
+
+    /* Add to local history */
+
+    zoyaHistory.push({
+
+        role:"user",
+
+        content:question
+
+    });
+
+
+    /* Show typing */
 
     showTyping();
 
 
-    setTimeout(function(){
+    /* Disable input while thinking */
+
+    zoyaInput.disabled = true;
+
+
+    try{
+
+
+        const response =
+        await fetch(
+            "/api/chat",
+            {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+
+                    message:question,
+
+                    history:
+                    zoyaHistory.slice(
+                        -12
+                    )
+
+                })
+
+            }
+        );
+
+
+
+        const data =
+        await response.json();
+
+
 
         removeTyping();
 
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "Zoya couldn't respond."
+            );
+
+        }
+
+
+
+        const answer =
+        data.answer ||
+        "Umm... I blanked for a second. Ask me again? 😭";
+
+
+
+        /* Show Zoya */
+
         addMessage(
-            getTemporaryAnswer(question),
+            answer,
             "zoya"
         );
 
-    },700);
+
+
+        /* Save assistant response */
+
+        zoyaHistory.push({
+
+            role:"assistant",
+
+            content:answer
+
+        });
+
+
+    }
+
+    catch(error){
+
+        removeTyping();
+
+
+        console.error(
+            "Zoya error:",
+            error
+        );
+
+
+        const errorMessage =
+        "Umm... something went wrong on my side. 😭 Try asking me again.";
+
+
+        addMessage(
+            errorMessage,
+            "zoya"
+        );
+
+
+    }
+
+
+    finally{
+
+        zoyaInput.disabled = false;
+
+        zoyaInput.focus();
+
+    }
 
 }
 
+
+
+/* =====================================================
+   FORM SUBMISSION
+===================================================== */
 
 zoyaForm.addEventListener(
     "submit",
@@ -953,18 +1107,47 @@ zoyaForm.addEventListener(
 
         event.preventDefault();
 
+
         const question =
         zoyaInput.value.trim();
 
 
         if(!question){
+
             return;
+
         }
 
 
         zoyaInput.value = "";
 
+
         askZoya(question);
+
+    }
+);
+
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+zoyaInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+
+            zoyaForm.requestSubmit();
+
+        }
 
     }
 );
