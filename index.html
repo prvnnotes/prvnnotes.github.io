@@ -1,908 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Praveen Sharma — More Than a Job Title</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f5f1e9;
-    color:#202020;
-    font-family:"DM Sans",sans-serif;
-    overflow-x:hidden;
-}
-
-::selection{
-    background:#202020;
-    color:#f5f1e9;
-}
-
-/* NAVIGATION */
-
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:1000;
-    padding:20px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(245,241,233,.88);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(32,32,32,.08);
-}
-
-.logo{
-    font-weight:700;
-    letter-spacing:2px;
-    font-size:18px;
-}
-
-.navlinks{
-    display:flex;
-    gap:30px;
-}
-
-.navlinks a{
-    color:#202020;
-    text-decoration:none;
-    font-size:14px;
-    position:relative;
-}
-
-.navlinks a:after{
-    content:"";
-    position:absolute;
-    width:0;
-    height:1px;
-    left:0;
-    bottom:-5px;
-    background:#202020;
-    transition:.3s;
-}
-
-.navlinks a:hover:after{
-    width:100%;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    padding:150px 7% 80px;
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:60px;
-    align-items:center;
-    position:relative;
-}
-
-.hero-text{
-    animation:fadeUp 1s ease forwards;
-}
-
-.kicker{
-    text-transform:uppercase;
-    letter-spacing:4px;
-    font-size:12px;
-    color:#777;
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(70px,10vw,145px);
-    line-height:.86;
-    font-weight:500;
-    letter-spacing:-6px;
-}
-
-.hero h1 span{
-    font-style:italic;
-}
-
-.tagline{
-    margin-top:38px;
-    font-size:20px;
-    max-width:600px;
-    line-height:1.6;
-}
-
-.tagline strong{
-    font-family:"Playfair Display",serif;
-    font-style:italic;
-    font-size:24px;
-}
-
-.hero-photo{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    animation:fadeIn 1.2s ease forwards;
-}
-
-.photo-frame{
-    width:min(390px,85vw);
-    height:510px;
-    overflow:hidden;
-    position:relative;
-    border-radius:210px 210px 15px 15px;
-    box-shadow:18px 20px 0 #ded7ca;
-}
-
-.photo-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    transition:transform .7s ease;
-}
-
-.photo-frame:hover img{
-    transform:scale(1.05);
-}
-
-.photo-note{
-    position:absolute;
-    bottom:25px;
-    right:-30px;
-    background:#202020;
-    color:white;
-    padding:13px 18px;
-    font-size:12px;
-    transform:rotate(-4deg);
-}
-
-/* FLOATING DETAILS */
-
-.circle{
-    position:absolute;
-    border:1px solid #aaa;
-    border-radius:50%;
-    width:80px;
-    height:80px;
-    right:5%;
-    top:18%;
-    animation:float 4s ease-in-out infinite;
-}
-
-.circle.small{
-    width:25px;
-    height:25px;
-    left:4%;
-    bottom:20%;
-    animation-delay:1s;
-}
-
-/* SECTIONS */
-
-section{
-    padding:110px 7%;
-}
-
-.section-label{
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-size:12px;
-    color:#777;
-    margin-bottom:20px;
-}
-
-.section-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(45px,6vw,80px);
-    font-weight:500;
-    margin-bottom:55px;
-}
-
-.section-title em{
-    font-style:italic;
-}
-
-/* INTRO */
-
-.intro{
-    background:#202020;
-    color:#f5f1e9;
-    position:relative;
-    overflow:hidden;
-}
-
-.intro-text{
-    max-width:950px;
-    font-family:"Playfair Display",serif;
-    font-size:clamp(30px,4vw,55px);
-    line-height:1.25;
-}
-
-.intro-text em{
-    color:#cfc5b5;
-}
-
-.location{
-    margin-top:35px;
-    color:#aaa;
-    font-size:14px;
-}
-
-/* CARDS */
-
-.explore{
-    background:#ebe5da;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.card{
-    min-height:300px;
-    padding:32px;
-    background:#f8f5ef;
-    border:1px solid rgba(32,32,32,.1);
-    position:relative;
-    overflow:hidden;
-    transition:transform .4s ease,box-shadow .4s ease;
-}
-
-.card:hover{
-    transform:translateY(-10px) rotate(-1deg);
-    box-shadow:12px 15px 0 rgba(32,32,32,.1);
-}
-
-.icon{
-    font-size:45px;
-    margin-bottom:30px;
-    display:inline-block;
-    animation:float 3s ease-in-out infinite;
-}
-
-.card:nth-child(2) .icon{
-    animation:camera 2s infinite;
-}
-
-.card:nth-child(3) .icon{
-    animation:toilet 2.5s ease-in-out infinite;
-}
-
-.card:nth-child(4) .icon{
-    animation:paint 2s infinite;
-}
-
-.card:nth-child(5) .icon{
-    animation:pulse 2s infinite;
-}
-
-.card h3{
-    font-family:"Playfair Display",serif;
-    font-size:32px;
-    font-weight:500;
-    margin-bottom:15px;
-}
-
-.card p{
-    color:#666;
-    line-height:1.7;
-    font-size:15px;
-}
-
-.card-number{
-    position:absolute;
-    right:20px;
-    top:15px;
-    font-family:"Playfair Display",serif;
-    font-size:70px;
-    color:rgba(32,32,32,.05);
-}
-
-/* WORK */
-
-.work{
-    background:#f5f1e9;
-}
-
-.work-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-}
-
-.work-copy{
-    font-size:20px;
-    line-height:1.8;
-    color:#555;
-}
-
-.work-copy strong{
-    color:#202020;
-}
-
-.work-list{
-    border-top:1px solid #bbb;
-}
-
-.work-item{
-    padding:25px 0;
-    border-bottom:1px solid #bbb;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-family:"Playfair Display",serif;
-    font-size:25px;
-    transition:.3s;
-}
-
-.work-item:hover{
-    padding-left:15px;
-}
-
-.work-item span{
-    font-family:"DM Sans",sans-serif;
-    font-size:12px;
-    color:#888;
-}
-
-/* ABOUT */
-
-.about{
-    background:#ded7ca;
-}
-
-.about-grid{
-    display:grid;
-    grid-template-columns:.7fr 1.3fr;
-    gap:70px;
-}
-
-.about-big{
-    font-family:"Playfair Display",serif;
-    font-size:45px;
-    line-height:1.2;
-}
-
-.about-copy{
-    font-size:18px;
-    line-height:1.9;
-    color:#555;
-}
-
-.about-copy p{
-    margin-bottom:20px;
-}
-
-.quote{
-    margin-top:35px;
-    padding-left:25px;
-    border-left:2px solid #202020;
-    font-family:"Playfair Display",serif;
-    font-size:25px;
-    font-style:italic;
-    color:#333;
-}
-
-/* CONNECT */
-
-.connect{
-    background:#202020;
-    color:#f5f1e9;
-    text-align:center;
-}
-
-.connect .section-label{
-    color:#999;
-}
-
-.connect h2{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(55px,8vw,110px);
-    font-weight:500;
-    line-height:1;
-}
-
-.connect h2 em{
-    display:block;
-    color:#cfc5b5;
-}
-
-.connect p{
-    margin:30px auto;
-    max-width:550px;
-    color:#aaa;
-    line-height:1.7;
-}
-
-.connect-button{
-    display:inline-block;
-    padding:16px 30px;
-    border:1px solid #aaa;
-    color:#f5f1e9;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.connect-button:hover{
-    background:#f5f1e9;
-    color:#202020;
-}
-
-footer{
-    padding:30px 7%;
-    background:#202020;
-    color:#777;
-    border-top:1px solid #333;
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateX(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
-}
-
-@keyframes camera{
-    0%,100%{transform:rotate(0);}
-    25%{transform:rotate(-8deg);}
-    75%{transform:rotate(8deg);}
-}
-
-@keyframes toilet{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-7px) rotate(3deg);}
-}
-
-@keyframes paint{
-    0%,100%{transform:rotate(0);}
-    50%{transform:rotate(12deg);}
-}
-
-@keyframes pulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.15);}
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .navlinks{
-        gap:12px;
-    }
-
-    .navlinks a{
-        font-size:11px;
-    }
-
-    .logo{
-        font-size:14px;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-        padding-top:130px;
-    }
-
-    .hero h1{
-        font-size:72px;
-        letter-spacing:-3px;
-    }
-
-    .hero-photo{
-        margin-top:20px;
-    }
-
-    .photo-frame{
-        height:430px;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .work-grid,
-    .about-grid{
-        grid-template-columns:1fr;
-        gap:40px;
-    }
-
-    section{
-        padding:80px 6%;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:10px;
-    }
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">PRAVEEN SHARMA</a>
 
-<nav>
-    <div class="logo">PRAVEEN SHARMA</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="who-am-i.html">Who Am I?</a>
+      <a href="explore.html">Explore</a>
+      <a href="kaam-dhandha.html">Kaam-Dhandha</a>
+      <a href="connect.html">Let's Connect</a>
+    </nav>
+  </div>
+</header>
 
-    <div class="navlinks">
-        <a href="#home">Home</a>
-        <a href="#who">Who Am I?</a>
-        <a href="#explore">Explore</a>
-        <a href="#work">Kaam-Dhandha</a>
-        <a href="#connect">Let's Connect</a>
-    </div>
-</nav>
+<main class="container">
 
+<section class="hero">
 
-<!-- HERO -->
+  <div class="reveal">
 
-<section class="hero" id="home">
-
-    <div class="circle"></div>
-    <div class="circle small"></div>
-
-    <div class="hero-text">
-
-        <div class="kicker">
-            Welcome to my little corner of the internet
-        </div>
-
-        <h1>
-            Praveen<br>
-            <span>Sharma.</span>
-        </h1>
-
-        <div class="tagline">
-            HR by profession.
-            <br>
-            Loves to write stories but <strong>not a storyteller.</strong>
-            <br>
-            Loves to click but <strong>not a photographer.</strong>
-        </div>
-
+    <div class="eyebrow">
+      WELCOME TO MY LITTLE CORNER OF THE INTERNET
     </div>
 
+    <h1>
+      Praveen<br>
+      <em>Sharma.</em>
+    </h1>
 
-    <div class="hero-photo">
+    <div class="intro">
+      <span>HR by profession.</span>
 
-        <div class="photo-frame">
+      <span>
+        Loves to write stories but <i>not a storyteller.</i>
+      </span>
 
-            <img src="profile.jpg.jpeg" alt="Praveen Sharma">
+      <span>
+        Loves to click but <i>not a photographer.</i>
+      </span>
 
-            <div class="photo-note">
-                Yes, this is me.
-            </div>
+      <span>
+        Writes raps, paints, plays with AI —
+        and has a Master's degree in <i>Overthinking.</i>
+      </span>
 
-        </div>
-
+      <span class="location">
+        Born & brought up in Mumbai.
+        Roots somewhere around Darbhanga.
+      </span>
     </div>
+
+  </div>
+
+  <div class="profile-wrap reveal delay">
+    <div class="orbit"></div>
+
+    <img
+      class="profile"
+      src="profile.jpg.jpeg"
+      alt="Praveen Sharma"
+    >
+  </div>
 
 </section>
 
 
-<!-- WHO AM I -->
+<section class="section">
 
-<section class="intro" id="who">
-
-    <div class="section-label">
-        Who am I?
-    </div>
-
-    <div class="intro-text">
-
-        Hello, I'm Praveen Sharma —
-        <em>HR by profession, curious by nature
-        and slightly overqualified in the art of overthinking.</em>
-
-        <div class="location">
-            Born & brought up in Mumbai.
-            Roots in Darbhanga, Bihar.
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- EXPLORE -->
-
-<section class="explore" id="explore">
-
-    <div class="section-label">
-        Things I do when I'm not pretending to be busy
-    </div>
-
-    <h2 class="section-title">
-        Explore my <em>other sides.</em>
-    </h2>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-number">01</div>
-
-            <div class="icon">💼</div>
-
-            <h3>Kaam-Dhandha</h3>
-
-            <p>
-                HR, People, Talent, hiring, career conversations
-                and all the professional things that pay the bills.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">02</div>
-
-            <div class="icon">📸</div>
-
-            <h3>Tasveerien</h3>
-
-            <p>
-                I click things that catch my eye.
-                Photographer nahi hoon bhai,
-                bas camera mil gaya toh click kar diya.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">03</div>
-
-            <div class="icon">🚽</div>
-
-            <h3>Washroom Thoughts</h3>
-
-            <p>
-                Some thoughts deserve a notebook.
-                Some arrive in the washroom.
-                Don't ask why. Just read them.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">04</div>
-
-            <div class="icon">🎨</div>
-
-            <h3>Kahaniyaan</h3>
-
-            <p>
-                Stories, ideas, observations and things
-                that somehow become words.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">05</div>
-
-            <div class="icon">🤖</div>
-
-            <h3>Aur Bhi Kuch...</h3>
-
-            <p>
-                Raps. Paintings. AI experiments.
-                Random ideas. And whatever obsession
-                comes next.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- WORK -->
-
-<section class="work" id="work">
-
-    <div class="section-label">
-        The professional side
-    </div>
-
-    <h2 class="section-title">
-        Kaam bhi karta hoon.<br>
-        <em>Seriously.</em>
-    </h2>
-
-
-    <div class="work-grid">
-
-        <div class="work-copy">
-
-            <p>
-                By profession, I'm an <strong>HR professional</strong>
-                who enjoys working with people, solving problems,
-                building teams and making workplaces a little better.
-            </p>
-
-            <br>
-
-            <p>
-                Talent Acquisition is a big part of my journey,
-                but <strong>HR for me is much bigger than hiring.</strong>
-            </p>
-
-        </div>
-
-
-        <div class="work-list">
-
-            <div class="work-item">
-                People & HR
-                <span>01</span>
-            </div>
-
-            <div class="work-item">
-                Talent Acquisition
-                <span>02</span>
-            </div>
-
-            <div class="work-item">
-                Employee Experience
-                <span>03</span>
-            </div>
-
-            <div class="work-item">
-                Leadership & Teams
-                <span>04</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="about">
-
-    <div class="section-label">
-        A little more about me
-    </div>
-
-
-    <div class="about-grid">
-
-        <div class="about-big">
-
-            Not everything<br>
-            needs a <em>job title.</em>
-
-        </div>
-
-
-        <div class="about-copy">
-
-            <p>
-                I write stories but I'm not a storyteller.
-                I click photographs but I'm not a photographer.
-            </p>
-
-            <p>
-                I write raps, try painting, experiment with AI
-                and occasionally convince myself that I should
-                learn something completely new.
-            </p>
-
-            <p>
-                Basically, curiosity has been doing overtime
-                for quite some time now.
-            </p>
-
-            <div class="quote">
-                "And yes, I have also completed my Masters
-                in Overthinking."
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONNECT -->
-
-<section class="connect" id="connect">
-
-    <div class="section-label">
-        Say hello
-    </div>
+  <div class="section-head">
 
     <h2>
-        Let's
-        <em>connect.</em>
+      More than a<br>
+      <em>job title.</em>
     </h2>
 
     <p>
-        If you want to talk about HR, stories, ideas,
-        photography, AI, careers — or absolutely nothing
-        important — I'm around.
+      Work is one part of me. The rest lives somewhere between
+      a camera roll, random thoughts, unfinished stories and
+      too many ideas.
     </p>
 
-    <a class="connect-button"
-       href="mailto:your-email@example.com">
-        Start a conversation →
+  </div>
+
+
+  <div class="cards">
+
+    <a class="card" href="kaam-dhandha.html">
+
+      <span class="icon">💼</span>
+      <span class="num">01</span>
+
+      <h3>Kaam-Dhandha</h3>
+
+      <p>
+        HR, People, Talent, hiring, career conversations
+        and the professional journey that pays the bills.
+      </p>
+
+      <span class="arrow">↗</span>
+
     </a>
+
+
+    <a class="card" href="tasveerien.html">
+
+      <span class="icon">📷</span>
+      <span class="num">02</span>
+
+      <h3>Tasveerien</h3>
+
+      <p>
+        Random clicks, places, people and moments
+        that made me stop and look twice.
+      </p>
+
+      <span class="arrow">↗</span>
+
+    </a>
+
+
+    <a class="card" href="washroom-thoughts.html">
+
+      <span class="icon">📝</span>
+      <span class="num">03</span>
+
+      <h3>Washroom Thoughts</h3>
+
+      <p>
+        Thoughts that arrive at the most unexpected time.
+        Don't ask why. Just read them.
+      </p>
+
+      <span class="arrow">↗</span>
+
+    </a>
+
+
+    <a class="card" href="kahaniyaan.html">
+
+      <span class="icon">✍️</span>
+      <span class="num">04</span>
+
+      <h3>Kahaniyaan</h3>
+
+      <p>
+        Stories, ideas, observations and things
+        that somehow become words.
+      </p>
+
+      <span class="arrow">↗</span>
+
+    </a>
+
+  </div>
 
 </section>
 
+</main>
 
-<footer>
 
-    <div>
-        © 2026 Praveen Sharma
-    </div>
+<footer class="footer">
 
-    <div>
-        Made with curiosity & a little overthinking.
-    </div>
+  <div class="container">
+    A little corner of the internet by Praveen Sharma ·
+    <span data-year></span>
+  </div>
 
 </footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
