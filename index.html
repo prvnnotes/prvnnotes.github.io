@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Praveen Sharma</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f5f0;
+            color: #1d1d1b;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #dedbd4;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1d1d1b;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.55;
+        }
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .small-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #77736c;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(60px, 10vw, 145px);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 35px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            font-size: 22px;
+            color: #4d4a45;
+        }
+
+        .intro {
+            border-top: 1px solid #cfcac1;
+            border-bottom: 1px solid #cfcac1;
+        }
+
+        .intro h2,
+        .section-title {
+            font-family: Georgia, serif;
+            font-weight: 400;
+            font-size: clamp(42px, 6vw, 80px);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            max-width: 750px;
+            font-size: 21px;
+            color: #55514a;
+        }
+
+        .world {
+            background: #1d1d1b;
+            color: #f7f5f0;
+        }
+
+        .world .small-label {
+            color: #aaa69e;
+        }
+
+        .world-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-top: 1px solid #55524d;
+            border-left: 1px solid #55524d;
+        }
+
+        .world-card {
+            padding: 45px;
+            min-height: 230px;
+            border-right: 1px solid #55524d;
+            border-bottom: 1px solid #55524d;
+            transition: 0.3s ease;
+        }
+
+        .world-card:hover {
+            background: #292927;
+        }
+
+        .world-card h3 {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .world-card p {
+            color: #bcb8b0;
+            max-width: 400px;
+        }
+
+        .career {
+            background: #ebe8e1;
+        }
+
+        .career-content {
+            max-width: 900px;
+        }
+
+        .career-item {
+            padding: 30px 0;
+            border-top: 1px solid #c5c1b9;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+        }
+
+        .career-year {
+            color: #77736c;
+            font-size: 14px;
+        }
+
+        .career-item h3 {
+            font-family: Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .placeholder {
+            color: #77736c;
+        }
+
+        .closing {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .closing h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(50px, 8vw, 110px);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .closing p {
+            font-size: 20px;
+            color: #55514a;
+            max-width: 600px;
+        }
+
+        footer {
+            padding: 30px 8%;
+            border-top: 1px solid #cfcac1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #77736c;
+        }
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 90px 6%;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .world-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">PRAVEEN SHARMA</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Who Am I?</a></li>
+            <li><a href="#world">Explore</a></li>
+            <li><a href="#career">Kaam-Dhanda</a></li>
+            <li><a href="#connect">Let's Connect</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-label">
+                Welcome to my little corner of the internet
+            </div>
+
+            <h1>
+                Praveen<br>
+                Sharma.
+            </h1>
+
+            <p class="hero-text">
+                Work. Stories. Moments. And everything in between.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHO AM I -->
+
+    <section class="intro" id="about">
+
+        <div class="small-label">
+            Who Am I?
+        </div>
+
+        <h2>
+            A little more<br>
+            than a job title.
+        </h2>
+
+        <p>
+            I work in HR, spend a lot of time around people,
+            and somehow keep collecting stories, ideas and
+            moments along the way.
+        </p>
+
+    </section>
+
+
+    <!-- MY WORLD -->
+
+    <section class="world" id="world">
+
+        <div class="small-label">
+            A few things about me
+        </div>
+
+        <h2 class="section-title">
+            My World.
+        </h2>
+
+        <div class="world-grid">
+
+            <div class="world-card">
+                <h3>Kaam-Dhanda</h3>
+                <p>
+                    The professional side of things.
+                    Career, experience, work and everything
+                    I've learned along the way.
+                </p>
+            </div>
+
+            <div class="world-card">
+                <h3>Tasveerien</h3>
+                <p>
+                    Some clicks that were worth keeping.
+                </p>
+            </div>
+
+            <div class="world-card">
+                <h3>Kahaniyaan</h3>
+                <p>
+                    Fiction, imagination and stories that
+                    decided to stay.
+                </p>
+            </div>
+
+            <div class="world-card">
+                <h3>Washroom Thoughts</h3>
+                <p>
+                    Some thoughts arrive at inconveniently
+                    appropriate places.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CAREER -->
+
+    <section class="career" id="career">
+
+        <div class="small-label">
+            Kaam-Dhanda
+        </div>
+
+        <h2 class="section-title">
+            The professional<br>
+            side of things.
+        </h2>
+
+        <div class="career-content">
+
+            <div class="career-item">
+
+                <div class="career-year">
+                    EXPERIENCE
+                </div>
+
+                <div>
+                    <h3>Your Career Journey</h3>
+
+                    <p class="placeholder">
+                        We'll add your professional journey,
+                        roles and experience here.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="career-item">
+
+                <div class="career-year">
+                    WHAT I DO
+                </div>
+
+                <div>
+                    <h3>HR & People</h3>
+
+                    <p class="placeholder">
+                        We'll build this section around your
+                        actual responsibilities and expertise.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="career-item">
+
+                <div class="career-year">
+                    MILESTONES
+                </div>
+
+                <div>
+                    <h3>Things I've Worked On</h3>
+
+                    <p class="placeholder">
+                        Projects, achievements and professional
+                        milestones will live here.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONNECT -->
+
+    <section class="closing" id="connect">
+
+        <div>
+
+            <div class="small-label">
+                Let's Connect
+            </div>
+
+            <h2>
+                Say hello.
+            </h2>
+
+            <p>
+                Work, stories, ideas, photography — or simply
+                something you wanted to talk about.
+                Feel free to reach out.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>PRAVEEN SHARMA</div>
+
+        <div>
+            © 2026 · Made with a little help from the internet.
+        </div>
+
+    </footer>
+
+</body>
+</html>
