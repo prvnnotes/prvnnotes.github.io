@@ -1155,3 +1155,8 @@ a{
     scroll-behavior:auto !important;
   }
 }
+/* Remove the visible orbit ring */
+.orbit-back,
+.orbit-front {
+    display: none !important;
+}
