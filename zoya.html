@@ -1,227 +1,325 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-<meta charset="utf-8">
-
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Zoya — PrvnNotes</title>
-
-<link rel="stylesheet"
-      href="style.css">
-
 
 <style>
 
 /* =========================================================
-   ZOYA PAGE
+   RESET
 ========================================================= */
 
-.zoya-page{
-    min-height:75vh;
-    padding-bottom:100px;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #07111f;
+    color: #e9eef5;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 /* =========================================================
-   INTRO
+   NAVIGATION
 ========================================================= */
 
-.zoya-intro{
-    max-width:760px;
-    margin-top:30px;
+.navbar {
+    height: 64px;
+    background: #081321;
+    border-bottom: 1px solid #1d2a3b;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.zoya-intro p{
-    font-size:17px;
-    line-height:1.8;
-    opacity:.72;
+.logo {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
 }
 
-.zoya-name{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    margin-top:12px;
+.nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
 }
 
-.zoya-dot{
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:currentColor;
-    box-shadow:0 0 0 7px rgba(255,255,255,.04);
-    animation:zoyaPulse 2.2s infinite;
+.nav-links a {
+    color: #c7d0dc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: white;
 }
 
 
 /* =========================================================
-   CHAT
+   PAGE
 ========================================================= */
 
-.zoya-chat{
+.page {
+    min-height: calc(100vh - 64px);
+    padding: 55px 20px 80px;
+}
 
-    max-width:850px;
 
-    margin:60px auto 0;
+/* =========================================================
+   ZOYA CONTAINER
+========================================================= */
 
-    border:1px solid rgba(255,255,255,.10);
+.zoya-container {
+    width: min(850px, 100%);
+    margin: auto;
 
-    background:rgba(255,255,255,.025);
+    background: #0c1726;
 
-    overflow:hidden;
+    border: 1px solid #263547;
+
+    border-radius: 5px;
+
+    overflow: hidden;
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.16);
-
-    opacity:0;
-
-    transform:translateY(20px);
-
-    animation:zoyaAppear .8s .2s ease forwards;
+        0 25px 70px rgba(0,0,0,.18);
 }
 
 
 /* =========================================================
-   CHAT HEADER
+   HEADER
 ========================================================= */
 
-.zoya-chat-head{
+.zoya-header {
 
-    display:flex;
+    padding: 30px;
 
-    align-items:center;
+    border-bottom: 1px solid #263547;
 
-    justify-content:space-between;
+    display: flex;
 
-    padding:20px 24px;
+    align-items: center;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-}
-
-.zoya-status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-size:11px;
-
-    letter-spacing:1.4px;
-
-    text-transform:uppercase;
-
-    opacity:.6;
-}
-
-.zoya-status-dot{
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:currentColor;
-
-    animation:statusPulse 2s infinite;
+    gap: 20px;
 }
 
 
 /* =========================================================
-   MESSAGES
+   ZOYA AVATAR
 ========================================================= */
 
-.zoya-messages{
+.zoya-avatar {
 
-    min-height:390px;
+    width: 70px;
+    height: 70px;
 
-    max-height:520px;
+    border-radius: 50%;
 
-    overflow-y:auto;
+    background:
+        linear-gradient(
+            135deg,
+            #e8edf5,
+            #aeb9c8
+        );
 
-    padding:30px 25px;
+    display: flex;
 
-    scroll-behavior:smooth;
-}
+    align-items: center;
 
+    justify-content: center;
 
-.zoya-message{
+    font-size: 35px;
 
-    display:flex;
-
-    margin-bottom:22px;
-
-    animation:messageIn .4s ease;
-}
-
-.zoya-message.zoya{
-
-    justify-content:flex-start;
-}
-
-.zoya-message.user{
-
-    justify-content:flex-end;
+    box-shadow:
+        0 0 0 5px #111e2f,
+        0 0 25px rgba(255,255,255,.08);
 }
 
 
 /* =========================================================
-   MESSAGE BUBBLES
+   TITLE
 ========================================================= */
 
-.zoya-bubble{
+.zoya-title h1 {
 
-    max-width:70%;
+    margin: 0 0 6px;
 
-    padding:14px 17px;
+    font-size: 25px;
 
-    font-size:14px;
+}
 
-    line-height:1.7;
+.zoya-title p {
 
-    white-space:pre-wrap;
+    margin: 0;
+
+    color: #8e9bad;
+
+    font-size: 14px;
+
 }
 
 
-.zoya-message.zoya .zoya-bubble{
+/* =========================================================
+   CHAT AREA
+========================================================= */
+
+.chat-area {
+
+    height: 510px;
+
+    overflow-y: auto;
+
+    padding: 28px;
+
+}
+
+
+/* scrollbar */
+
+.chat-area::-webkit-scrollbar {
+    width: 7px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+    background: #0a1421;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+    background: #354355;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+
+    display: flex;
+
+    margin-bottom: 22px;
+
+    animation:
+        messageAppear .35s ease;
+
+}
+
+.message.zoya {
+
+    justify-content: flex-start;
+
+}
+
+.message.user {
+
+    justify-content: flex-end;
+
+}
+
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   BUBBLE
+========================================================= */
+
+.bubble {
+
+    max-width: 72%;
+
+    padding: 16px;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid #2a394c;
 
     background:
-        rgba(255,255,255,.035);
+        #101d2d;
+
+    line-height: 1.65;
+
+    font-size: 15px;
+
+    white-space: pre-wrap;
+
 }
 
 
-.zoya-message.user .zoya-bubble{
+.user .bubble {
 
     background:
-        rgba(255,255,255,.08);
+        #202c3d;
 
-    text-align:left;
 }
 
 
-.zoya-label{
+.label {
 
-    display:block;
+    display: block;
 
-    margin-bottom:6px;
+    font-size: 10px;
 
-    font-size:9px;
+    letter-spacing: 1px;
 
-    letter-spacing:1.5px;
+    color: #7e8b9c;
 
-    text-transform:uppercase;
+    margin-bottom: 7px;
 
-    opacity:.45;
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   THINKING
+========================================================= */
+
+.thinking-bubble {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
 }
 
 
@@ -229,375 +327,324 @@
    THINKING CHARACTER
 ========================================================= */
 
-.zoya-thinking-row{
+.thinking-character {
 
-    display:flex;
+    width: 48px;
 
-    align-items:flex-end;
+    height: 48px;
 
-    gap:12px;
-
-    margin-bottom:22px;
-
-    animation:messageIn .35s ease;
-}
-
-
-/* character container */
-
-.zoya-character{
-
-    width:58px;
-
-    height:58px;
-
-    flex:0 0 58px;
-
-    position:relative;
-
-    border-radius:50%;
-
-    overflow:hidden;
+    border-radius: 50%;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,.11),
-            rgba(255,255,255,.025)
+            135deg,
+            #e8edf5,
+            #b4bfcd
         );
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    display: flex;
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.22);
+    align-items: center;
 
-    animation:
-        characterFloat 2.8s ease-in-out infinite;
-}
+    justify-content: center;
 
-
-/* hair */
-
-.zoya-character .hair{
-
-    position:absolute;
-
-    width:42px;
-
-    height:43px;
-
-    left:8px;
-
-    top:5px;
-
-    border-radius:
-        50% 50% 44% 48%;
-
-    background:
-        #171717;
-
-    z-index:3;
-
-    transform:
-        rotate(-5deg);
-}
-
-
-/* face */
-
-.zoya-character .face{
-
-    position:absolute;
-
-    width:32px;
-
-    height:35px;
-
-    left:14px;
-
-    top:14px;
-
-    border-radius:
-        45% 45% 48% 48%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #e8b596,
-            #c98668
-        );
-
-    z-index:4;
+    font-size: 26px;
 
     animation:
-        thinkingFace 2.8s ease-in-out infinite;
+        thinkingFloat 1.6s ease-in-out infinite;
+
 }
 
 
-/* hair fringe */
+@keyframes thinkingFloat {
+
+    0% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px)
+            rotate(-2deg);
+    }
+
+    100% {
+        transform:
+            translateY(0);
+    }
 
-.zoya-character .fringe{
-
-    position:absolute;
-
-    width:29px;
-
-    height:15px;
-
-    left:12px;
-
-    top:9px;
-
-    border-radius:
-        60% 40% 70% 20%;
-
-    background:#171717;
-
-    z-index:5;
-
-    transform:
-        rotate(-8deg);
-}
-
-
-/* eyes */
-
-.zoya-character .eye{
-
-    position:absolute;
-
-    width:4px;
-
-    height:4px;
-
-    border-radius:50%;
-
-    background:#181818;
-
-    top:28px;
-
-    z-index:7;
-
-    animation:
-        eyeLook 3s ease-in-out infinite;
-}
-
-.zoya-character .eye.left{
-    left:21px;
-}
-
-.zoya-character .eye.right{
-    left:34px;
-}
-
-
-/* nose */
-
-.zoya-character .nose{
-
-    position:absolute;
-
-    width:3px;
-
-    height:5px;
-
-    border-radius:50%;
-
-    background:
-        rgba(120,70,50,.45);
-
-    left:28px;
-
-    top:32px;
-
-    z-index:7;
-}
-
-
-/* mouth */
-
-.zoya-character .mouth{
-
-    position:absolute;
-
-    width:8px;
-
-    height:4px;
-
-    border-bottom:
-        1px solid rgba(80,35,30,.7);
-
-    border-radius:0 0 50% 50%;
-
-    left:26px;
-
-    top:39px;
-
-    z-index:7;
-
-    animation:
-        mouthThinking 2.8s ease-in-out infinite;
-}
-
-
-/* body */
-
-.zoya-character .body{
-
-    position:absolute;
-
-    width:42px;
-
-    height:21px;
-
-    left:8px;
-
-    bottom:-3px;
-
-    border-radius:
-        50% 50% 0 0;
-
-    background:
-        rgba(255,255,255,.18);
-
-    z-index:2;
-}
-
-
-/* thinking hand */
-
-.zoya-character .hand{
-
-    position:absolute;
-
-    width:12px;
-
-    height:19px;
-
-    right:4px;
-
-    top:28px;
-
-    border-radius:8px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #e8b596,
-            #c98668
-        );
-
-    z-index:8;
-
-    transform:
-        rotate(-22deg);
-
-    transform-origin:
-        bottom center;
-
-    animation:
-        handThink 2.8s ease-in-out infinite;
 }
 
 
 /* =========================================================
-   THINKING BUBBLE
+   THINKING DOTS
 ========================================================= */
 
-.zoya-thinking-bubble{
+.thinking-text {
 
-    position:relative;
+    color: #aeb8c5;
 
-    min-width:72px;
+}
 
-    padding:11px 14px;
+
+.dots {
+
+    display: inline-flex;
+
+    margin-left: 3px;
+
+}
+
+
+.dots span {
+
+    animation:
+        dotAnimation 1.3s infinite;
+
+}
+
+
+.dots span:nth-child(2) {
+
+    animation-delay:
+        .18s;
+
+}
+
+
+.dots span:nth-child(3) {
+
+    animation-delay:
+        .36s;
+
+}
+
+
+@keyframes dotAnimation {
+
+    0%,20% {
+
+        opacity: .2;
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-3px);
+
+    }
+
+    100% {
+
+        opacity: .2;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   QUICK BUTTONS
+========================================================= */
+
+.quick-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    padding:
+        0 28px 20px;
+
+}
+
+
+.quick-buttons button {
+
+    background:
+        transparent;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid #263547;
+
+    color:
+        #aeb9c6;
+
+    padding:
+        9px 13px;
+
+    font-size:
+        12px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+
+}
+
+
+.quick-buttons button:hover {
 
     background:
-        rgba(255,255,255,.035);
+        #172538;
 
-    font-size:13px;
+    color:
+        white;
 
-    line-height:1.4;
-
-    border-radius:3px;
-
-    animation:
-        thinkingBubbleIn .35s ease;
 }
 
 
-/* bubble little tail */
+/* =========================================================
+   VOICE CONTROLS
+========================================================= */
 
-.zoya-thinking-bubble::before{
+.voice-controls {
 
-    content:"";
+    display: flex;
 
-    position:absolute;
+    justify-content:
+        flex-end;
 
-    left:-7px;
+    align-items:
+        center;
 
-    bottom:14px;
+    gap: 8px;
 
-    width:12px;
+    padding:
+        0 16px 12px;
 
-    height:12px;
+}
+
+
+.voice-button {
+
+    border:
+        1px solid #2d3c4e;
 
     background:
-        rgba(255,255,255,.035);
+        transparent;
 
-    border-left:
-        1px solid rgba(255,255,255,.08);
+    color:
+        #9eabb9;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
+    padding:
+        7px 11px;
 
-    transform:
-        rotate(45deg);
+    font-size:
+        11px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+
 }
 
 
-/* Thinking text */
+.voice-button:hover {
 
-.thinking-text{
+    background:
+        #162436;
 
-    display:flex;
+    color:
+        white;
 
-    align-items:center;
-
-    gap:4px;
-
-    opacity:.65;
 }
 
 
-/* dots */
+/* =========================================================
+   MICROPHONE BUTTON
+========================================================= */
 
-.thinking-text span{
+.mic-button {
 
-    width:5px;
+    width: 50px;
 
-    height:5px;
+    height: 50px;
 
-    border-radius:50%;
+    border:
+        1px solid #3a485a;
 
-    background:currentColor;
+    background:
+        #182538;
 
-    opacity:.35;
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        20px;
+
+    transition:
+        .2s;
+
+    flex-shrink: 0;
+
+}
+
+
+.mic-button:hover {
+
+    background:
+        #26364b;
+
+}
+
+
+.mic-button.listening {
+
+    background:
+        #6b2530;
+
+    border-color:
+        #a64251;
 
     animation:
-        thinkingDots 1.2s infinite;
+        micPulse 1.2s infinite;
+
 }
 
-.thinking-text span:nth-child(2){
-    animation-delay:.15s;
-}
 
-.thinking-text span:nth-child(3){
-    animation-delay:.3s;
+@keyframes micPulse {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0 rgba(200,60,80,.45);
+
+    }
+
+    70% {
+
+        box-shadow:
+            0 0 0 12px rgba(200,60,80,0);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0 rgba(200,60,80,0);
+
+    }
+
 }
 
 
@@ -605,339 +652,161 @@
    INPUT
 ========================================================= */
 
-.zoya-input-area{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:15px;
-
-    border-top:
-        1px solid rgba(255,255,255,.08);
-}
-
-
-.zoya-input{
-
-    flex:1;
-
-    min-width:0;
-
-    padding:15px 16px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    outline:none;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:inherit;
-
-    font:inherit;
-
-    font-size:14px;
-
-    transition:
-        border-color .25s ease,
-        background .25s ease;
-}
-
-
-.zoya-input:focus{
-
-    border-color:
-        rgba(255,255,255,.28);
-
-    background:
-        rgba(255,255,255,.04);
-}
-
-
-.zoya-input::placeholder{
-
-    color:inherit;
-
-    opacity:.35;
-}
-
-
-.zoya-send{
-
-    width:50px;
-
-    height:50px;
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:inherit;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
-}
-
-
-.zoya-send:hover{
-
-    transform:
-        translateX(3px);
-
-    background:
-        rgba(255,255,255,.10);
-
-    border-color:
-        rgba(255,255,255,.25);
-}
-
-
-.zoya-send:disabled{
-
-    opacity:.35;
-
-    cursor:not-allowed;
-
-    transform:none;
-}
-
-
-/* =========================================================
-   QUICK QUESTIONS
-========================================================= */
-
-.zoya-quick{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
+.input-area {
 
     padding:
-        0 25px 22px;
+        16px;
+
+    border-top:
+        1px solid #263547;
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
 }
 
 
-.zoya-quick button{
+#zoyaInput {
 
-    padding:8px 12px;
+    flex:
+        1;
 
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    background:transparent;
-
-    color:inherit;
-
-    font:inherit;
-
-    font-size:11px;
-
-    opacity:.55;
-
-    cursor:pointer;
-
-    transition:.25s ease;
-}
-
-
-.zoya-quick button:hover{
-
-    opacity:1;
+    min-width:
+        0;
 
     background:
-        rgba(255,255,255,.05);
+        #101c2c;
+
+    border:
+        1px solid #3a485a;
+
+    color:
+        white;
+
+    padding:
+        15px;
+
+    outline:
+        none;
+
+    font-size:
+        14px;
+
 }
 
 
-.zoya-quick button:disabled{
+#zoyaInput:focus {
 
-    opacity:.25;
+    border-color:
+        #66758a;
 
-    cursor:not-allowed;
+}
+
+
+#zoyaInput::placeholder {
+
+    color:
+        #718096;
+
 }
 
 
 /* =========================================================
-   ANIMATIONS
+   SEND BUTTON
 ========================================================= */
 
-@keyframes zoyaAppear{
+#sendButton {
 
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
+    width:
+        55px;
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    border:
+        1px solid #3a485a;
 
-}
+    background:
+        #182538;
 
+    color:
+        white;
 
-@keyframes messageIn{
+    cursor:
+        pointer;
 
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
+    font-size:
+        20px;
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    transition:
+        .2s;
 
-}
-
-
-@keyframes zoyaPulse{
-
-    0%,100%{
-        opacity:.45;
-        transform:scale(.9);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1);
-    }
+    flex-shrink:
+        0;
 
 }
 
 
-@keyframes statusPulse{
+#sendButton:hover {
 
-    0%,100%{
-        opacity:.35;
-        transform:scale(.85);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1);
-    }
+    background:
+        #26364b;
 
 }
 
 
-@keyframes thinkingDots{
+#sendButton:disabled {
 
-    0%,100%{
-        transform:translateY(0);
-        opacity:.25;
-    }
+    opacity:
+        .4;
 
-    50%{
-        transform:translateY(-4px);
-        opacity:.85;
-    }
+    cursor:
+        not-allowed;
 
 }
 
 
-@keyframes characterFloat{
+/* =========================================================
+   VOICE STATUS
+========================================================= */
 
-    0%,100%{
-        transform:translateY(0);
-    }
+.voice-status {
 
-    50%{
-        transform:translateY(-3px);
-    }
+    font-size:
+        11px;
 
-}
+    color:
+        #758497;
 
+    padding:
+        0 16px 12px;
 
-@keyframes thinkingFace{
+    min-height:
+        18px;
 
-    0%,100%{
-        transform:translateX(0) rotate(0);
-    }
-
-    45%{
-        transform:translateX(1px) rotate(2deg);
-    }
-
-    65%{
-        transform:translateX(-1px) rotate(-2deg);
-    }
+    text-align:
+        right;
 
 }
 
 
-@keyframes eyeLook{
+/* =========================================================
+   FOOTER
+========================================================= */
 
-    0%,100%{
-        transform:translateX(0);
-    }
+footer {
 
-    40%{
-        transform:translateX(2px);
-    }
+    border-top:
+        1px solid #172638;
 
-    65%{
-        transform:translateX(-1px);
-    }
+    padding:
+        35px 8%;
 
-}
+    color:
+        #8fa0b3;
 
-
-@keyframes mouthThinking{
-
-    0%,100%{
-        transform:scaleX(1);
-    }
-
-    50%{
-        transform:scaleX(.65);
-    }
-
-}
-
-
-@keyframes handThink{
-
-    0%,100%{
-        transform:
-            rotate(-22deg)
-            translateY(0);
-    }
-
-    50%{
-        transform:
-            rotate(-28deg)
-            translateY(-2px);
-    }
-
-}
-
-
-@keyframes thinkingBubbleIn{
-
-    from{
-        opacity:0;
-        transform:translateX(-5px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0) scale(1);
-    }
+    font-size:
+        13px;
 
 }
 
@@ -946,57 +815,90 @@
    MOBILE
 ========================================================= */
 
-@media(max-width:700px){
+@media (max-width:700px) {
 
-    .zoya-chat{
-        margin-top:45px;
-    }
+    .navbar {
 
-    .zoya-messages{
-        min-height:350px;
-        padding:22px 17px;
-    }
-
-    .zoya-bubble{
-        max-width:84%;
-    }
-
-    .zoya-input-area{
-        padding:10px;
-    }
-
-    .zoya-input{
-        padding:13px;
-    }
-
-    .zoya-send{
-        width:46px;
-        height:46px;
-    }
-
-    .zoya-quick{
         padding:
-            0 17px 18px;
+            0 20px;
+
     }
 
-}
+    .nav-links {
 
+        gap:
+            12px;
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+    }
 
-@media(prefers-reduced-motion:reduce){
+    .nav-links a {
 
-    *,
-    *::before,
-    *::after{
+        font-size:
+            11px;
 
-        animation-duration:.01ms !important;
+    }
 
-        animation-iteration-count:1 !important;
+    .page {
 
-        scroll-behavior:auto !important;
+        padding:
+            20px 10px 50px;
+
+    }
+
+    .zoya-header {
+
+        padding:
+            22px;
+
+    }
+
+    .chat-area {
+
+        height:
+            500px;
+
+        padding:
+            18px;
+
+    }
+
+    .bubble {
+
+        max-width:
+            86%;
+
+    }
+
+    .quick-buttons {
+
+        padding:
+            0 18px 15px;
+
+    }
+
+    .input-area {
+
+        padding:
+            10px;
+
+    }
+
+    #zoyaInput {
+
+        padding:
+            13px;
+
+    }
+
+    #sendButton,
+    .mic-button {
+
+        width:
+            46px;
+
+        height:
+            46px;
+
     }
 
 }
@@ -1009,382 +911,427 @@
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      NAVIGATION
-===================================================== -->
+========================================================= -->
 
-<header class="site-nav">
+<nav class="navbar">
 
-<div class="nav-inner">
-
-<a class="logo"
-   href="index.html">
-
-PRAVEEN SHARMA
-
-</a>
+    <div class="logo">
+        PRAVEEN SHARMA
+    </div>
 
 
-<nav class="nav-links">
+    <div class="nav-links">
 
-<a href="index.html">
-Home
-</a>
+        <a href="index.html">
+            Home
+        </a>
 
-<a href="who-am-i.html">
-Who Am I?
-</a>
+        <a href="who-am-i.html">
+            Who Am I?
+        </a>
 
-<a href="explore.html">
-Explore
-</a>
+        <a href="explore.html">
+            Explore
+        </a>
 
-<a href="kaam-dhandha.html">
-Kaam-Dhandha
-</a>
+        <a href="kaam-dhandha.html">
+            Kaam-Dhandha
+        </a>
 
-<a href="connect.html">
-Let's Connect
-</a>
+        <a href="connect.html">
+            Let's Connect
+        </a>
 
-<a class="active"
-   href="zoya.html">
-Zoya
-</a>
+        <a href="zoya.html">
+            Zoya
+        </a>
+
+    </div>
 
 </nav>
 
-</div>
-
-</header>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      MAIN
-===================================================== -->
+========================================================= -->
 
-<main class="container">
+<main class="page">
 
-<section class="page zoya-page">
 
+<div class="zoya-container">
 
-<a class="back"
-   href="index.html">
 
-← Back home
+    <!-- HEADER -->
 
-</a>
+    <div class="zoya-header">
 
 
-<div class="eyebrow">
+        <div
+            class="zoya-avatar"
+            id="zoyaAvatar"
+        >
+            👩🏻
+        </div>
 
-MEET ZOYA
 
-</div>
+        <div class="zoya-title">
 
+            <h1>
+                Zoya
+            </h1>
 
-<h1>
+            <p>
+                Praveen's little AI companion.
+            </p>
 
-Ask<br>
+        </div>
 
-<em>Zoya.</em>
 
-</h1>
+    </div>
 
 
-<div class="zoya-name">
 
-<div class="zoya-dot"></div>
+    <!-- =====================================================
+         CHAT
+    ====================================================== -->
 
-<p>
+    <div
+        class="chat-area"
+        id="chatArea"
+    >
 
-Praveen's favourite person to ask about Praveen.
 
-</p>
+        <div class="message zoya">
 
-</div>
+            <div class="bubble">
 
+                <span class="label">
+                    Zoya
+                </span>
 
-<div class="zoya-intro">
+                Hi! I'm Zoya. 😊
+                <br><br>
 
-<p>
+                I know quite a lot about Praveen.
 
-She knows quite a lot about him.
-Probably more than you need to know.
+                <br><br>
 
-</p>
+                You can type to me or talk to me.
 
-</div>
+            </div>
 
+        </div>
 
 
-<!-- =====================================================
-     CHAT
-===================================================== -->
+    </div>
 
-<div class="zoya-chat">
 
 
-<div class="zoya-chat-head">
+    <!-- =====================================================
+         QUICK QUESTIONS
+    ====================================================== -->
 
-<strong>
-Zoya
-</strong>
+    <div class="quick-buttons">
 
 
-<div class="zoya-status">
+        <button
+            onclick="askQuick('Who is Praveen?')"
+        >
+            Who is Praveen?
+        </button>
 
-<span class="zoya-status-dot"></span>
 
-Online
+        <button
+            onclick="askQuick('What does Praveen do?')"
+        >
+            What does he do?
+        </button>
 
-</div>
 
-</div>
+        <button
+            onclick="askQuick('Does Praveen like wrestling?')"
+        >
+            Does he like wrestling?
+        </button>
 
 
+        <button
+            onclick="askQuick('What is Praveen like?')"
+        >
+            What is he like?
+        </button>
 
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
 
-<div class="zoya-messages"
-     id="zoyaMessages">
+    </div>
 
 
-<div class="zoya-message zoya">
 
-<div class="zoya-bubble">
+    <!-- =====================================================
+         VOICE CONTROLS
+    ====================================================== -->
 
-<span class="zoya-label">
-Zoya
-</span>
+    <div class="voice-controls">
 
-Hi! I'm Zoya. 😊
 
-I know quite a lot about Praveen.
+        <button
+            class="voice-button"
+            onclick="stopSpeaking()"
+        >
+            🔇 Stop Zoya
+        </button>
 
-Ask me something about him.
 
-</div>
+        <button
+            class="voice-button"
+            onclick="testVoice()"
+        >
+            🔊 Test voice
+        </button>
 
-</div>
 
+    </div>
 
-</div>
 
+    <div
+        class="voice-status"
+        id="voiceStatus"
+    ></div>
 
 
-<!-- =====================================================
-     QUICK QUESTIONS
-===================================================== -->
 
-<div class="zoya-quick">
+    <!-- =====================================================
+         INPUT
+    ====================================================== -->
 
+    <div class="input-area">
 
-<button
-    type="button"
-    onclick="askZoya('Who is Praveen?')">
 
-Who is Praveen?
+        <!-- MICROPHONE -->
 
-</button>
+        <button
+            class="mic-button"
+            id="micButton"
+            onclick="toggleListening()"
+            title="Talk to Zoya"
+        >
+            🎙️
+        </button>
 
 
-<button
-    type="button"
-    onclick="askZoya('What does Praveen do?')">
+        <!-- TEXT INPUT -->
 
-What does he do?
+        <input
+            id="zoyaInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Type or talk to Zoya..."
+        >
 
-</button>
 
+        <!-- SEND -->
 
-<button
-    type="button"
-    onclick="askZoya('Where is Praveen from?')">
+        <button
+            id="sendButton"
+            onclick="sendMessage()"
+        >
+            →
+        </button>
 
-Where is he from?
 
-</button>
-
-
-<button
-    type="button"
-    onclick="askZoya('Does Praveen like wrestling?')">
-
-Does he like wrestling?
-
-</button>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     INPUT
-===================================================== -->
-
-<form
-    class="zoya-input-area"
-    id="zoyaForm"
->
-
-
-<input
-
-    class="zoya-input"
-
-    id="zoyaInput"
-
-    type="text"
-
-    autocomplete="off"
-
-    placeholder="Ask me about Praveen..."
-
->
-
-
-<button
-
-    class="zoya-send"
-
-    id="zoyaSend"
-
-    type="submit"
-
-    aria-label="Send"
-
->
-
-→
-
-</button>
-
-
-</form>
+    </div>
 
 
 </div>
-
-
-</section>
 
 </main>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
-<footer class="footer">
+<footer>
 
-<div class="container">
-
-A little corner of the internet by Praveen Sharma ·
-
-<span data-year></span>
-
-</div>
+    A little corner of the internet by Praveen Sharma · 2026
 
 </footer>
-
-
-
-<script src="script.js"></script>
 
 
 
 <script>
 
 /* =========================================================
-   ZOYA — FRONTEND
+   ELEMENTS
 ========================================================= */
 
-const zoyaMessages =
-    document.getElementById("zoyaMessages");
+const chatArea =
+    document.getElementById(
+        "chatArea"
+    );
+
 
 const zoyaInput =
-    document.getElementById("zoyaInput");
+    document.getElementById(
+        "zoyaInput"
+    );
 
-const zoyaForm =
-    document.getElementById("zoyaForm");
 
-const zoyaSend =
-    document.getElementById("zoyaSend");
+const sendButton =
+    document.getElementById(
+        "sendButton"
+    );
+
+
+const micButton =
+    document.getElementById(
+        "micButton"
+    );
+
+
+const voiceStatus =
+    document.getElementById(
+        "voiceStatus"
+    );
+
+
+const zoyaAvatar =
+    document.getElementById(
+        "zoyaAvatar"
+    );
 
 
 /* =========================================================
-   API
+   CONVERSATION
 ========================================================= */
 
-const ZOYA_API =
-    "https://prvnnotes-github-io.vercel.app/api/chat";
+let conversationHistory = [];
 
 
 /* =========================================================
-   CONVERSATION HISTORY
+   VOICE
 ========================================================= */
 
-let zoyaHistory = [];
+let availableVoices = [];
+
+
+/* =========================================================
+   LOAD BROWSER VOICES
+========================================================= */
+
+function loadVoices() {
+
+    if (
+        "speechSynthesis"
+        in window
+    ) {
+
+        availableVoices =
+            window
+                .speechSynthesis
+                .getVoices();
+
+    }
+
+}
+
+
+loadVoices();
+
+
+if (
+    "speechSynthesis"
+    in window &&
+    "onvoiceschanged"
+    in speechSynthesis
+) {
+
+    speechSynthesis.onvoiceschanged =
+        loadVoices;
+
+}
 
 
 /* =========================================================
    ADD MESSAGE
 ========================================================= */
 
-function addMessage(text,type){
+function addMessage(
+    role,
+    text
+) {
+
 
     const message =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     message.className =
-        "zoya-message " + type;
+        "message " + role;
 
 
     const bubble =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     bubble.className =
-        "zoya-bubble";
+        "bubble";
 
 
     const label =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
+
 
     label.className =
-        "zoya-label";
+        "label";
+
 
     label.textContent =
-        type === "zoya"
+        role === "zoya"
             ? "Zoya"
             : "You";
 
 
-    bubble.appendChild(label);
-
-
     const content =
-        document.createElement("span");
+        document.createElement(
+            "div"
+        );
+
 
     content.textContent =
         text;
 
 
-    bubble.appendChild(content);
+    bubble.appendChild(
+        label
+    );
 
 
-    message.appendChild(bubble);
+    bubble.appendChild(
+        content
+    );
 
 
-    zoyaMessages.appendChild(message);
+    message.appendChild(
+        bubble
+    );
 
 
-    scrollToBottom();
+    chatArea.appendChild(
+        message
+    );
+
+
+    scrollChat();
 
 }
 
@@ -1393,65 +1340,57 @@ function addMessage(text,type){
    SCROLL
 ========================================================= */
 
-function scrollToBottom(){
+function scrollChat() {
 
-    zoyaMessages.scrollTop =
-        zoyaMessages.scrollHeight;
+    chatArea.scrollTop =
+        chatArea.scrollHeight;
 
 }
 
 
 /* =========================================================
-   THINKING CHARACTER
+   THINKING
 ========================================================= */
 
-function showThinking(){
+function showThinking() {
+
 
     removeThinking();
 
 
-    const row =
-        document.createElement("div");
-
-    row.className =
-        "zoya-thinking-row";
-
-    row.id =
-        "zoyaThinking";
+    const thinking =
+        document.createElement(
+            "div"
+        );
 
 
-    row.innerHTML = `
-
-        <div class="zoya-character">
-
-            <div class="hair"></div>
-
-            <div class="body"></div>
-
-            <div class="face"></div>
-
-            <div class="fringe"></div>
-
-            <div class="eye left"></div>
-
-            <div class="eye right"></div>
-
-            <div class="nose"></div>
-
-            <div class="mouth"></div>
-
-            <div class="hand"></div>
-
-        </div>
+    thinking.className =
+        "message zoya";
 
 
-        <div class="zoya-thinking-bubble">
+    thinking.id =
+        "thinkingMessage";
+
+
+    thinking.innerHTML = `
+
+        <div class="bubble thinking-bubble">
+
+            <div class="thinking-character">
+                👩🏻
+            </div>
 
             <div class="thinking-text">
 
-                <span></span>
-                <span></span>
-                <span></span>
+                Zoya is thinking
+
+                <span class="dots">
+
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+
+                </span>
 
             </div>
 
@@ -1460,9 +1399,12 @@ function showThinking(){
     `;
 
 
-    zoyaMessages.appendChild(row);
+    chatArea.appendChild(
+        thinking
+    );
 
-    scrollToBottom();
+
+    scrollChat();
 
 }
 
@@ -1471,14 +1413,18 @@ function showThinking(){
    REMOVE THINKING
 ========================================================= */
 
-function removeThinking(){
+function removeThinking() {
 
-    const existing =
-        document.getElementById("zoyaThinking");
 
-    if(existing){
+    const thinking =
+        document.getElementById(
+            "thinkingMessage"
+        );
 
-        existing.remove();
+
+    if (thinking) {
+
+        thinking.remove();
 
     }
 
@@ -1486,111 +1432,779 @@ function removeThinking(){
 
 
 /* =========================================================
-   DISABLE UI WHILE THINKING
+   ZOYA TALKING ANIMATION
 ========================================================= */
 
-function setThinkingState(isThinking){
+function startTalkingAnimation() {
 
-    zoyaInput.disabled =
-        isThinking;
+    zoyaAvatar.textContent =
+        "👩🏻";
 
-    zoyaSend.disabled =
-        isThinking;
+    zoyaAvatar.style.transform =
+        "scale(1.05)";
+
+}
 
 
-    document
-        .querySelectorAll(".zoya-quick button")
-        .forEach(function(button){
+function stopTalkingAnimation() {
 
-            button.disabled =
-                isThinking;
-
-        });
+    zoyaAvatar.style.transform =
+        "scale(1)";
 
 }
 
 
 /* =========================================================
-   ASK ZOYA
+   FIND INDIAN FEMALE VOICE
 ========================================================= */
 
-async function askZoya(question){
-
-    question =
-        String(question || "").trim();
+function findIndianVoice() {
 
 
-    if(!question){
+    if (!availableVoices.length) {
+
+        loadVoices();
+
+    }
+
+
+    /*
+       First preference:
+       Indian English voices
+    */
+
+    let voice =
+        availableVoices.find(
+            function(v) {
+
+                return (
+                    v.lang &&
+                    v.lang
+                        .toLowerCase()
+                        === "en-in"
+                );
+
+            }
+        );
+
+
+    /*
+       Second preference:
+       Any Indian voice
+    */
+
+    if (!voice) {
+
+        voice =
+            availableVoices.find(
+                function(v) {
+
+                    return (
+                        v.lang &&
+                        v.lang
+                            .toLowerCase()
+                            .includes(
+                                "en-in"
+                            )
+                    );
+
+                }
+            );
+
+    }
+
+
+    /*
+       Third preference:
+       A female-sounding English voice
+       where the browser exposes a useful name.
+    */
+
+    if (!voice) {
+
+        voice =
+            availableVoices.find(
+                function(v) {
+
+                    const name =
+                        (
+                            v.name || ""
+                        ).toLowerCase();
+
+
+                    return (
+                        v.lang &&
+                        v.lang
+                            .toLowerCase()
+                            .startsWith(
+                                "en"
+                            ) &&
+                        (
+                            name.includes(
+                                "female"
+                            ) ||
+                            name.includes(
+                                "woman"
+                            ) ||
+                            name.includes(
+                                "samantha"
+                            ) ||
+                            name.includes(
+                                "zira"
+                            )
+                        )
+                    );
+
+                }
+            );
+
+    }
+
+
+    /*
+       Final fallback:
+       Any English voice.
+    */
+
+    if (!voice) {
+
+        voice =
+            availableVoices.find(
+                function(v) {
+
+                    return (
+                        v.lang &&
+                        v.lang
+                            .toLowerCase()
+                            .startsWith(
+                                "en"
+                            )
+                    );
+
+                }
+            );
+
+    }
+
+
+    return voice;
+
+}
+
+
+/* =========================================================
+   SPEAK ZOYA
+========================================================= */
+
+function speakZoya(text) {
+
+
+    if (
+        !(
+            "speechSynthesis"
+            in window
+        )
+    ) {
+
+        voiceStatus.textContent =
+            "Your browser does not support voice.";
 
         return;
 
     }
 
 
-    /* Add visitor message */
+    speechSynthesis.cancel();
 
-    addMessage(
-        question,
-        "user"
+
+    const cleanText =
+        String(text)
+            .replace(
+                /[*#_`]/g,
+                ""
+            )
+            .replace(
+                /\n+/g,
+                ". "
+            )
+            .trim();
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            cleanText
+        );
+
+
+    const voice =
+        findIndianVoice();
+
+
+    if (voice) {
+
+        utterance.voice =
+            voice;
+
+        utterance.lang =
+            voice.lang;
+
+    } else {
+
+        utterance.lang =
+            "en-IN";
+
+    }
+
+
+    /*
+       Natural female conversational settings
+    */
+
+    utterance.rate =
+        0.94;
+
+
+    utterance.pitch =
+        1.08;
+
+
+    utterance.volume =
+        1;
+
+
+    utterance.onstart =
+        function() {
+
+            voiceStatus.textContent =
+                "🔊 Zoya is speaking...";
+
+            startTalkingAnimation();
+
+        };
+
+
+    utterance.onend =
+        function() {
+
+            voiceStatus.textContent =
+                "";
+
+            stopTalkingAnimation();
+
+        };
+
+
+    utterance.onerror =
+        function() {
+
+            voiceStatus.textContent =
+                "";
+
+            stopTalkingAnimation();
+
+        };
+
+
+    speechSynthesis.speak(
+        utterance
     );
 
+}
 
-    /* Clear input */
+
+/* =========================================================
+   STOP SPEAKING
+========================================================= */
+
+function stopSpeaking() {
+
+
+    if (
+        "speechSynthesis"
+        in window
+    ) {
+
+        speechSynthesis.cancel();
+
+    }
+
+
+    stopTalkingAnimation();
+
+
+    voiceStatus.textContent =
+        "";
+
+}
+
+
+/* =========================================================
+   TEST VOICE
+========================================================= */
+
+function testVoice() {
+
+
+    stopSpeaking();
+
+
+    speakZoya(
+        "Hi! I'm Zoya. This is how my voice sounds. Now you can talk to me or type to me."
+    );
+
+}
+
+
+/* =========================================================
+   MICROPHONE / SPEECH RECOGNITION
+========================================================= */
+
+let recognition =
+    null;
+
+
+let isListening =
+    false;
+
+
+/*
+   Chrome uses SpeechRecognition.
+   Some browsers expose webkitSpeechRecognition.
+*/
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+/* =========================================================
+   SETUP RECOGNITION
+========================================================= */
+
+if (SpeechRecognition) {
+
+
+    recognition =
+        new SpeechRecognition();
+
+
+    /*
+       Indian English
+
+       This tells the browser that
+       the speaker is likely using
+       Indian English.
+
+       Users can still speak naturally.
+    */
+
+    recognition.lang =
+        "en-IN";
+
+
+    recognition.continuous =
+        false;
+
+
+    recognition.interimResults =
+        true;
+
+
+    recognition.maxAlternatives =
+        1;
+
+
+    recognition.onstart =
+        function() {
+
+            isListening =
+                true;
+
+
+            micButton.classList.add(
+                "listening"
+            );
+
+
+            micButton.textContent =
+                "⏹";
+
+
+            voiceStatus.textContent =
+                "🎙️ I'm listening...";
+
+        };
+
+
+    recognition.onresult =
+        function(event) {
+
+
+            let transcript =
+                "";
+
+
+            for (
+                let i =
+                    event.resultIndex;
+
+                i <
+                    event.results.length;
+
+                i++
+            ) {
+
+
+                transcript +=
+                    event
+                        .results[i][0]
+                        .transcript;
+
+
+            }
+
+
+            zoyaInput.value =
+                transcript;
+
+
+            /*
+               If this is the final result,
+               automatically send it.
+            */
+
+            const lastResult =
+                event.results[
+                    event.results.length - 1
+                ];
+
+
+            if (
+                lastResult &&
+                lastResult.isFinal
+            ) {
+
+                setTimeout(
+                    function() {
+
+                        if (
+                            zoyaInput.value.trim()
+                        ) {
+
+                            sendMessage();
+
+                        }
+
+                    },
+                    250
+                );
+
+            }
+
+        };
+
+
+    recognition.onerror =
+        function(event) {
+
+
+            console.log(
+                "Speech recognition error:",
+                event.error
+            );
+
+
+            isListening =
+                false;
+
+
+            micButton.classList.remove(
+                "listening"
+            );
+
+
+            micButton.textContent =
+                "🎙️";
+
+
+            if (
+                event.error ===
+                "not-allowed"
+            ) {
+
+                voiceStatus.textContent =
+                    "Microphone permission was blocked.";
+
+            }
+            else {
+
+                voiceStatus.textContent =
+                    "I couldn't hear that. Try again.";
+
+            }
+
+        };
+
+
+    recognition.onend =
+        function() {
+
+
+            isListening =
+                false;
+
+
+            micButton.classList.remove(
+                "listening"
+            );
+
+
+            micButton.textContent =
+                "🎙️";
+
+
+            /*
+               Don't erase the text.
+            */
+
+            setTimeout(
+                function() {
+
+                    if (
+                        !speechSynthesis.speaking
+                    ) {
+
+                        voiceStatus.textContent =
+                            "";
+
+                    }
+
+                },
+                700
+            );
+
+        };
+
+}
+
+
+/* =========================================================
+   TOGGLE MICROPHONE
+========================================================= */
+
+function toggleListening() {
+
+
+    /*
+       Browser doesn't support it
+    */
+
+    if (!recognition) {
+
+        voiceStatus.textContent =
+            "Voice input isn't supported in this browser. Try Chrome.";
+
+        return;
+
+    }
+
+
+    /*
+       Stop listening
+    */
+
+    if (isListening) {
+
+        recognition.stop();
+
+        return;
+
+    }
+
+
+    /*
+       Stop Zoya speaking
+    */
+
+    stopSpeaking();
+
+
+    /*
+       Clear old text
+    */
 
     zoyaInput.value =
         "";
 
 
-    /* Disable interface */
+    try {
 
-    setThinkingState(true);
+        recognition.start();
+
+    }
+    catch(error) {
+
+        console.log(
+            error
+        );
+
+    }
+
+}
 
 
-    /* Show animated girl */
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+async function sendMessage() {
+
+
+    const question =
+        zoyaInput.value.trim();
+
+
+    if (!question) {
+
+        return;
+
+    }
+
+
+    /*
+       Stop microphone
+    */
+
+    if (
+        recognition &&
+        isListening
+    ) {
+
+        recognition.stop();
+
+    }
+
+
+    /*
+       Stop previous voice
+    */
+
+    stopSpeaking();
+
+
+    /*
+       Display user's message
+    */
+
+    addMessage(
+        "user",
+        question
+    );
+
+
+    /*
+       Clear input
+    */
+
+    zoyaInput.value =
+        "";
+
+
+    /*
+       Disable controls
+    */
+
+    zoyaInput.disabled =
+        true;
+
+
+    sendButton.disabled =
+        true;
+
+
+    micButton.disabled =
+        true;
+
+
+    /*
+       Show thinking character
+    */
 
     showThinking();
 
 
-    try{
+    try {
+
+
+        /*
+           Save user message
+        */
+
+        conversationHistory.push({
+
+            role:
+                "user",
+
+            content:
+                question
+
+        });
+
+
+        /*
+           Call your existing Vercel API
+        */
 
         const response =
             await fetch(
-                ZOYA_API,
+                "/api/chat",
                 {
 
-                    method:"POST",
+                    method:
+                        "POST",
 
-                    headers:{
+                    headers: {
+
                         "Content-Type":
                             "application/json"
+
                     },
 
-                    body:JSON.stringify({
+                    body:
+                        JSON.stringify({
 
-                        message:
-                            question,
+                            message:
+                                question,
 
-                        history:
-                            zoyaHistory
+                            history:
+                                conversationHistory
 
-                    })
+                        })
 
                 }
             );
 
 
+        /*
+           Read API response
+        */
+
         const data =
             await response.json();
 
 
+        /*
+           Remove thinking animation
+        */
+
         removeThinking();
 
 
-        /* =================================================
-           API ERROR
-        ================================================= */
+        /*
+           Error
+        */
 
-        if(!response.ok){
+        if (!response.ok) {
 
             throw new Error(
 
@@ -1602,66 +2216,84 @@ async function askZoya(question){
         }
 
 
-        /* =================================================
-           ANSWER
-        ================================================= */
+        /*
+           Your current chat.js returns
+           { answer: "..." }
+
+           So we use answer first.
+        */
 
         const answer =
-            data?.answer ||
-            "Umm... I blanked for a second. Ask me again? 😭";
+            data.answer ||
+            data.reply ||
+            data.response ||
+            data.message ||
+            data.text ||
+            data.output;
 
 
-        /* =================================================
-           SAVE HISTORY
-        ================================================= */
+        if (!answer) {
 
-        zoyaHistory.push({
-
-            role:"user",
-
-            content:question
-
-        });
-
-
-        zoyaHistory.push({
-
-            role:"assistant",
-
-            content:answer
-
-        });
-
-
-        /* Keep browser history manageable */
-
-        if(zoyaHistory.length > 20){
-
-            zoyaHistory =
-                zoyaHistory.slice(-20);
+            throw new Error(
+                "Zoya returned an empty answer."
+            );
 
         }
 
 
-        /* =================================================
-           SHOW ANSWER
-        ================================================= */
+        /*
+           Save Zoya response
+        */
+
+        conversationHistory.push({
+
+            role:
+                "assistant",
+
+            content:
+                answer
+
+        });
+
+
+        /*
+           Keep history manageable
+        */
+
+        if (
+            conversationHistory.length >
+            20
+        ) {
+
+            conversationHistory =
+                conversationHistory.slice(
+                    -20
+                );
+
+        }
+
+
+        /*
+           Display answer
+        */
 
         addMessage(
+            "zoya",
+            answer
+        );
 
-            answer,
 
-            "zoya"
+        /*
+           Speak answer
+        */
 
+        speakZoya(
+            answer
         );
 
 
     }
-
-
-    catch(error){
-
-        removeThinking();
+    catch(error) {
 
 
         console.error(
@@ -1670,25 +2302,41 @@ async function askZoya(question){
         );
 
 
+        removeThinking();
+
+
         addMessage(
+
+            "zoya",
 
             "Umm... something went wrong on my side. 😭\n\n" +
             "Technical message: " +
             (
                 error?.message ||
-                "Unable to reach Zoya."
-            ),
-
-            "zoya"
+                "Unknown error."
+            )
 
         );
 
     }
+    finally {
 
 
-    finally{
+        /*
+           Enable everything again
+        */
 
-        setThinkingState(false);
+        zoyaInput.disabled =
+            false;
+
+
+        sendButton.disabled =
+            false;
+
+
+        micButton.disabled =
+            false;
+
 
         zoyaInput.focus();
 
@@ -1698,34 +2346,20 @@ async function askZoya(question){
 
 
 /* =========================================================
-   FORM SUBMISSION
+   QUICK QUESTION
 ========================================================= */
 
-zoyaForm.addEventListener(
+function askQuick(
+    question
+) {
 
-    "submit",
-
-    function(event){
-
-        event.preventDefault();
-
-
-        const question =
-            zoyaInput.value.trim();
+    zoyaInput.value =
+        question;
 
 
-        if(!question){
+    sendMessage();
 
-            return;
-
-        }
-
-
-        askZoya(question);
-
-    }
-
-);
+}
 
 
 /* =========================================================
@@ -1736,16 +2370,16 @@ zoyaInput.addEventListener(
 
     "keydown",
 
-    function(event){
+    function(event) {
 
-        if(
-            event.key === "Enter" &&
-            !event.shiftKey
-        ){
+
+        if (
+            event.key === "Enter"
+        ) {
 
             event.preventDefault();
 
-            zoyaForm.requestSubmit();
+            sendMessage();
 
         }
 
@@ -1753,36 +2387,7 @@ zoyaInput.addEventListener(
 
 );
 
-
-/* =========================================================
-   INITIAL FOCUS
-========================================================= */
-
-window.addEventListener(
-
-    "load",
-
-    function(){
-
-        setTimeout(
-
-            function(){
-
-                zoyaInput.focus();
-
-            },
-
-            500
-
-        );
-
-    }
-
-);
-
 </script>
 
-
 </body>
-
 </html>
