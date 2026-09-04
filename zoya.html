@@ -1,1 +1,977 @@
 
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Zoya — PrvnNotes</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =====================================================
+   ZOYA — PRVN NOTES
+===================================================== */
+
+.zoya-page{
+    min-height:75vh;
+    padding-bottom:100px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.zoya-intro{
+    max-width:760px;
+    margin-top:30px;
+}
+
+.zoya-intro p{
+    font-size:17px;
+    line-height:1.8;
+    opacity:.72;
+}
+
+.zoya-name{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-top:12px;
+}
+
+.zoya-dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:currentColor;
+    box-shadow:0 0 0 7px rgba(255,255,255,.04);
+    animation:zoyaPulse 2.2s infinite;
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+.zoya-chat{
+
+    max-width:850px;
+
+    margin:60px auto 0;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    background:rgba(255,255,255,.025);
+
+    overflow:hidden;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.16);
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:zoyaAppear .8s .2s ease forwards;
+}
+
+
+/* =====================================================
+   CHAT TOP
+===================================================== */
+
+.zoya-chat-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:20px 24px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.zoya-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:11px;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+
+    opacity:.6;
+}
+
+.zoya-status-dot{
+
+    width:7px;
+
+    height:7px;
+
+    border-radius:50%;
+
+    background:currentColor;
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.zoya-messages{
+
+    min-height:390px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+
+    padding:30px 25px;
+
+    scroll-behavior:smooth;
+}
+
+
+/* message row */
+
+.zoya-message{
+
+    display:flex;
+
+    margin-bottom:22px;
+
+    animation:messageIn .4s ease;
+}
+
+
+/* Zoya */
+
+.zoya-message.zoya{
+
+    justify-content:flex-start;
+}
+
+
+/* visitor */
+
+.zoya-message.user{
+
+    justify-content:flex-end;
+}
+
+
+/* bubbles */
+
+.zoya-bubble{
+
+    max-width:70%;
+
+    padding:14px 17px;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* Zoya bubble */
+
+.zoya-message.zoya .zoya-bubble{
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.035);
+}
+
+
+/* User bubble */
+
+.zoya-message.user .zoya-bubble{
+
+    background:rgba(255,255,255,.08);
+
+    text-align:left;
+}
+
+
+/* small name */
+
+.zoya-label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    opacity:.45;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.zoya-input-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+
+.zoya-input{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:15px 16px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    outline:none;
+
+    background:rgba(255,255,255,.025);
+
+    color:inherit;
+
+    font:inherit;
+
+    font-size:14px;
+
+    transition:border-color .25s ease;
+}
+
+
+.zoya-input:focus{
+
+    border-color:rgba(255,255,255,.28);
+
+}
+
+
+.zoya-input::placeholder{
+
+    color:inherit;
+
+    opacity:.35;
+}
+
+
+.zoya-send{
+
+    width:50px;
+
+    height:50px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.05);
+
+    color:inherit;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:
+
+        transform .25s ease,
+
+        background .25s ease,
+
+        border-color .25s ease;
+}
+
+
+.zoya-send:hover{
+
+    transform:translateX(3px);
+
+    background:rgba(255,255,255,.10);
+
+    border-color:rgba(255,255,255,.25);
+
+}
+
+
+/* =====================================================
+   QUICK QUESTIONS
+===================================================== */
+
+.zoya-quick{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    padding:0 25px 22px;
+}
+
+
+.zoya-quick button{
+
+    padding:8px 12px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    background:transparent;
+
+    color:inherit;
+
+    font:inherit;
+
+    font-size:11px;
+
+    opacity:.55;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+
+.zoya-quick button:hover{
+
+    opacity:1;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+
+/* =====================================================
+   TYPING
+===================================================== */
+
+.typing{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:5px 2px;
+}
+
+
+.typing span{
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:currentColor;
+
+    opacity:.35;
+
+    animation:typingDot 1.2s infinite;
+}
+
+
+.typing span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:.3s;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes zoyaAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes messageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes typingDot{
+
+    0%,100%{
+        transform:translateY(0);
+        opacity:.25;
+    }
+
+    50%{
+        transform:translateY(-4px);
+        opacity:.8;
+    }
+
+}
+
+
+@keyframes zoyaPulse{
+
+    0%,100%{
+        opacity:.45;
+        transform:scale(.9);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .zoya-chat{
+        margin-top:45px;
+    }
+
+    .zoya-messages{
+        min-height:350px;
+        padding:22px 17px;
+    }
+
+    .zoya-bubble{
+        max-width:84%;
+    }
+
+    .zoya-input-area{
+        padding:10px;
+    }
+
+    .zoya-input{
+        padding:13px;
+    }
+
+    .zoya-send{
+        width:46px;
+        height:46px;
+    }
+
+    .zoya-quick{
+        padding:0 17px 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="site-nav">
+
+<div class="nav-inner">
+
+<a class="logo" href="index.html">
+PRAVEEN SHARMA
+</a>
+
+<nav class="nav-links">
+
+<a href="index.html">Home</a>
+
+<a href="who-am-i.html">Who Am I?</a>
+
+<a href="explore.html">Explore</a>
+
+<a href="kaam-dhandha.html">Kaam-Dhandha</a>
+
+<a href="connect.html">Let's Connect</a>
+
+<a class="active" href="zoya.html">Zoya</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+<section class="page zoya-page">
+
+
+<a class="back" href="index.html">
+← Back home
+</a>
+
+
+<div class="eyebrow">
+MEET ZOYA
+</div>
+
+
+<h1>
+Ask<br>
+<em>Zoya.</em>
+</h1>
+
+
+<div class="zoya-name">
+
+<div class="zoya-dot"></div>
+
+<p>
+Praveen's favourite person to ask about Praveen.
+</p>
+
+</div>
+
+
+<div class="zoya-intro">
+
+<p>
+She knows quite a lot about him.
+Probably more than you need to know.
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHAT BOX
+===================================================== -->
+
+<div class="zoya-chat">
+
+
+<div class="zoya-chat-head">
+
+<strong>
+Zoya
+</strong>
+
+
+<div class="zoya-status">
+
+<span class="zoya-status-dot"></span>
+
+Online
+
+</div>
+
+</div>
+
+
+
+<!-- MESSAGES -->
+
+<div
+class="zoya-messages"
+id="zoyaMessages"
+>
+
+
+<div class="zoya-message zoya">
+
+<div class="zoya-bubble">
+
+<span class="zoya-label">
+Zoya
+</span>
+
+Hi! I'm Zoya. 😊
+
+I know quite a lot about Praveen.
+
+Ask me something about him.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- QUICK QUESTIONS -->
+
+<div class="zoya-quick">
+
+<button onclick="askZoya('Who is Praveen?')">
+Who is Praveen?
+</button>
+
+<button onclick="askZoya('What does Praveen do?')">
+What does he do?
+</button>
+
+<button onclick="askZoya('Where is Praveen from?')">
+Where is he from?
+</button>
+
+<button onclick="askZoya('Does Praveen like wrestling?')">
+Does he like wrestling?
+</button>
+
+</div>
+
+
+
+<!-- INPUT -->
+
+<form
+class="zoya-input-area"
+id="zoyaForm"
+>
+
+<input
+class="zoya-input"
+id="zoyaInput"
+type="text"
+autocomplete="off"
+placeholder="Ask me about Praveen..."
+>
+
+<button
+class="zoya-send"
+type="submit"
+aria-label="Send"
+>
+→
+</button>
+
+</form>
+
+
+</div>
+
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+A little corner of the internet by Praveen Sharma ·
+
+<span data-year></span>
+
+</div>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =====================================================
+   TEMPORARY ZOYA BRAIN
+   AI CONNECTION COMES NEXT
+===================================================== */
+
+const zoyaMessages =
+document.getElementById("zoyaMessages");
+
+const zoyaInput =
+document.getElementById("zoyaInput");
+
+const zoyaForm =
+document.getElementById("zoyaForm");
+
+
+function addMessage(text,type){
+
+    const message =
+    document.createElement("div");
+
+    message.className =
+    "zoya-message " + type;
+
+
+    const bubble =
+    document.createElement("div");
+
+    bubble.className =
+    "zoya-bubble";
+
+
+    const label =
+    document.createElement("span");
+
+    label.className =
+    "zoya-label";
+
+    label.textContent =
+    type === "zoya"
+        ? "Zoya"
+        : "You";
+
+
+    bubble.appendChild(label);
+
+
+    const content =
+    document.createElement("span");
+
+    content.textContent =
+    text;
+
+
+    bubble.appendChild(content);
+
+    message.appendChild(bubble);
+
+    zoyaMessages.appendChild(message);
+
+
+    zoyaMessages.scrollTop =
+    zoyaMessages.scrollHeight;
+
+}
+
+
+function showTyping(){
+
+    const message =
+    document.createElement("div");
+
+    message.className =
+    "zoya-message zoya";
+
+    message.id =
+    "zoyaTyping";
+
+
+    message.innerHTML = `
+
+        <div class="zoya-bubble">
+
+            <span class="zoya-label">
+                Zoya
+            </span>
+
+            <div class="typing">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    zoyaMessages.appendChild(message);
+
+    zoyaMessages.scrollTop =
+    zoyaMessages.scrollHeight;
+
+}
+
+
+function removeTyping(){
+
+    const typing =
+    document.getElementById("zoyaTyping");
+
+    if(typing){
+        typing.remove();
+    }
+
+}
+
+
+/* Temporary responses */
+
+function getTemporaryAnswer(question){
+
+    const q =
+    question.toLowerCase();
+
+
+    if(
+        q.includes("who is praveen") ||
+        q.includes("who's praveen")
+    ){
+
+        return "He's Praveen. HR by profession, curious by default, and a professional overthinker. 😄";
+
+    }
+
+
+    if(
+        q.includes("what does praveen do") ||
+        q.includes("what does he do") ||
+        q.includes("profession")
+    ){
+
+        return "He's in HR. That's the short answer. 😌";
+
+    }
+
+
+    if(
+        q.includes("where is praveen") ||
+        q.includes("where is he from") ||
+        q.includes("from")
+    ){
+
+        return "He's born and brought up in Mumbai. His roots are in Darbhanga, Bihar.";
+
+    }
+
+
+    if(
+        q.includes("wrestling") ||
+        q.includes("wwe") ||
+        q.includes("aew")
+    ){
+
+        return "Yes, he likes professional wrestling. Mostly for the storytelling. He'll happily explain the difference if you let him. 😂";
+
+    }
+
+
+    if(
+        q.includes("overthink")
+    ){
+
+        return "Oh, absolutely. He has basically done a Master's in it. 🙄";
+
+    }
+
+
+    return "Hmm... he hasn't told me that one yet. You should ask him. 😊";
+
+}
+
+
+function askZoya(question){
+
+    if(!question.trim()){
+        return;
+    }
+
+
+    addMessage(question,"user");
+
+    showTyping();
+
+
+    setTimeout(function(){
+
+        removeTyping();
+
+        addMessage(
+            getTemporaryAnswer(question),
+            "zoya"
+        );
+
+    },700);
+
+}
+
+
+zoyaForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        const question =
+        zoyaInput.value.trim();
+
+
+        if(!question){
+            return;
+        }
+
+
+        zoyaInput.value = "";
+
+        askZoya(question);
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
