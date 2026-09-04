@@ -1,22 +1,532 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Who Am I? — Praveen Sharma</title><link rel="stylesheet" href="style.css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Who Am I? — Praveen Sharma</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* Simple page animations */
+
+.story,
+.family,
+.wrestling,
+.final-thought {
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+.interest {
+    display:inline-block;
+    transition:transform .25s ease, opacity .25s ease;
+}
+
+.interest:hover {
+    transform:translateY(-3px);
+    opacity:.7;
+}
+
+.big-thought {
+    font-style:italic;
+}
+
+</style>
+
 </head>
+
+
 <body>
-<header class="site-nav"><div class="nav-inner">
-<a class="logo" href="index.html">PRAVEEN SHARMA</a>
+
+<header class="site-nav">
+
+<div class="nav-inner">
+
+<a class="logo" href="index.html">
+PRAVEEN SHARMA
+</a>
+
 <nav class="nav-links">
-<a href="index.html">Home</a><a href="who-am-i.html">Who Am I?</a><a href="explore.html">Explore</a><a href="kaam-dhandha.html">Kaam-Dhandha</a><a href="connect.html">Let's Connect</a>
-</nav></div></header>
+
+<a href="index.html">Home</a>
+
+<a class="active" href="who-am-i.html">
+Who Am I?
+</a>
+
+<a href="explore.html">
+Explore
+</a>
+
+<a href="kaam-dhandha.html">
+Kaam-Dhandha
+</a>
+
+<a href="connect.html">
+Let's Connect
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
 <main class="container">
-<section class="page"><a class="back" href="index.html">← Back home</a>
-<div class="eyebrow">Who Am I?</div><h1>A little context<br><em>before you scroll.</em></h1>
-<p class="page-lead">Born and brought up in Mumbai, with roots in Darbhanga, Bihar. Professionally, I work in HR. Personally, I collect interests like tabs in a browser.</p>
-<div class="story"><h3>So, what am I actually?</h3><p>HR by profession. Curious by default. I like people, conversations, stories and creating things. Sometimes I write. Sometimes I click. Sometimes I paint. Sometimes I write a rap that should probably never leave my Notes app.</p><p>And these days, I like playing with AI — because apparently my existing hobbies weren't enough.</p></div>
+
+<section class="page">
+
+<a class="back" href="index.html">
+← Back home
+</a>
+
+
+<div class="eyebrow">
+WHO AM I?
+</div>
+
+
+<h1>
+So… who is<br>
+<em>Praveen?</em>
+</h1>
+
+
+<p class="page-lead">
+
+I'm an HR professional by profession,
+but that's probably the easiest answer.
+
+I'm someone who is constantly curious about
+people, stories, ideas and the wonderfully
+unpredictable things life throws at us.
+
+</p>
+
+
+
+<!-- FAMILY -->
+
+<div class="family">
+
+<h3>
+The people who made me, me.
+</h3>
+
+<p>
+
+Born and brought up in <strong>Mumbai</strong>,
+with my roots in <strong>Darbhanga, Bihar</strong>,
+I've always had a little bit of both worlds around me.
+
+The fast pace of Mumbai.
+
+And the connection to where my family comes from.
+
+</p>
+
+<p>
+
+I grew up in a family of four —
+<strong>my father, my mother, my sister and me.</strong>
+
+</p>
+
+<p>
+
+My sister is now in college,
+slowly starting to look at the world
+with her own eyes.
+
+Which is slightly strange...
+
+because I still remember when she was
+the little sister.
+
+Apparently, time doesn't take our permission
+before moving on.
+
+</p>
+
+</div>
+
+
+
+<!-- EDUCATION -->
+
+<div class="story">
+
+<h3>
+The Mumbai chapter.
+</h3>
+
+<p>
+
+My education happened entirely in Mumbai.
+
+And let's just say...
+
+<strong>I attended college.</strong>
+
+I also occasionally attended places
+that were definitely not college.
+
+</p>
+
+<p>
+
+I did my share of bunking,
+figuring things out, changing plans,
+making questionable decisions and somehow
+still making it through.
+
+</p>
+
+<p>
+
+Looking back, education taught me things.
+
+But life outside the classroom probably
+taught me a little more.
+
+People, conversations, mistakes,
+experiences and simply figuring out
+what I wanted to do.
+
+</p>
+
+</div>
+
+
+
+<!-- PROFESSIONAL -->
+
+<div class="story">
+
+<h3>
+The professional me.
+</h3>
+
+<p>
+
+My career didn't start with a perfectly
+designed five-year plan.
+
+I started somewhere completely different,
+moved into recruitment, took a break,
+came back, and eventually found myself
+building a career in <strong>HR and Talent Acquisition.</strong>
+
+</p>
+
+<p>
+
+Along the way I've learned about hiring,
+people, communication, responsibility,
+leadership and the wonderfully complicated
+world of workplaces.
+
+</p>
+
+<p class="big-thought">
+
+But the biggest thing I've learned?
+
+<strong>
+People are rarely as simple as their CVs
+make them look.
+</strong>
+
+</p>
+
+<p>
+
+And that's probably one of the reasons
+I enjoy HR.
+
+</p>
+
+</div>
+
+
+
+<!-- CREATIVE SIDE -->
+
+<div class="story">
+
+<h3>
+And then there's the other me.
+</h3>
+
+<p>
+
+I write.
+
+<span class="interest">Not because I'm a writer.</span>
+
+</p>
+
+<p>
+
+I click pictures.
+
+<span class="interest">Not because I'm a photographer.</span>
+
+</p>
+
+<p>
+
+I write raps.
+
+I paint sometimes.
+
+I experiment with AI.
+
+And I have thoughts at extremely
+inconvenient hours.
+
+</p>
+
+<p>
+
+I've also completed my
+<strong>Master's in Overthinking.</strong>
+
+</p>
+
+<p>
+
+<em>
+IST — International School of Thinking.
+</em>
+
+</p>
+
+<p>
+
+No certificate.<br>
+
+No attendance requirement.<br>
+
+Unfortunately, the course is still ongoing.
+
+</p>
+
+</div>
+
+
+
+<!-- WRESTLING -->
+
+<div class="wrestling">
+
+<h3>
+Professional wrestling.
+</h3>
+
+<p>
+
+Not because I love violence.
+
+<strong>
+I love storytelling.
+</strong>
+
+</p>
+
+<p>
+
+The entrances.
+
+The characters.
+
+The rivalries.
+
+The betrayals.
+
+The comebacks.
+
+The ridiculous moments.
+
+And those moments that somehow make you
+care about two people pretending to fight
+in a ring.
+
+</p>
+
+<p>
+
+Whether it's WWE, AEW, AAA or anywhere else,
+what interests me is the storytelling behind it.
+
+</p>
+
+<p>
+
+Because when it's done right,
+professional wrestling isn't just about
+what happens inside the ring.
+
+It's about making you care about
+<strong>why</strong> it happens.
+
+</p>
+
+<p>
+
+And I think that's what I like about
+stories in general.
+
+</p>
+
+</div>
+
+
+
+<!-- FINAL -->
+
+<div class="final-thought">
+
+<h3>
+So… who am I really?
+</h3>
+
+<p>
+
+Probably someone still figuring that out.
+
+</p>
+
+<p>
+
+I'm an HR professional.
+
+A son.
+
+A brother.
+
+A guy from Mumbai with roots in Darbhanga.
+
+Someone who likes stories, photographs,
+ideas, wrestling, music, writing and
+occasionally disappearing into his own thoughts.
+
+</p>
+
+<p>
+
+Some things about me are professional.
+
+Some are creative.
+
+Some are completely random.
+
+And some probably make sense only inside my head.
+
+</p>
+
+<p class="big-thought">
+
+That's why this website exists.
+
+<br><br>
+
+Not to show you just what I do.
+
+<br>
+
+But to show you
+<strong>the different things that make me, me.</strong>
+
+</p>
+
+<br>
+
+<h3>
+
+You can know my designation in five seconds.
+
+<br>
+
+<em>Knowing me might take a little longer.</em>
+
+</h3>
+
+</div>
+
+
 </section>
+
 </main>
-<footer class="footer"><div class="container">A little corner of the internet by Praveen Sharma · <span data-year></span></div></footer>
+
+
+<footer class="footer">
+
+<div class="container">
+
+A little corner of the internet by Praveen Sharma ·
+
+<span data-year></span>
+
+</div>
+
+</footer>
+
+
 <script src="script.js"></script>
-</body></html>
+
+
+<script>
+
+/* Reveal sections as you scroll */
+
+const sections = document.querySelectorAll(
+".story, .family, .wrestling, .final-thought"
+);
+
+const observer = new IntersectionObserver(
+
+(entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+},
+
+{
+threshold:0.12
+}
+
+);
+
+sections.forEach(section => {
+observer.observe(section);
+});
+
+</script>
+
+
+</body>
+
+</html>
