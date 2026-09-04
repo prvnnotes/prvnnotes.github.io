@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Praveen Sharma — More Than a Job Title</title>
 
@@ -11,322 +11,267 @@
 
 <style>
 
-/* =====================================================
-   PERSONAL HOMEPAGE POLISH
-===================================================== */
-
-:root{
-    --nav-bg:#08111f;
-    --text:#edf2f7;
-    --muted:#91a0b3;
-    --accent:#8db4d9;
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* =========================================================
+   PERSONALITY NAVIGATION
+   ========================================================= */
 
 .site-nav{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(7,17,30,.94);
     backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    -webkit-backdrop-filter:blur(14px);
 }
 
 .nav-inner{
-    min-height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-
-/* Logo */
-
-.logo{
-    text-decoration:none;
-    color:#eef3f8;
-    font-size:14px;
-    font-weight:700;
-    letter-spacing:1.6px;
-    transition:.3s ease;
-}
-
-.logo:hover{
-    letter-spacing:2.2px;
-    opacity:.85;
-}
-
-
-/* Navigation */
-
 .nav-links{
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:8px;
 }
 
 .nav-links a{
     position:relative;
-    color:#b8c2cf;
-    text-decoration:none;
-    font-size:14px;
+    display:inline-flex;
+    align-items:center;
+    padding:9px 13px;
+
+    border:1px solid transparent;
+    border-radius:12px;
+
     transition:
-        color .25s ease,
-        transform .25s ease;
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        color .25s ease;
 }
 
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-8px;
-    width:0;
-    height:1px;
-    background:#dce8f5;
-    transition:width .3s ease;
-}
+/* little personality when hovering */
 
 .nav-links a:hover{
-    color:#ffffff;
-    transform:translateY(-2px);
+    transform:translateY(-3px) rotate(-1deg);
+
+    background:rgba(255,255,255,.055);
+
+    border-color:rgba(255,255,255,.12);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.18),
+        0 0 18px rgba(150,190,255,.05);
 }
 
-.nav-links a:hover::after{
-    width:100%;
+/* alternating tiny movement */
+
+.nav-links a:nth-child(2):hover{
+    transform:translateY(-3px) rotate(1deg);
 }
 
+.nav-links a:nth-child(3):hover{
+    transform:translateY(-3px) rotate(-2deg);
+}
 
-/* Small personality dot */
+.nav-links a:nth-child(4):hover{
+    transform:translateY(-3px) rotate(1deg);
+}
 
-.nav-links a:last-child::before{
+.nav-links a:nth-child(5):hover{
+    transform:translateY(-3px) rotate(-1deg);
+}
+
+/* Zoya gets her own personality */
+
+.nav-links a.zoya-link{
+    margin-left:4px;
+
+    border-color:rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.045);
+
+    box-shadow:
+        0 0 0 rgba(255,255,255,0);
+}
+
+.nav-links a.zoya-link::before{
     content:"";
-    display:inline-block;
-    width:5px;
-    height:5px;
+    width:6px;
+    height:6px;
+
     margin-right:7px;
-    margin-bottom:2px;
+
     border-radius:50%;
-    background:#8db4d9;
-    box-shadow:0 0 10px rgba(141,180,217,.7);
-    animation:navPulse 2.5s infinite;
+
+    background:#8ec5ff;
+
+    box-shadow:0 0 10px rgba(142,197,255,.75);
+
+    animation:zoyaPulse 2s infinite;
 }
 
-@keyframes navPulse{
+.nav-links a.zoya-link:hover{
+    background:rgba(142,197,255,.09);
+    border-color:rgba(142,197,255,.25);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2),
+        0 0 20px rgba(142,197,255,.08);
+}
+
+@keyframes zoyaPulse{
 
     0%,100%{
-        opacity:.45;
+        opacity:.5;
         transform:scale(.8);
     }
 
     50%{
         opacity:1;
-        transform:scale(1.15);
+        transform:scale(1.2);
     }
 
 }
 
 
-/* =====================================================
-   HERO PHOTO
-===================================================== */
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
 
 .profile-wrap{
     position:relative;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    min-height:430px;
+
+    min-height:520px;
 }
 
+/*
+   No orbit lines.
 
-/* IMPORTANT:
-   Force the thinking photo to remain circular.
+   Instead the image sits inside a soft floating frame.
 */
 
+.profile-wrap::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,150,200,.10) 0%,
+            rgba(110,150,200,.04) 42%,
+            transparent 70%
+        );
+
+    filter:blur(1px);
+
+    animation:softFloat 7s ease-in-out infinite;
+}
+
 .profile{
-    position:relative !important;
 
-    width:320px !important;
-    height:320px !important;
+    position:relative;
+    z-index:2;
 
-    max-width:none !important;
+    width:min(430px, 90%);
 
-    object-fit:cover !important;
+    aspect-ratio:1 / 1;
 
-    border-radius:50% !important;
+    object-fit:cover;
 
-    display:block !important;
+    border-radius:50%;
 
-    z-index:3;
+    /*
+      This gives the image a quiet,
+      editorial / personal feel.
+    */
 
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.08);
 
     box-shadow:
-        0 0 0 10px rgba(255,255,255,.025),
-        0 25px 70px rgba(0,0,0,.35);
+        0 30px 80px rgba(0,0,0,.30),
+        0 0 50px rgba(120,160,210,.07);
+
+    animation:
+        profileFloat 6s ease-in-out infinite;
 
     transition:
-        transform .7s cubic-bezier(.2,.8,.2,1),
+        transform .5s ease,
         box-shadow .5s ease;
 }
 
 .profile:hover{
-    transform:scale(1.025) rotate(.4deg);
+
+    transform:
+        scale(1.025)
+        rotate(1deg);
 
     box-shadow:
-        0 0 0 10px rgba(255,255,255,.035),
-        0 30px 80px rgba(0,0,0,.42);
+        0 35px 90px rgba(0,0,0,.35),
+        0 0 70px rgba(120,160,210,.10);
 }
 
+@keyframes profileFloat{
 
-/* =====================================================
-   FLOATING THOUGHTS
-   No orbit.
-   No circles.
-   Just thoughts appearing around him.
-===================================================== */
-
-.thought-words{
-    position:absolute;
-    inset:-85px;
-
-    pointer-events:none;
-
-    z-index:5;
-}
-
-.thought-words span{
-    position:absolute;
-
-    white-space:nowrap;
-
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:2px;
-
-    color:rgba(225,234,243,.68);
-
-    opacity:0;
-
-    animation:thoughtSequence 10s infinite;
-
-    transition:.3s ease;
-}
-
-
-/* Positions */
-
-.thought-words span:nth-child(1){
-    top:8%;
-    left:34%;
-    animation-delay:0s;
-}
-
-.thought-words span:nth-child(2){
-    top:18%;
-    right:8%;
-    animation-delay:1.6s;
-}
-
-.thought-words span:nth-child(3){
-    top:48%;
-    left:2%;
-    animation-delay:3.2s;
-}
-
-.thought-words span:nth-child(4){
-    top:53%;
-    right:1%;
-    animation-delay:4.8s;
-}
-
-.thought-words span:nth-child(5){
-    bottom:12%;
-    left:27%;
-    animation-delay:6.4s;
-}
-
-.thought-words span:nth-child(6){
-    bottom:9%;
-    right:25%;
-    animation-delay:8s;
-}
-
-
-/* Animation */
-
-@keyframes thoughtSequence{
-
-    0%{
-        opacity:0;
-        transform:translateY(10px) scale(.94);
+    0%,100%{
+        transform:translateY(0);
     }
 
-    7%{
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+@keyframes softFloat{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.7;
+    }
+
+    50%{
+        transform:scale(1.06);
         opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-    18%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-    27%{
-        opacity:0;
-        transform:translateY(-8px) scale(.98);
-    }
-
-    100%{
-        opacity:0;
     }
 
 }
 
 
-/* =====================================================
-   HERO TEXT PERSONALITY
-===================================================== */
+/* =========================================================
+   HERO TEXT LITTLE MOVEMENT
+   ========================================================= */
 
-.eyebrow{
-    letter-spacing:3px;
-    font-size:10px;
+.hero .eyebrow{
+    animation:fadeUp .8s ease both;
 }
 
 .hero h1{
-    line-height:.95;
+    animation:fadeUp .9s ease .08s both;
 }
 
-.hero h1 em{
-    font-style:italic;
+.hero .intro{
+    animation:fadeUp 1s ease .16s both;
 }
 
-.intro span{
-    display:block;
-}
-
-
-/* =====================================================
-   LITTLE MOVING DETAILS
-===================================================== */
-
-.reveal{
-    animation:softReveal .9s ease both;
-}
-
-.delay{
-    animation-delay:.15s;
-}
-
-@keyframes softReveal{
+@keyframes fadeUp{
 
     from{
         opacity:0;
-        transform:translateY(18px);
+        transform:translateY(15px);
     }
 
     to{
@@ -337,102 +282,297 @@
 }
 
 
-/* =====================================================
-   CARDS
-===================================================== */
+/* =========================================================
+   PERSONALITY CARDS
+   ========================================================= */
 
 .card{
+
     transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease;
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+
+    transform:
+        translateY(-7px)
+        rotate(-.5deg);
+
+    border-color:rgba(255,255,255,.15);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.20);
 }
 
 
-/* =====================================================
+/* =========================================================
+   TALK TO ZOYA SECTION
+   ========================================================= */
+
+.zoya-invite{
+
+    position:relative;
+
+    margin-top:70px;
+    margin-bottom:40px;
+
+    padding:55px 50px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.16);
+}
+
+/* soft glow behind the section */
+
+.zoya-invite::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    right:-100px;
+    top:-120px;
+
+    border-radius:50%;
+
+    background:rgba(130,180,255,.08);
+
+    filter:blur(50px);
+
+    pointer-events:none;
+}
+
+.zoya-content{
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
+}
+
+.zoya-copy{
+
+    max-width:650px;
+}
+
+.zoya-label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    opacity:.65;
+}
+
+.zoya-dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#9bcaff;
+
+    box-shadow:
+        0 0 12px rgba(155,202,255,.8);
+
+    animation:zoyaPulse 2s infinite;
+}
+
+.zoya-invite h2{
+
+    margin:0 0 14px;
+
+    font-size:clamp(36px,5vw,62px);
+
+    line-height:1.02;
+}
+
+.zoya-invite h2 em{
+
+    font-family:"Playfair Display",serif;
+
+    font-weight:500;
+}
+
+.zoya-invite p{
+
+    max-width:570px;
+
+    margin:0;
+
+    line-height:1.75;
+
+    opacity:.72;
+
+}
+
+
+/* Zoya button */
+
+.zoya-button{
+
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-shrink:0;
+
+    padding:15px 20px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    background:rgba(255,255,255,.05);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.zoya-button:hover{
+
+    transform:
+        translateY(-4px)
+        rotate(-1deg);
+
+    background:rgba(255,255,255,.09);
+
+    border-color:rgba(155,202,255,.30);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.20),
+        0 0 25px rgba(155,202,255,.07);
+}
+
+.zoya-button .arrow{
+
+    font-size:20px;
+
+    transition:
+        transform .25s ease;
+}
+
+.zoya-button:hover .arrow{
+
+    transform:
+        translate(3px,-3px);
+}
+
+
+/* =========================================================
    MOBILE
-===================================================== */
+   ========================================================= */
 
 @media(max-width:800px){
 
     .nav-inner{
-        min-height:64px;
-    }
-
-    .logo{
-        font-size:12px;
+        flex-direction:column;
+        gap:12px;
+        padding-bottom:12px;
     }
 
     .nav-links{
-        gap:14px;
+
+        width:100%;
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+        gap:5px;
     }
 
     .nav-links a{
-        font-size:12px;
+
+        padding:7px 9px;
+
+        font-size:13px;
     }
 
-    .nav-links a:nth-child(3){
-        display:none;
+    .hero{
+
+        gap:30px;
     }
 
     .profile-wrap{
-        min-height:360px;
+
+        min-height:380px;
+    }
+
+    .profile-wrap::before{
+
+        width:330px;
+        height:330px;
     }
 
     .profile{
-        width:260px !important;
-        height:260px !important;
+
+        width:330px;
     }
 
-    .thought-words{
-        inset:-50px;
+    .zoya-invite{
+
+        padding:35px 25px;
     }
 
-    .thought-words span{
-        font-size:8px;
-        letter-spacing:1.4px;
+    .zoya-content{
+
+        flex-direction:column;
+
+        align-items:flex-start;
     }
 
-}
+    .zoya-button{
 
+        width:100%;
 
-@media(max-width:520px){
-
-    .nav-links{
-        gap:11px;
-    }
-
-    .nav-links a{
-        font-size:11px;
-    }
-
-    .nav-links a:nth-child(2){
-        display:none;
-    }
-
-    .profile{
-        width:230px !important;
-        height:230px !important;
-    }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation:none !important;
-        transition:none !important;
+        justify-content:center;
     }
 
 }
@@ -445,18 +585,17 @@
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      NAVIGATION
-===================================================== -->
+     ========================================================= -->
 
 <header class="site-nav">
 
-<div class="container nav-inner">
+<div class="nav-inner">
 
 <a class="logo" href="index.html">
 PRAVEEN SHARMA
 </a>
-
 
 <nav class="nav-links">
 
@@ -465,19 +604,23 @@ Home
 </a>
 
 <a href="who-am-i.html">
-A Bit About Me
+Who Am I?
 </a>
 
 <a href="explore.html">
-Things I Like
+Explore
 </a>
 
 <a href="kaam-dhandha.html">
-The Work Stuff
+Kaam-Dhandha
 </a>
 
 <a href="connect.html">
-Say Hello
+Let's Connect
+</a>
+
+<a href="zoya.html" class="zoya-link">
+Zoya
 </a>
 
 </nav>
@@ -488,29 +631,35 @@ Say Hello
 
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
 
 <main class="container">
 
 
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
 <section class="hero">
 
 
-<!-- ================= LEFT ================= -->
-
 <div class="reveal">
 
-
 <div class="eyebrow">
+
 WELCOME TO MY LITTLE CORNER OF THE INTERNET
+
 </div>
 
 
 <h1>
+
 Praveen<br>
+
 <em>Sharma.</em>
+
 </h1>
 
 
@@ -521,75 +670,49 @@ HR by profession.
 </span>
 
 <span>
+
 Loves to write stories but
 <i>not a storyteller.</i>
+
 </span>
 
 <span>
+
 Loves to click but
 <i>not a photographer.</i>
+
 </span>
 
 <span>
-Plays with AI, paints, writes —
+
+Writes raps, paints, plays with AI —
 and has a Master's degree in
 <i>Overthinking.</i>
+
 </span>
 
 <span class="location">
+
 Born & brought up in Mumbai.
+
 Roots somewhere around Darbhanga.
+
 </span>
 
 </div>
 
-
 </div>
 
 
-
-<!-- ================= RIGHT ================= -->
+<!-- IMAGE -->
 
 <div class="profile-wrap reveal delay">
 
-
 <img
 class="profile"
-src="Thinking.jpeg"
-alt="Praveen Sharma thinking"
+src="thinking.jpeg"
+alt="Praveen Sharma"
 >
-
-
-<!-- ================= THOUGHTS ================= -->
-
-<div class="thought-words">
-
-<span>
-OVERTHINKING
-</span>
-
-<span>
-WORK
-</span>
-
-<span>
-WRITING
-</span>
-
-<span>
-THOUGHTS
-</span>
-
-<span>
-LOVE
-</span>
-
-<span>
-WWE
-</span>
-
-</div>
-
 
 </div>
 
@@ -598,154 +721,186 @@ WWE
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      MORE THAN A JOB TITLE
-===================================================== -->
+     ========================================================= -->
 
 <section class="section">
 
-
 <div class="section-head">
 
-
 <h2>
+
 More than a<br>
+
 <em>job title.</em>
+
 </h2>
 
 
 <p>
-Work is one part of me.
-The rest lives somewhere between
-a camera roll, random thoughts,
-unfinished stories and too many ideas.
-</p>
 
+Work is one part of me. The rest lives somewhere between
+a camera roll, random thoughts, unfinished stories and
+too many ideas.
+
+</p>
 
 </div>
 
 
 
-<!-- =====================================================
-     EXPLORE
-===================================================== -->
-
 <div class="cards">
 
 
-<a
-class="card"
-href="kaam-dhandha.html"
->
+<a class="card" href="kaam-dhandha.html">
 
-<span class="icon">
-💼
-</span>
+<span class="icon">💼</span>
 
-<span class="num">
-01
-</span>
+<span class="num">01</span>
 
 <h3>
 Kaam-Dhandha
 </h3>
 
 <p>
-HR, people, talent, hiring, career conversations
+
+HR, People, Talent, hiring, career conversations
 and the professional journey that pays the bills.
+
 </p>
 
-<span class="arrow">
-↗
-</span>
+<span class="arrow">↗</span>
 
 </a>
 
 
 
-<a
-class="card"
-href="tasveerien.html"
->
+<a class="card" href="tasveerien.html">
 
-<span class="icon">
-📷
-</span>
+<span class="icon">📷</span>
 
-<span class="num">
-02
-</span>
+<span class="num">02</span>
 
 <h3>
 Tasveerien
 </h3>
 
 <p>
+
 Random clicks, places, people and moments
 that made me stop and look twice.
+
 </p>
 
-<span class="arrow">
-↗
-</span>
+<span class="arrow">↗</span>
 
 </a>
 
 
 
-<a
-class="card"
-href="washroom-thoughts.html"
->
+<a class="card" href="washroom-thoughts.html">
 
-<span class="icon">
-📝
-</span>
+<span class="icon">📝</span>
 
-<span class="num">
-03
-</span>
+<span class="num">03</span>
 
 <h3>
 Washroom Thoughts
 </h3>
 
 <p>
+
 Thoughts that arrive at the most unexpected time.
 
-Don't ask why.
-Just read them.
+Don't ask why. Just read them.
+
 </p>
 
-<span class="arrow">
-↗
-</span>
+<span class="arrow">↗</span>
 
 </a>
 
 
 
-<a
-class="card"
-href="kahaniyaan.html"
->
+<a class="card" href="kahaniyaan.html">
 
-<span class="icon">
-✍️
-</span>
+<span class="icon">✍️</span>
 
-<span class="num">
-04
-</span>
+<span class="num">04</span>
 
 <h3>
 Kahaniyaan
 </h3>
 
 <p>
+
 Stories, ideas, observations and things
 that somehow become words.
+
 </p>
+
+<span class="arrow">↗</span>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TALK TO ZOYA
+     ========================================================= -->
+
+<section class="zoya-invite">
+
+
+<div class="zoya-content">
+
+
+<div class="zoya-copy">
+
+<div class="zoya-label">
+
+<span class="zoya-dot"></span>
+
+ONE MORE THING...
+
+</div>
+
+
+<h2>
+
+You could just<br>
+
+<em>ask Zoya.</em>
+
+</h2>
+
+
+<p>
+
+She's the slightly more curious corner of this website.
+Ask her about Praveen, his work, his interests, the random
+stuff in between — or just say hello.
+
+</p>
+
+</div>
+
+
+
+<a
+class="zoya-button"
+href="zoya.html"
+>
+
+<span>
+Talk to Zoya
+</span>
 
 <span class="arrow">
 ↗
@@ -755,7 +910,6 @@ that somehow become words.
 
 
 </div>
-
 
 </section>
 
@@ -764,15 +918,16 @@ that somehow become words.
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+     ========================================================= -->
 
 <footer class="footer">
 
 <div class="container">
 
 A little corner of the internet by Praveen Sharma ·
+
 <span data-year></span>
 
 </div>
