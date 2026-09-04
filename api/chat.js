@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-    // Handle browser preflight request
+    // Browser preflight request
     if (req.method === "OPTIONS") {
         return res.status(200).end();
     }
@@ -26,17 +26,29 @@ export default async function handler(req, res) {
 
         const { message, history = [] } = req.body || {};
 
+        /*
+        ============================================================
+        VALIDATE MESSAGE
+        ============================================================
+        */
+
         if (!message || typeof message !== "string") {
             return res.status(400).json({
                 error: "Message is required."
             });
         }
 
-        const apiKey = process.env.OPENAI_API_KEY;
+        /*
+        ============================================================
+        GEMINI API KEY
+        ============================================================
+        */
+
+        const apiKey = process.env.GEMINI_API_KEY;
 
         if (!apiKey) {
             return res.status(500).json({
-                error: "OPENAI_API_KEY is not configured on Vercel."
+                error: "GEMINI_API_KEY is not configured on Vercel."
             });
         }
 
@@ -404,21 +416,11 @@ You may receive questions unrelated to Praveen.
 
 For general knowledge questions, answer normally when you know the answer.
 
-For current or time-sensitive information, use web search when available through the model/tool environment.
+For current or time-sensitive information, do not pretend to know something that you cannot verify.
 
 If you don't have reliable current information, say so rather than pretending.
 
-If you search for something, explain it naturally in Zoya's voice.
-
-Example:
-
-User:
-"Who won the latest WWE match?"
-
-Zoya:
-"Okay, I had to check this one because Praveen would absolutely correct me if I guessed 😂. ..."
-
-Do not pretend you searched if you did not.
+Do not claim that you searched the internet unless an actual search tool is available to you.
 
 ============================================================
 LANGUAGE
@@ -467,7 +469,7 @@ You know Praveen.
         ============================================================
         */
 
-        const messages = [];
+        const contents = [];
 
         if (Array.isArray(history)) {
 
@@ -479,9 +481,13 @@ You know Praveen.
                     typeof item.content === "string"
                 ) {
 
-                    messages.push({
-                        role: item.role,
-                        content: item.content
+                    contents.push({
+                        role: item.role === "assistant" ? "model" : "user",
+                        parts: [
+                            {
+                                text: item.content
+                            }
+                        ]
                     });
 
                 }
@@ -490,56 +496,81 @@ You know Praveen.
 
         }
 
-        messages.push({
+        /*
+        ============================================================
+        CURRENT USER MESSAGE
+        ============================================================
+        */
+
+        contents.push({
             role: "user",
-            content: message
+            parts: [
+                {
+                    text: message
+                }
+            ]
         });
 
         /*
         ============================================================
-        OPENAI RESPONSES API
+        GEMINI API
         ============================================================
         */
 
         const response = await fetch(
-            "https://api.openai.com/v1/responses",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
             {
                 method: "POST",
 
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`
+                    "x-goog-api-key": apiKey
                 },
 
                 body: JSON.stringify({
 
-                    model: "gpt-5.6-luna",
+                    systemInstruction: {
+                        parts: [
+                            {
+                                text: zoyaInstructions
+                            }
+                        ]
+                    },
 
-                    instructions: zoyaInstructions,
+                    contents: contents,
 
-                    input: messages
+                    generationConfig: {
+                        temperature: 0.9,
+                        maxOutputTokens: 800
+                    }
 
                 })
             }
         );
 
+        /*
+        ============================================================
+        READ GEMINI RESPONSE
+        ============================================================
+        */
+
         const data = await response.json();
 
         /*
         ============================================================
-        OPENAI ERROR HANDLING
+        GEMINI ERROR HANDLING
         ============================================================
         */
 
         if (!response.ok) {
 
-            console.error("OpenAI API error:", data);
+            console.error("Gemini API error:", data);
 
             return res.status(response.status).json({
 
                 error:
                     data?.error?.message ||
-                    "Zoya couldn't reach the AI right now."
+                    "Zoya couldn't reach Gemini right now."
 
             });
 
@@ -547,32 +578,29 @@ You know Praveen.
 
         /*
         ============================================================
-        EXTRACT RESPONSE TEXT
+        EXTRACT TEXT
         ============================================================
         */
 
         let answer = "";
 
-        if (typeof data.output_text === "string") {
+        if (
+            Array.isArray(data.candidates) &&
+            data.candidates.length > 0
+        ) {
 
-            answer = data.output_text;
+            const candidate = data.candidates[0];
 
-        }
+            if (
+                candidate.content &&
+                Array.isArray(candidate.content.parts)
+            ) {
 
-        if (!answer && Array.isArray(data.output)) {
+                for (const part of candidate.content.parts) {
 
-            for (const item of data.output) {
+                    if (typeof part.text === "string") {
 
-                if (!Array.isArray(item.content)) continue;
-
-                for (const content of item.content) {
-
-                    if (
-                        content.type === "output_text" &&
-                        typeof content.text === "string"
-                    ) {
-
-                        answer += content.text;
+                        answer += part.text;
 
                     }
 
@@ -602,9 +630,7 @@ You know Praveen.
         */
 
         return res.status(200).json({
-
             answer
-
         });
 
     } catch (error) {
