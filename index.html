@@ -1,742 +1,217 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Praveen Sharma — More Than a Job Title</title>
-
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-/* =====================================================
-   THINKING PHOTO + THOUGHT WORDS
-===================================================== */
-
-.profile-wrap{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-
-/* Keep photo perfectly circular */
-
-.profile{
-    position:relative;
-    z-index:3;
-
-    width:310px;
-    height:310px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    display:block;
-
-    border:1px solid rgba(255,255,255,.10);
-
-    box-shadow:
-        0 0 0 10px rgba(255,255,255,.025),
-        0 20px 60px rgba(0,0,0,.20);
-}
-
-
-/* =====================================================
-   THOUGHT WORDS
-===================================================== */
-
-.thought-words{
-
-    position:absolute;
-
-    inset:-85px;
-
-    pointer-events:none;
-
-    z-index:5;
-}
-
-
-/* Every word */
-
-.thought-words span{
-
-    position:absolute;
-
-    display:block;
-
-    white-space:nowrap;
-
-    font-family:inherit;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    color:rgba(235,240,248,.78);
-
-    opacity:0;
-
-    animation:
-        thoughtSequence 9s infinite;
-
-}
-
-
-/* =====================================================
-   WORD POSITIONS
-===================================================== */
-
-.thought-words span:nth-child(1){
-
-    top:8%;
-
-    left:38%;
-
-    animation-delay:0s;
-
-}
-
-
-.thought-words span:nth-child(2){
-
-    top:15%;
-
-    right:15%;
-
-    animation-delay:1.5s;
-
-}
-
-
-.thought-words span:nth-child(3){
-
-    top:48%;
-
-    left:0%;
-
-    animation-delay:3s;
-
-}
-
-
-.thought-words span:nth-child(4){
-
-    top:51%;
-
-    right:0%;
-
-    animation-delay:4.5s;
-
-}
-
-
-.thought-words span:nth-child(5){
-
-    bottom:8%;
-
-    left:30%;
-
-    animation-delay:6s;
-
-}
-
-
-.thought-words span:nth-child(6){
-
-    bottom:7%;
-
-    right:28%;
-
-    animation-delay:7.5s;
-
-}
-
-
-/* =====================================================
-   ONE-BY-ONE ANIMATION
-===================================================== */
-
-@keyframes thoughtSequence{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translateY(12px)
-            scale(.96);
-
-    }
-
-    7%{
-
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-    17%{
-
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-    25%{
-
-        opacity:0;
-
-        transform:
-            translateY(-10px)
-            scale(.98);
-
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translateY(-10px)
-            scale(.98);
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:700px){
-
-    .profile{
-
-        width:250px;
-        height:250px;
-
-    }
-
-    .thought-words{
-
-        inset:-55px;
-
-    }
-
-    .thought-words span{
-
-        font-size:9px;
-
-        letter-spacing:1.5px;
-
-    }
-
-    .thought-words span:nth-child(1){
-
-        top:7%;
-        left:30%;
-
-    }
-
-    .thought-words span:nth-child(2){
-
-        top:17%;
-        right:3%;
-
-    }
-
-    .thought-words span:nth-child(3){
-
-        top:48%;
-        left:-8%;
-
-    }
-
-    .thought-words span:nth-child(4){
-
-        top:51%;
-        right:-8%;
-
-    }
-
-    .thought-words span:nth-child(5){
-
-        bottom:8%;
-        left:20%;
-
-    }
-
-    .thought-words span:nth-child(6){
-
-        bottom:7%;
-        right:18%;
-
-    }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    .thought-words span{
-
-        animation:none;
-
-        opacity:1;
-
-    }
-
-}
-
-</style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
 <header class="site-nav">
+  <div class="nav-inner">
 
-<div class="nav-inner">
+    <a class="logo" href="index.html">PRAVEEN SHARMA</a>
 
-<a class="logo" href="index.html">
-PRAVEEN SHARMA
-</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="who-am-i.html">Who Am I?</a>
+      <a href="explore.html">Explore</a>
+      <a href="kaam-dhandha.html">Kaam-Dhandha</a>
+      <a href="zoya.html">Zoya</a>
+      <a href="connect.html">Let's Connect</a>
+    </nav>
 
-
-<nav class="nav-links">
-
-<a href="index.html">
-Home
-</a>
-
-<a href="who-am-i.html">
-Who Am I?
-</a>
-
-<a href="explore.html">
-Explore
-</a>
-
-<a href="kaam-dhandha.html">
-Kaam-Dhandha
-</a>
-
-<a href="connect.html">
-Let's Connect
-</a>
-
-</nav>
-
-</div>
-
+  </div>
 </header>
 
 
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <main class="container">
-
 
 <section class="hero">
 
+  <div class="reveal">
 
-<!-- ================= LEFT SIDE ================= -->
+    <div class="eyebrow">
+      WELCOME TO MY LITTLE CORNER OF THE INTERNET
+    </div>
 
-<div class="reveal">
+    <h1>
+      Praveen<br>
+      <em>Sharma.</em>
+    </h1>
 
+    <div class="intro">
 
-<div class="eyebrow">
+      <span>HR by profession.</span>
 
-WELCOME TO MY LITTLE CORNER OF THE INTERNET
+      <span>
+        Loves to write stories but <i>not a storyteller.</i>
+      </span>
 
-</div>
+      <span>
+        Loves to click but <i>not a photographer.</i>
+      </span>
 
+      <span>
+        Writes raps, paints, plays with AI —
+        and has a Master's degree in <i>Overthinking.</i>
+      </span>
 
-<h1>
+      <span class="location">
+        Born & brought up in Mumbai.
+        Roots somewhere around Darbhanga.
+      </span>
 
-Praveen<br>
+    </div>
 
-<em>Sharma.</em>
-
-</h1>
-
-
-<div class="intro">
-
-
-<span>
-HR by profession.
-</span>
-
-
-<span>
-
-Loves to write stories but
-<i>not a storyteller.</i>
-
-</span>
-
-
-<span>
-
-Loves to click but
-<i>not a photographer.</i>
-
-</span>
+  </div>
 
 
-<span>
+  <div class="profile-wrap reveal delay">
 
-Plays with AI, paints, writes —
-and has a Master's degree in
-<i>Overthinking.</i>
+    <div class="orbit"></div>
 
-</span>
+    <img
+      class="profile"
+      src="profile.jpg.jpeg"
+      alt="Praveen Sharma"
+    >
 
-
-<span class="location">
-
-Born & brought up in Mumbai.
-Roots somewhere around Darbhanga.
-
-</span>
-
-
-</div>
-
-
-</div>
-
-
-
-<!-- ================= RIGHT SIDE ================= -->
-
-<div class="profile-wrap reveal delay">
-
-
-<img
-class="profile"
-src="Thinking.jpeg"
-alt="Praveen Sharma thinking"
->
-
-
-<!-- =================================================
-     THOUGHTS
-================================================= -->
-
-<div class="thought-words">
-
-
-<span>
-OVERTHINKING
-</span>
-
-
-<span>
-WORK
-</span>
-
-
-<span>
-WRITING
-</span>
-
-
-<span>
-THOUGHTS
-</span>
-
-
-<span>
-LOVE
-</span>
-
-
-<span>
-WWE
-</span>
-
-
-</div>
-
-
-</div>
-
+  </div>
 
 </section>
 
-
-
-<!-- =====================================================
-     MORE THAN A JOB TITLE
-===================================================== -->
 
 <section class="section">
 
+  <div class="section-head">
 
-<div class="section-head">
+    <h2>
+      More than a<br>
+      <em>job title.</em>
+    </h2>
 
+    <p>
+      Work is one part of me. The rest lives somewhere between
+      a camera roll, random thoughts, unfinished stories and
+      too many ideas.
+    </p>
 
-<h2>
+  </div>
 
-More than a<br>
 
-<em>job title.</em>
+  <div class="cards">
 
-</h2>
 
+    <a class="card" href="kaam-dhandha.html">
 
-<p>
+      <span class="icon">💼</span>
+      <span class="num">01</span>
 
-Work is one part of me.
-The rest lives somewhere between
-a camera roll, random thoughts,
-unfinished stories and too many ideas.
+      <h3>Kaam-Dhandha</h3>
 
-</p>
+      <p>
+        HR, People, Talent, hiring, career conversations
+        and the professional journey that pays the bills.
+      </p>
 
+      <span class="arrow">↗</span>
 
-</div>
+    </a>
 
 
+    <a class="card" href="tasveerien.html">
 
-<!-- =====================================================
-     EXPLORE CARDS
-===================================================== -->
+      <span class="icon">📷</span>
+      <span class="num">02</span>
 
-<div class="cards">
+      <h3>Tasveerien</h3>
 
+      <p>
+        Random clicks, places, people and moments
+        that made me stop and look twice.
+      </p>
 
-<!-- ================= KAAM DHANDHA ================= -->
+      <span class="arrow">↗</span>
 
-<a
-class="card"
-href="kaam-dhandha.html"
->
+    </a>
 
 
-<span class="icon">
-💼
-</span>
+    <a class="card" href="washroom-thoughts.html">
 
+      <span class="icon">📝</span>
+      <span class="num">03</span>
 
-<span class="num">
-01
-</span>
+      <h3>Washroom Thoughts</h3>
 
+      <p>
+        Thoughts that arrive at the most unexpected time.
+        Don't ask why. Just read them.
+      </p>
 
-<h3>
-Kaam-Dhandha
-</h3>
+      <span class="arrow">↗</span>
 
+    </a>
 
-<p>
 
-HR, People, Talent, hiring, career conversations
-and the professional journey that pays the bills.
+    <a class="card" href="kahaniyaan.html">
 
-</p>
+      <span class="icon">✍️</span>
+      <span class="num">04</span>
 
+      <h3>Kahaniyaan</h3>
 
-<span class="arrow">
-↗
-</span>
+      <p>
+        Stories, ideas, observations and things
+        that somehow become words.
+      </p>
 
+      <span class="arrow">↗</span>
 
-</a>
+    </a>
 
 
+    <!-- ZOYA -->
 
-<!-- ================= TASVEERIEN ================= -->
+    <a class="card" href="zoya.html">
 
-<a
-class="card"
-href="tasveerien.html"
->
+      <span class="icon">💬</span>
+      <span class="num">05</span>
 
+      <h3>Zoya</h3>
 
-<span class="icon">
-📷
-</span>
+      <p>
+        Ask Zoya about Praveen.
+        She knows him probably better than he would like.
+      </p>
 
+      <span class="arrow">↗</span>
 
-<span class="num">
-02
-</span>
+    </a>
 
 
-<h3>
-Tasveerien
-</h3>
-
-
-<p>
-
-Random clicks, places, people and moments
-that made me stop and look twice.
-
-</p>
-
-
-<span class="arrow">
-↗
-</span>
-
-
-</a>
-
-
-
-<!-- ================= WASHROOM THOUGHTS ================= -->
-
-<a
-class="card"
-href="washroom-thoughts.html"
->
-
-
-<span class="icon">
-📝
-</span>
-
-
-<span class="num">
-03
-</span>
-
-
-<h3>
-Washroom Thoughts
-</h3>
-
-
-<p>
-
-Thoughts that arrive at the most unexpected time.
-
-Don't ask why.
-Just read them.
-
-</p>
-
-
-<span class="arrow">
-↗
-</span>
-
-
-</a>
-
-
-
-<!-- ================= KAHANIYAAN ================= -->
-
-<a
-class="card"
-href="kahaniyaan.html"
->
-
-
-<span class="icon">
-✍️
-</span>
-
-
-<span class="num">
-04
-</span>
-
-
-<h3>
-Kahaniyaan
-</h3>
-
-
-<p>
-
-Stories, ideas, observations and things
-that somehow become words.
-
-</p>
-
-
-<span class="arrow">
-↗
-</span>
-
-
-</a>
-
-
-</div>
-
+  </div>
 
 </section>
-
 
 </main>
 
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer class="footer">
 
+  <div class="container">
 
-<div class="container">
+    A little corner of the internet by Praveen Sharma ·
+    <span data-year></span>
 
-A little corner of the internet by Praveen Sharma ·
-
-<span data-year></span>
-
-</div>
-
+  </div>
 
 </footer>
 
 
-
 <script src="script.js"></script>
 
-
 </body>
-
 </html>
