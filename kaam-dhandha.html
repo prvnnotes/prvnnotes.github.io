@@ -1,26 +1,1283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kaam-Dhandha — Praveen Sharma</title><link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kaam-Dhandha — Praveen Sharma</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #071426;
+    color: #f4f3ef;
+    font-family: "Open Sans", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    height: 76px;
+    padding: 0 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+
+    position: relative;
+    z-index: 20;
+}
+
+.logo {
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #bfc8d5;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links .active {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 72vh;
+
+    padding: 105px 8% 90px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+
+/* subtle cosmic glow */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -180px;
+    top: -220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(43,76,119,0.22),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* stars */
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: #dfe7f1;
+
+    border-radius: 50%;
+
+    opacity: 0.6;
+}
+
+.star1 {
+    top: 18%;
+    left: 14%;
+}
+
+.star2 {
+    top: 28%;
+    right: 17%;
+}
+
+.star3 {
+    bottom: 22%;
+    right: 8%;
+}
+
+.star4 {
+    bottom: 15%;
+    left: 32%;
+}
+
+.star5 {
+    top: 12%;
+    right: 38%;
+}
+
+
+/* =========================================================
+   HERO TYPOGRAPHY
+========================================================= */
+
+.eyebrow {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #8290a4;
+
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(65px, 8vw, 125px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    max-width: 1000px;
+
+    margin-bottom: 38px;
+}
+
+.hero h1 em {
+    font-style: italic;
+}
+
+.hero-intro {
+    max-width: 690px;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #b9c3d1;
+}
+
+.hero-intro strong {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   CAREER SECTION
+========================================================= */
+
+.career {
+    padding: 105px 8% 120px;
+
+    background: #091a2d;
+}
+
+.section-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 60px;
+
+    margin-bottom: 85px;
+}
+
+.section-label {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #8290a4;
+
+    margin-bottom: 20px;
+}
+
+.section-top h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-weight: 400;
+
+    font-size: clamp(45px, 5vw, 75px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+}
+
+.section-top h2 em {
+    font-style: italic;
+}
+
+.section-description {
+    max-width: 420px;
+
+    color: #8997aa;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+    position: relative;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+}
+
+
+/* vertical line */
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 10px;
+
+    bottom: 10px;
+
+    width: 1px;
+
+    background: rgba(255,255,255,0.13);
+}
+
+
+/* =========================================================
+   EXPERIENCE ITEM
+========================================================= */
+
+.experience {
+    position: relative;
+
+    padding-left: 65px;
+
+    margin-bottom: 78px;
+}
+
+
+/* timeline dot */
+
+.experience::before {
+    content: "";
+
+    position: absolute;
+
+    left: 9px;
+
+    top: 10px;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: #071426;
+
+    border: 2px solid #aab6c6;
+
+    box-shadow:
+        0 0 0 5px rgba(170,182,198,0.06);
+}
+
+
+/* date */
+
+.date {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #7f8da0;
+
+    text-transform: uppercase;
+
+    margin-bottom: 13px;
+}
+
+
+/* title */
+
+.experience h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+
+    color: #f5f3ed;
+
+    margin-bottom: 8px;
+}
+
+
+/* company */
+
+.company {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    color: #9daabc;
+
+    margin-bottom: 22px;
+}
+
+
+/* description */
+
+.experience p {
+    max-width: 760px;
+
+    color: #aeb9c8;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+
+    margin-bottom: 18px;
+}
+
+
+/* responsibility list */
+
+.experience ul {
+    list-style: none;
+
+    max-width: 780px;
+}
+
+.experience li {
+    position: relative;
+
+    padding-left: 20px;
+
+    margin-bottom: 10px;
+
+    color: #8f9daf;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.experience li::before {
+    content: "—";
+
+    position: absolute;
+
+    left: 0;
+
+    color: #65758a;
+}
+
+
+/* =========================================================
+   CAREER BREAK
+========================================================= */
+
+.experience.break {
+    opacity: 0.75;
+}
+
+.experience.break h3 {
+    font-size: 28px;
+}
+
+.experience.break .break-note {
+    font-style: italic;
+
+    color: #8794a6;
+
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   EARLY CAREER
+========================================================= */
+
+.early {
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   PROFESSIONAL SUMMARY
+========================================================= */
+
+.profile-section {
+    padding: 105px 8% 110px;
+
+    background: #071426;
+}
+
+.profile-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.profile-block h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    margin-bottom: 22px;
+}
+
+.profile-block p {
+    color: #9daabc;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.skill {
+    padding: 9px 14px;
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    color: #aab5c5;
+
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.closing {
+    padding: 120px 8%;
+
+    text-align: center;
+
+    background: #091a2d;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.closing .small {
+    font-family: "Raleway", Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #718096;
+
+    margin-bottom: 25px;
+}
+
+.closing h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(42px, 6vw, 80px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.closing h2 em {
+    font-style: italic;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 35px 8%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #68778b;
+
+    font-size: 11px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    nav {
+        padding: 20px 6%;
+
+        height: auto;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .nav-links {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 80px 7%;
+    }
+
+    .hero h1 {
+        font-size: 68px;
+
+        letter-spacing: -4px;
+    }
+
+    .section-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .career {
+        padding: 80px 7%;
+    }
+
+    .experience {
+        padding-left: 48px;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .experience::before {
+        left: 4px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .experience h3 {
+        font-size: 28px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
-<header class="site-nav"><div class="nav-inner">
-<a class="logo" href="index.html">PRAVEEN SHARMA</a>
-<nav class="nav-links">
-<a href="index.html">Home</a><a href="who-am-i.html">Who Am I?</a><a href="explore.html">Explore</a><a href="kaam-dhandha.html">Kaam-Dhandha</a><a href="connect.html">Let's Connect</a>
-</nav></div></header>
-<main class="container">
-<section class="page"><a class="back" href="index.html">← Back home</a>
-<div class="eyebrow">Kaam-Dhandha · The professional side</div><h1>My work,<br><em>without the buzzwords.</em></h1>
-<p class="page-lead">A more personal version of the professional journey — where I started, what I learned, the people I worked with and how the role kept evolving.</p>
-<div class="timeline">
-<div class="timeline-item"><div class="timeline-year">THE BEGINNING</div><div><h3>Where it started</h3><p>Add your first role, first company, first break and the story behind getting into HR.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">LEARNING</div><div><h3>Finding my feet</h3><p>Add the experiences that shaped your approach to people, hiring, employee relations and business.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">GROWTH</div><div><h3>More responsibility</h3><p>Add your career progression, leadership responsibilities and the work you're most proud of.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">TODAY</div><div><h3>Still figuring it out.</h3><p>Current role, current focus and what you're learning next. Keep this section alive as your career moves.</p></div></div>
-</div></section>
-</main>
-<footer class="footer"><div class="container">A little corner of the internet by Praveen Sharma · <span data-year></span></div></footer>
-<script src="script.js"></script>
-</body></html>
+
+
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
+
+<nav>
+
+    <div class="logo">
+        PRAVEEN SHARMA
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="who-am-i.html">
+            Who Am I?
+        </a>
+
+        <a href="explore.html">
+            Explore
+        </a>
+
+        <a href="kaam-dhandha.html" class="active">
+            Kaam-Dhandha
+        </a>
+
+        <a href="connect.html">
+            Let's Connect
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+    <span class="star star1"></span>
+    <span class="star star2"></span>
+    <span class="star star3"></span>
+    <span class="star star4"></span>
+    <span class="star star5"></span>
+
+
+    <div class="eyebrow">
+        KAAM-DHANDHA / THE PROFESSIONAL SIDE
+    </div>
+
+
+    <h1>
+        The work
+        <em>behind the person.</em>
+    </h1>
+
+
+    <div class="hero-intro">
+
+        <strong>
+            HR by profession.
+        </strong>
+
+        <br>
+
+        My professional journey has taken me through recruitment,
+        people, hiring, coordination and the occasional lesson
+        that no job description can prepare you for.
+
+        <br><br>
+
+        Here's how I got here — so far.
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CAREER
+====================================================== -->
+
+<section class="career">
+
+
+    <div class="section-top">
+
+        <div>
+
+            <div class="section-label">
+                THE JOURNEY
+            </div>
+
+            <h2>
+                How I got<br>
+                <em>here.</em>
+            </h2>
+
+        </div>
+
+
+        <div class="section-description">
+
+            A career isn't always a straight line.
+            Mine certainly wasn't.
+
+            From supervising sites to supervising
+            hiring conversations, the journey has
+            been less about having a perfect plan
+            and more about figuring things out
+            along the way.
+
+        </div>
+
+    </div>
+
+
+
+    <div class="timeline">
+
+
+        <!-- =================================================
+             KATARIA
+        ================================================== -->
+
+        <article class="experience">
+
+            <div class="date">
+                Apr 2026 — Present
+            </div>
+
+            <h3>
+                Senior Human Resources Specialist
+            </h3>
+
+            <div class="company">
+                KATARIA BUSINESS INSURANCE CONSULTANCY
+                &nbsp;·&nbsp; MUMBAI
+            </div>
+
+            <p>
+
+                Currently working across HR and recruitment,
+                supporting internal hiring requirements and
+                contributing to the people function of the
+                organisation.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Managing end-to-end recruitment for
+                    internal teams.
+                </li>
+
+                <li>
+                    Understanding manpower requirements,
+                    sourcing relevant talent and coordinating
+                    the selection process.
+                </li>
+
+                <li>
+                    Screening candidates and maintaining
+                    consistent communication throughout
+                    the hiring journey.
+                </li>
+
+                <li>
+                    Supporting stakeholders with timely
+                    recruitment coordination and people-related
+                    requirements.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- =================================================
+             GREENHILL
+        ================================================== -->
+
+        <article class="experience">
+
+            <div class="date">
+                Aug 2025 — Mar 2026
+            </div>
+
+            <h3>
+                Associate
+            </h3>
+
+            <div class="company">
+                GREENHILL CONSULTING LLP
+                &nbsp;·&nbsp; MUMBAI / THANE
+            </div>
+
+            <p>
+
+                Worked on mid to senior-level recruitment
+                assignments across the BFSI sector, partnering
+                with organisations to identify and engage
+                relevant talent.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Managed recruitment mandates across
+                    Banking, NBFCs, Family Offices and
+                    corporate functions.
+                </li>
+
+                <li>
+                    Worked closely with hiring managers to
+                    understand role requirements and candidate
+                    expectations.
+                </li>
+
+                <li>
+                    Sourced and screened candidates through
+                    LinkedIn, Naukri and internal databases.
+                </li>
+
+                <li>
+                    Coordinated interviews, documentation,
+                    follow-ups and onboarding support.
+                </li>
+
+                <li>
+                    Maintained candidate pipelines and ensured
+                    timely movement across the recruitment
+                    process.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- =================================================
+             CAREER BREAK
+        ================================================== -->
+
+        <article class="experience break">
+
+            <div class="date">
+                Jan 2025 — Jul 2025
+            </div>
+
+            <h3>
+                A pause, not a full stop.
+            </h3>
+
+            <div class="company">
+                CAREER BREAK
+            </div>
+
+            <p class="break-note">
+
+                Took a deliberate break from work to spend time
+                in my native place, travel, reset and take care
+                of things that needed my attention.
+
+                Sometimes stepping away is also part of moving
+                forward.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             FOOTPRINTS
+        ================================================== -->
+
+        <article class="experience">
+
+            <div class="date">
+                Jun 2023 — Jan 2025
+            </div>
+
+            <h3>
+                Sr. Recruiter
+            </h3>
+
+            <div class="company">
+                FOOTPRINTS CONSULTANCY LIMITED
+                &nbsp;·&nbsp; MUMBAI
+            </div>
+
+            <p>
+
+                Built deeper experience in recruitment,
+                working across mid-level and bulk hiring
+                assignments and developing a stronger
+                understanding of the BFSI talent market.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Managed end-to-end recruitment from
+                    requirement understanding to successful
+                    closure.
+                </li>
+
+                <li>
+                    Worked on hiring mandates across Banking,
+                    NBFCs and financial services.
+                </li>
+
+                <li>
+                    Sourced, screened and shortlisted candidates
+                    using LinkedIn, Naukri and other recruitment
+                    channels.
+                </li>
+
+                <li>
+                    Coordinated interviews, candidate
+                    communication and selection processes.
+                </li>
+
+                <li>
+                    Maintained hiring trackers and followed
+                    candidates through offer and joining stages.
+                </li>
+
+                <li>
+                    Developed strong experience in handling
+                    multiple requirements simultaneously while
+                    working against hiring timelines.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- =================================================
+             SHARMA INTERIOR
+        ================================================== -->
+
+        <article class="experience early">
+
+            <div class="date">
+                Apr 2018 — Feb 2022
+            </div>
+
+            <h3>
+                Site Supervisor
+            </h3>
+
+            <div class="company">
+                SHARMA INTERIOR
+                &nbsp;·&nbsp; INDIA
+            </div>
+
+            <p>
+
+                Before recruitment became my profession,
+                I worked on the ground — literally.
+
+                As a Site Supervisor, I was responsible for
+                coordinating people, vendors, materials and
+                timelines across interior projects.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Supervised day-to-day site activities and
+                    ensured work progressed according to
+                    project requirements.
+                </li>
+
+                <li>
+                    Coordinated workers, vendors and other
+                    stakeholders on-site.
+                </li>
+
+                <li>
+                    Monitored timelines, materials and
+                    execution of assigned work.
+                </li>
+
+                <li>
+                    Handled practical, on-ground problems and
+                    ensured work continued with minimum
+                    disruption.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHAT I DO
+====================================================== -->
+
+<section class="profile-section">
+
+
+    <div class="profile-grid">
+
+
+        <div class="profile-block">
+
+            <div class="section-label">
+                TODAY
+            </div>
+
+            <h3>
+                What I bring to HR.
+            </h3>
+
+            <p>
+
+                My work today sits primarily around recruitment
+                and talent acquisition — understanding what a
+                business needs, finding the right people and
+                helping move the process from requirement to
+                joining.
+
+                <br><br>
+
+                I enjoy the human side of recruitment just as
+                much as the process side: conversations,
+                understanding people, solving hiring problems
+                and occasionally figuring out why a perfectly
+                good candidate suddenly disappears after saying
+                "I'm definitely interested."
+
+            </p>
+
+        </div>
+
+
+
+        <div class="profile-block">
+
+            <div class="section-label">
+                AREAS I WORK AROUND
+            </div>
+
+            <h3>
+                The HR toolbox.
+            </h3>
+
+            <p>
+                Recruitment, sourcing, screening, stakeholder
+                coordination, candidate engagement and the
+                many moving parts that sit between a vacancy
+                and a successful hire.
+            </p>
+
+
+            <div class="skills">
+
+                <span class="skill">
+                    Recruitment
+                </span>
+
+                <span class="skill">
+                    Talent Acquisition
+                </span>
+
+                <span class="skill">
+                    Sourcing
+                </span>
+
+                <span class="skill">
+                    Screening
+                </span>
+
+                <span class="skill">
+                    Stakeholder Management
+                </span>
+
+                <span class="skill">
+                    Candidate Engagement
+                </span>
+
+                <span class="skill">
+                    BFSI Hiring
+                </span>
+
+                <span class="skill">
+                    Mid-Level Hiring
+                </span>
+
+                <span class="skill">
+                    Bulk Hiring
+                </span>
+
+                <span class="skill">
+                    LinkedIn
+                </span>
+
+                <span class="skill">
+                    Naukri
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLOSING
+====================================================== -->
+
+<section class="closing">
+
+    <div class="small">
+        STILL BUILDING
+    </div>
+
+    <h2>
+        The career is still being
+        <em>written.</em>
+    </h2>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <div>
+        © 2026 Praveen Sharma
+    </div>
+
+    <div>
+        Kaam-Dhandha · The professional side
+    </div>
+
+</footer>
+
+
+</body>
+</html>
