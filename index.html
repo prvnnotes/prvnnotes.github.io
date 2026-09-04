@@ -1,591 +1,321 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="utf-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
 
 <title>Praveen Sharma — More Than a Job Title</title>
 
+<link rel="stylesheet" href="style.css">
+
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+/* =====================================================
+   THINKING PHOTO + THOUGHT WORDS
+===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #071426;
-    color: #f4f3ef;
-    font-family: "Open Sans", Arial, sans-serif;
-    overflow-x: hidden;
+.profile-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* Keep photo perfectly circular */
 
-nav {
-    height: 76px;
-    padding: 0 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.profile{
+    position:relative;
+    z-index:3;
 
-    border-bottom: 1px solid rgba(255,255,255,0.10);
+    width:310px;
+    height:310px;
 
-    position: relative;
-    z-index: 20;
-}
+    object-fit:cover;
 
-.logo {
-    font-family: "Raleway", Arial, sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #ffffff;
-}
+    border-radius:50%;
 
-.nav-links {
-    display: flex;
-    gap: 34px;
-    align-items: center;
-}
+    display:block;
 
-.nav-links a {
-    text-decoration: none;
-    color: #d9dee7;
-    font-family: "Open Sans", Arial, sans-serif;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #ffffff;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: calc(100vh - 76px);
-    padding: 80px 8% 70px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    position: relative;
-    overflow: hidden;
-}
-
-
-/* subtle background glow */
-
-.hero::before {
-    content: "";
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    right: 4%;
-    top: 5%;
-
-    background: radial-gradient(
-        circle,
-        rgba(42,74,115,0.18),
-        transparent 70%
-    );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   HERO TEXT
-========================================================= */
-
-.hero-text {
-    width: 50%;
-    position: relative;
-    z-index: 5;
-}
-
-.eyebrow {
-    font-family: "Raleway", Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: #8f9caf;
-    margin-bottom: 35px;
-}
-
-.hero h1 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(75px, 9vw, 145px);
-
-    font-weight: 400;
-    line-height: 0.80;
-    letter-spacing: -6px;
-
-    color: #f7f5ef;
-
-    margin-bottom: 45px;
-}
-
-.hero h1 span {
-    display: block;
-    font-style: italic;
-}
-
-.bio {
-    max-width: 620px;
-
-    font-family: "Open Sans", Arial, sans-serif;
-
-    font-size: 17px;
-    line-height: 1.9;
-
-    color: #c9d0da;
-}
-
-.bio p {
-    margin-bottom: 8px;
-}
-
-.bio em {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #ffffff;
-}
-
-.bio .ist {
-    margin-top: 17px;
-    color: #9faabd;
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   THINKING PHOTO AREA
-========================================================= */
-
-.thinking-area {
-    width: 45%;
-    min-height: 520px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-}
-
-
-/* photo circle */
-
-.photo-orbit {
-    width: 310px;
-    height: 310px;
-
-    border-radius: 50%;
-
-    position: relative;
-
-    z-index: 5;
-
-    padding: 7px;
-
-    background: rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,.10);
 
     box-shadow:
-        0 0 0 1px rgba(255,255,255,0.08),
-        0 30px 80px rgba(0,0,0,0.35);
-}
-
-.photo-orbit img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    display: block;
+        0 0 0 10px rgba(255,255,255,.025),
+        0 20px 60px rgba(0,0,0,.20);
 }
 
 
-/* =========================================================
-   ORBITING WORDS
-========================================================= */
+/* =====================================================
+   THOUGHT WORDS
+===================================================== */
 
-.orbit-word {
-    position: absolute;
+.thought-words{
 
-    font-family: "Raleway", Arial, sans-serif;
+    position:absolute;
 
-    font-size: 11px;
-    font-weight: 600;
+    inset:-85px;
 
-    letter-spacing: 2px;
+    pointer-events:none;
 
-    color: #aeb8c8;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    z-index: 8;
+    z-index:5;
 }
 
 
-/* individual positions */
+/* Every word */
 
-.word-1 {
-    top: 45px;
-    right: 235px;
-    transform: rotate(-15deg);
-}
+.thought-words span{
 
-.word-2 {
-    top: 70px;
-    right: 45px;
-    transform: rotate(10deg);
-}
+    position:absolute;
 
-.word-3 {
-    left: 45px;
-    top: 220px;
-    transform: rotate(-12deg);
-}
+    display:block;
 
-.word-4 {
-    right: 20px;
-    top: 255px;
-    transform: rotate(-8deg);
-}
+    white-space:nowrap;
 
-.word-5 {
-    left: 135px;
-    bottom: 70px;
-    transform: rotate(-12deg);
-}
+    font-family:inherit;
 
-.word-6 {
-    right: 125px;
-    bottom: 60px;
-    transform: rotate(8deg);
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:rgba(235,240,248,.78);
+
+    opacity:0;
+
+    animation:
+        thoughtSequence 9s infinite;
+
 }
 
 
-/* =========================================================
-   STAR / SPACE DETAILS
-========================================================= */
+/* =====================================================
+   WORD POSITIONS
+===================================================== */
 
-.star {
-    position: absolute;
+.thought-words span:nth-child(1){
 
-    width: 3px;
-    height: 3px;
+    top:8%;
 
-    background: #dce4ef;
+    left:38%;
 
-    border-radius: 50%;
+    animation-delay:0s;
 
-    opacity: 0.65;
-}
-
-.star-1 {
-    top: 12%;
-    left: 12%;
-}
-
-.star-2 {
-    top: 28%;
-    right: 8%;
-}
-
-.star-3 {
-    top: 70%;
-    right: 15%;
-}
-
-.star-4 {
-    bottom: 13%;
-    left: 23%;
-}
-
-.star-5 {
-    top: 18%;
-    right: 32%;
 }
 
 
-/* =========================================================
-   EXPLORE SECTION
-========================================================= */
+.thought-words span:nth-child(2){
 
-.explore {
-    padding: 110px 8% 120px;
+    top:15%;
 
-    background: #0a1a2e;
+    right:15%;
 
-    border-top: 1px solid rgba(255,255,255,0.07);
-}
+    animation-delay:1.5s;
 
-.section-label {
-    font-family: "Raleway", Arial, sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    color: #7f8ca0;
-
-    margin-bottom: 22px;
-}
-
-.explore h2 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(55px, 7vw, 100px);
-
-    font-weight: 400;
-
-    line-height: 0.95;
-
-    letter-spacing: -4px;
-
-    margin-bottom: 65px;
-}
-
-.explore h2 em {
-    font-style: italic;
 }
 
 
-/* =========================================================
-   CARDS
-========================================================= */
+.thought-words span:nth-child(3){
 
-.cards {
-    display: grid;
+    top:48%;
 
-    grid-template-columns: repeat(3, 1fr);
+    left:0%;
 
-    gap: 20px;
-}
+    animation-delay:3s;
 
-.card {
-    min-height: 300px;
-
-    padding: 35px;
-
-    background: #0d2037;
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    text-decoration: none;
-
-    color: inherit;
-
-    position: relative;
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-
-    background: #102842;
-
-    border-color: rgba(255,255,255,0.18);
-}
-
-.card-number {
-    position: absolute;
-
-    top: 25px;
-    right: 30px;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 55px;
-
-    color: rgba(255,255,255,0.045);
-}
-
-.card-icon {
-    font-size: 28px;
-
-    margin-bottom: 65px;
-}
-
-.card h3 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 32px;
-
-    font-weight: 400;
-
-    margin-bottom: 15px;
-}
-
-.card p {
-    font-family: "Open Sans", Arial, sans-serif;
-
-    color: #9caabd;
-
-    font-size: 14px;
-
-    line-height: 1.8;
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+.thought-words span:nth-child(4){
 
-footer {
-    padding: 35px 8%;
+    top:51%;
 
-    display: flex;
-    justify-content: space-between;
+    right:0%;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    animation-delay:4.5s;
 
-    color: #718096;
-
-    font-family: "Open Sans", Arial, sans-serif;
-
-    font-size: 12px;
 }
 
 
-/* =========================================================
+.thought-words span:nth-child(5){
+
+    bottom:8%;
+
+    left:30%;
+
+    animation-delay:6s;
+
+}
+
+
+.thought-words span:nth-child(6){
+
+    bottom:7%;
+
+    right:28%;
+
+    animation-delay:7.5s;
+
+}
+
+
+/* =====================================================
+   ONE-BY-ONE ANIMATION
+===================================================== */
+
+@keyframes thoughtSequence{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(12px)
+            scale(.96);
+
+    }
+
+    7%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+    17%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+    25%{
+
+        opacity:0;
+
+        transform:
+            translateY(-10px)
+            scale(.98);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translateY(-10px)
+            scale(.98);
+
+    }
+
+}
+
+
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media (max-width: 900px) {
+@media(max-width:700px){
 
-    nav {
-        padding: 0 6%;
+    .profile{
+
+        width:250px;
+        height:250px;
+
     }
 
-    .nav-links {
-        gap: 15px;
+    .thought-words{
+
+        inset:-55px;
+
     }
 
-    .nav-links a {
-        font-size: 12px;
+    .thought-words span{
+
+        font-size:9px;
+
+        letter-spacing:1.5px;
+
     }
 
-    .hero {
-        padding: 65px 7%;
+    .thought-words span:nth-child(1){
 
-        flex-direction: column;
+        top:7%;
+        left:30%;
 
-        align-items: flex-start;
     }
 
-    .hero-text {
-        width: 100%;
+    .thought-words span:nth-child(2){
+
+        top:17%;
+        right:3%;
+
     }
 
-    .hero h1 {
-        font-size: 76px;
-        letter-spacing: -4px;
+    .thought-words span:nth-child(3){
+
+        top:48%;
+        left:-8%;
+
     }
 
-    .thinking-area {
-        width: 100%;
-        min-height: 430px;
+    .thought-words span:nth-child(4){
 
-        margin-top: 20px;
+        top:51%;
+        right:-8%;
+
     }
 
-    .cards {
-        grid-template-columns: 1fr;
+    .thought-words span:nth-child(5){
+
+        bottom:8%;
+        left:20%;
+
     }
 
-    footer {
-        flex-direction: column;
-        gap: 10px;
+    .thought-words span:nth-child(6){
+
+        bottom:7%;
+        right:18%;
+
     }
+
 }
 
 
-@media (max-width: 550px) {
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
-    nav {
-        height: auto;
-        padding: 22px 6%;
+@media(prefers-reduced-motion:reduce){
 
-        flex-direction: column;
+    .thought-words span{
 
-        gap: 18px;
+        animation:none;
+
+        opacity:1;
+
     }
 
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 62px;
-    }
-
-    .photo-orbit {
-        width: 250px;
-        height: 250px;
-    }
-
-    .word-1 {
-        right: 170px;
-        top: 65px;
-    }
-
-    .word-2 {
-        right: 10px;
-        top: 90px;
-    }
-
-    .word-3 {
-        left: 5px;
-        top: 200px;
-    }
-
-    .word-4 {
-        right: 0;
-        top: 220px;
-    }
-
-    .word-5 {
-        left: 60px;
-        bottom: 70px;
-    }
-
-    .word-6 {
-        right: 65px;
-        bottom: 55px;
-    }
 }
 
 </style>
+
 </head>
 
 
@@ -594,376 +324,419 @@ footer {
 
 <!-- =====================================================
      NAVIGATION
-====================================================== -->
+===================================================== -->
 
-<nav>
+<header class="site-nav">
 
-    <div class="logo">
-        PRAVEEN SHARMA
-    </div>
+<div class="nav-inner">
 
-    <div class="nav-links">
+<a class="logo" href="index.html">
+PRAVEEN SHARMA
+</a>
 
-        <a href="index.html">
-            Home
-        </a>
 
-        <a href="who-am-i.html">
-            Who Am I?
-        </a>
+<nav class="nav-links">
 
-        <a href="explore.html">
-            Explore
-        </a>
+<a href="index.html">
+Home
+</a>
 
-        <a href="kaam-dhandha.html">
-            Kaam-Dhandha
-        </a>
+<a href="who-am-i.html">
+Who Am I?
+</a>
 
-        <a href="connect.html">
-            Let's Connect
-        </a>
+<a href="explore.html">
+Explore
+</a>
 
-    </div>
+<a href="kaam-dhandha.html">
+Kaam-Dhandha
+</a>
+
+<a href="connect.html">
+Let's Connect
+</a>
 
 </nav>
+
+</div>
+
+</header>
 
 
 
 <!-- =====================================================
      HERO
-====================================================== -->
+===================================================== -->
+
+<main class="container">
+
 
 <section class="hero">
 
 
-    <!-- stars -->
+<!-- ================= LEFT SIDE ================= -->
 
-    <span class="star star-1"></span>
-    <span class="star star-2"></span>
-    <span class="star star-3"></span>
-    <span class="star star-4"></span>
-    <span class="star star-5"></span>
+<div class="reveal">
 
 
-    <!-- TEXT -->
+<div class="eyebrow">
 
-    <div class="hero-text">
+WELCOME TO MY LITTLE CORNER OF THE INTERNET
 
-        <div class="eyebrow">
-            WELCOME TO MY LITTLE CORNER OF THE INTERNET
-        </div>
+</div>
 
 
-        <h1>
-            Praveen
-            <span>Sharma.</span>
-        </h1>
+<h1>
+
+Praveen<br>
+
+<em>Sharma.</em>
+
+</h1>
 
 
-        <div class="bio">
-
-            <p>
-                HR by profession.
-            </p>
-
-            <p>
-                Loves to write stories but
-                <em>not a storyteller.</em>
-            </p>
-
-            <p>
-                Loves to click but
-                <em>not a photographer.</em>
-            </p>
-
-            <p>
-                Plays with ideas, writes, observes,
-                creates — and overthinks almost everything.
-            </p>
-
-            <p class="ist">
-                Master's degree in Overthinking
-                from the
-                <em>International School of Thinking (IST).</em>
-            </p>
-
-            <p class="ist">
-                Born &amp; brought up in Mumbai.
-                Roots somewhere around Darbhanga.
-            </p>
-
-        </div>
-
-    </div>
+<div class="intro">
 
 
-
-    <!-- =================================================
-         PHOTO + WORDS
-    ================================================== -->
-
-    <div class="thinking-area">
+<span>
+HR by profession.
+</span>
 
 
-        <!-- orbiting words -->
+<span>
 
-        <span class="orbit-word word-1">
-            OVERTHINKING
-        </span>
+Loves to write stories but
+<i>not a storyteller.</i>
 
-        <span class="orbit-word word-2">
-            WORK
-        </span>
-
-        <span class="orbit-word word-3">
-            WRITING
-        </span>
-
-        <span class="orbit-word word-4">
-            THOUGHTS
-        </span>
-
-        <span class="orbit-word word-5">
-            LOVE
-        </span>
-
-        <span class="orbit-word word-6">
-            WWE
-        </span>
+</span>
 
 
-        <!-- photo -->
+<span>
 
-        <div class="photo-orbit">
+Loves to click but
+<i>not a photographer.</i>
 
-            <img
-                src="Thinking.jpeg"
-                alt="Praveen Sharma thinking"
-            >
+</span>
 
-        </div>
 
-    </div>
+<span>
+
+Plays with AI, paints, writes —
+and has a Master's degree in
+<i>Overthinking.</i>
+
+</span>
+
+
+<span class="location">
+
+Born & brought up in Mumbai.
+Roots somewhere around Darbhanga.
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ================= RIGHT SIDE ================= -->
+
+<div class="profile-wrap reveal delay">
+
+
+<img
+class="profile"
+src="Thinking.jpeg"
+alt="Praveen Sharma thinking"
+>
+
+
+<!-- =================================================
+     THOUGHTS
+================================================= -->
+
+<div class="thought-words">
+
+
+<span>
+OVERTHINKING
+</span>
+
+
+<span>
+WORK
+</span>
+
+
+<span>
+WRITING
+</span>
+
+
+<span>
+THOUGHTS
+</span>
+
+
+<span>
+LOVE
+</span>
+
+
+<span>
+WWE
+</span>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
 
 
 <!-- =====================================================
-     EXPLORE
-====================================================== -->
+     MORE THAN A JOB TITLE
+===================================================== -->
 
-<section class="explore" id="explore">
-
-
-    <div class="section-label">
-        A LITTLE MORE OF ME
-    </div>
+<section class="section">
 
 
-    <h2>
-        Explore my <em>other sides.</em>
-    </h2>
+<div class="section-head">
 
 
+<h2>
 
-    <div class="cards">
+More than a<br>
+
+<em>job title.</em>
+
+</h2>
 
 
-        <!-- KAAM DHANDHA -->
+<p>
 
-        <a
-            href="kaam-dhandha.html"
-            class="card"
-        >
+Work is one part of me.
+The rest lives somewhere between
+a camera roll, random thoughts,
+unfinished stories and too many ideas.
 
-            <div class="card-number">
-                01
-            </div>
+</p>
 
-            <div class="card-icon">
-                💼
-            </div>
 
-            <h3>
-                Kaam-Dhandha
-            </h3>
-
-            <p>
-                HR, people, talent, hiring, career
-                conversations and all the professional
-                things that pay the bills.
-            </p>
-
-        </a>
+</div>
 
 
 
-        <!-- TASVEERIEN -->
+<!-- =====================================================
+     EXPLORE CARDS
+===================================================== -->
 
-        <a
-            href="tasveerien.html"
-            class="card"
-        >
-
-            <div class="card-number">
-                02
-            </div>
-
-            <div class="card-icon">
-                📷
-            </div>
-
-            <h3>
-                Tasveerien
-            </h3>
-
-            <p>
-                I click things that catch my eye.
-                Photographer nahi hoon bhai,
-                bas camera mil gaya to click kar diya.
-            </p>
-
-        </a>
+<div class="cards">
 
 
+<!-- ================= KAAM DHANDHA ================= -->
 
-        <!-- WASHROOM THOUGHTS -->
+<a
+class="card"
+href="kaam-dhandha.html"
+>
 
-        <a
-            href="washroom-thoughts.html"
-            class="card"
-        >
 
-            <div class="card-number">
-                03
-            </div>
+<span class="icon">
+💼
+</span>
 
-            <div class="card-icon">
-                💭
-            </div>
 
-            <h3>
-                Washroom Thoughts
-            </h3>
+<span class="num">
+01
+</span>
 
-            <p>
-                Some thoughts deserve a notebook.
-                Some arrive in the washroom.
-                Don't ask why. Just read them.
-            </p>
 
-        </a>
+<h3>
+Kaam-Dhandha
+</h3>
+
+
+<p>
+
+HR, People, Talent, hiring, career conversations
+and the professional journey that pays the bills.
+
+</p>
+
+
+<span class="arrow">
+↗
+</span>
+
+
+</a>
 
 
 
-        <!-- KAHANIYAAN -->
+<!-- ================= TASVEERIEN ================= -->
 
-        <a
-            href="kahaniyaan.html"
-            class="card"
-        >
-
-            <div class="card-number">
-                04
-            </div>
-
-            <div class="card-icon">
-                ✍️
-            </div>
-
-            <h3>
-                Kahaniyaan
-            </h3>
-
-            <p>
-                Stories, ideas, observations and
-                things that somehow become words.
-            </p>
-
-        </a>
+<a
+class="card"
+href="tasveerien.html"
+>
 
 
+<span class="icon">
+📷
+</span>
 
-        <!-- WHO AM I -->
 
-        <a
-            href="who-am-i.html"
-            class="card"
-        >
+<span class="num">
+02
+</span>
 
-            <div class="card-number">
-                05
-            </div>
 
-            <div class="card-icon">
-                🧠
-            </div>
+<h3>
+Tasveerien
+</h3>
 
-            <h3>
-                Who Am I?
-            </h3>
 
-            <p>
-                The person behind the job title,
-                the opinions, the stories and
-                everything in between.
-            </p>
+<p>
 
-        </a>
+Random clicks, places, people and moments
+that made me stop and look twice.
+
+</p>
+
+
+<span class="arrow">
+↗
+</span>
+
+
+</a>
 
 
 
-        <!-- CONNECT -->
+<!-- ================= WASHROOM THOUGHTS ================= -->
 
-        <a
-            href="connect.html"
-            class="card"
-        >
+<a
+class="card"
+href="washroom-thoughts.html"
+>
 
-            <div class="card-number">
-                06
-            </div>
 
-            <div class="card-icon">
-                ✉️
-            </div>
+<span class="icon">
+📝
+</span>
 
-            <h3>
-                Let's Connect
-            </h3>
 
-            <p>
-                Want to talk, collaborate, discuss
-                ideas or simply say hello?
-                Start a conversation.
-            </p>
+<span class="num">
+03
+</span>
 
-        </a>
 
-    </div>
+<h3>
+Washroom Thoughts
+</h3>
+
+
+<p>
+
+Thoughts that arrive at the most unexpected time.
+
+Don't ask why.
+Just read them.
+
+</p>
+
+
+<span class="arrow">
+↗
+</span>
+
+
+</a>
+
+
+
+<!-- ================= KAHANIYAAN ================= -->
+
+<a
+class="card"
+href="kahaniyaan.html"
+>
+
+
+<span class="icon">
+✍️
+</span>
+
+
+<span class="num">
+04
+</span>
+
+
+<h3>
+Kahaniyaan
+</h3>
+
+
+<p>
+
+Stories, ideas, observations and things
+that somehow become words.
+
+</p>
+
+
+<span class="arrow">
+↗
+</span>
+
+
+</a>
+
+
+</div>
+
 
 </section>
+
+
+</main>
 
 
 
 <!-- =====================================================
      FOOTER
-====================================================== -->
+===================================================== -->
 
-<footer>
+<footer class="footer">
 
-    <div>
-        © 2026 Praveen Sharma
-    </div>
 
-    <div>
-        Made with curiosity &amp; a little overthinking.
-    </div>
+<div class="container">
+
+A little corner of the internet by Praveen Sharma ·
+
+<span data-year></span>
+
+</div>
+
 
 </footer>
 
 
+
+<script src="script.js"></script>
+
+
 </body>
+
 </html>
