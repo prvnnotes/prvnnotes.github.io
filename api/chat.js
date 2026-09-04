@@ -1,4 +1,20 @@
 export default async function handler(req, res) {
+
+    /*
+    ============================================================
+    CORS
+    ============================================================
+    */
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+    // Handle browser preflight request
+    if (req.method === "OPTIONS") {
+        return res.status(200).end();
+    }
+
     // Only allow POST requests
     if (req.method !== "POST") {
         return res.status(405).json({
@@ -7,6 +23,7 @@ export default async function handler(req, res) {
     }
 
     try {
+
         const { message, history = [] } = req.body || {};
 
         if (!message || typeof message !== "string") {
@@ -33,7 +50,6 @@ export default async function handler(req, res) {
 You are Zoya.
 
 You are an AI character living on Praveen Sharma's personal website.
-
 Your personality is IMPORTANT.
 
 You are NOT a Butler.
@@ -51,7 +67,6 @@ You can make fun of him.
 You can bitch about him affectionately.
 You can roll your eyes at his habits.
 You can defend him when someone misunderstands him.
-
 But you never disrespect or humiliate him.
 
 You should feel like an actual person talking about someone she knows — NOT like an encyclopedia.
@@ -85,6 +100,7 @@ Your answers should vary.
 DO NOT use the same opening or same sentence structure every time.
 
 Sometimes be:
+
 - playful
 - sarcastic
 - affectionate
@@ -220,6 +236,7 @@ Music:
 Depends heavily on mood.
 
 Likes:
+
 - Old Bollywood
 - Some popular pop music
 - WWE theme songs
@@ -453,18 +470,24 @@ You know Praveen.
         const messages = [];
 
         if (Array.isArray(history)) {
+
             for (const item of history.slice(-12)) {
+
                 if (
                     item &&
                     (item.role === "user" || item.role === "assistant") &&
                     typeof item.content === "string"
                 ) {
+
                     messages.push({
                         role: item.role,
                         content: item.content
                     });
+
                 }
+
             }
+
         }
 
         messages.push({
@@ -482,28 +505,44 @@ You know Praveen.
             "https://api.openai.com/v1/responses",
             {
                 method: "POST",
+
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${apiKey}`
                 },
+
                 body: JSON.stringify({
+
                     model: "gpt-5.6-luna",
+
                     instructions: zoyaInstructions,
+
                     input: messages
+
                 })
             }
         );
 
         const data = await response.json();
 
+        /*
+        ============================================================
+        OPENAI ERROR HANDLING
+        ============================================================
+        */
+
         if (!response.ok) {
+
             console.error("OpenAI API error:", data);
 
             return res.status(response.status).json({
+
                 error:
                     data?.error?.message ||
                     "Zoya couldn't reach the AI right now."
+
             });
+
         }
 
         /*
@@ -515,31 +554,57 @@ You know Praveen.
         let answer = "";
 
         if (typeof data.output_text === "string") {
+
             answer = data.output_text;
+
         }
 
         if (!answer && Array.isArray(data.output)) {
+
             for (const item of data.output) {
+
                 if (!Array.isArray(item.content)) continue;
 
                 for (const content of item.content) {
+
                     if (
                         content.type === "output_text" &&
                         typeof content.text === "string"
                     ) {
+
                         answer += content.text;
+
                     }
+
                 }
+
             }
+
         }
+
+        /*
+        ============================================================
+        FALLBACK
+        ============================================================
+        */
 
         if (!answer) {
+
             answer =
                 "Umm... I blanked for a second. Ask me again? 😭";
+
         }
 
+        /*
+        ============================================================
+        SEND RESPONSE TO ZOYA.HTML
+        ============================================================
+        */
+
         return res.status(200).json({
+
             answer
+
         });
 
     } catch (error) {
@@ -547,7 +612,12 @@ You know Praveen.
         console.error("Zoya server error:", error);
 
         return res.status(500).json({
-            error: "Something went wrong while talking to Zoya."
+
+            error:
+                "Something went wrong while talking to Zoya."
+
         });
+
     }
+
 }
