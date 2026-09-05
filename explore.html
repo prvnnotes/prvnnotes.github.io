@@ -1,26 +1,1285 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Explore — Praveen Sharma</title><link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Explore — Praveen Sharma</title>
+
+<style>
+
+/* =====================================================
+   BASE
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #07111f;
+    color: #eef2f7;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+
+    /* Explore cursor */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23dbe7f3' stroke-width='2'%3E%3Ccircle cx='13' cy='13' r='8'/%3E%3Cpath d='M19 19l8 8' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") 4 4, auto;
+}
+
+
+/* =====================================================
+   NORMAL CURSOR FOR CLICKABLE ELEMENTS
+===================================================== */
+
+a,
+button,
+.card {
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav {
+    height: 64px;
+
+    padding: 0 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(7,17,31,0.90);
+
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #f3f5f8;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #b9c2ce;
+
+    font-size: 14px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   ZOYA
+===================================================== */
+
+.zoya-link {
+    padding: 9px 14px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.03);
+}
+
+.zoya-link::before {
+    content: "●";
+
+    font-size: 8px;
+
+    margin-right: 7px;
+
+    color: #8cc7ff;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+    width: 78%;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 55vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        90px 0 70px;
+
+    position: relative;
+}
+
+
+/* subtle moving glow */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -180px;
+    top: 40px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(86,145,205,0.10),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+    animation:
+        breathe 8s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   EYEBROW
+===================================================== */
+
+.eyebrow {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #7f91a7;
+
+    margin-bottom: 20px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp 0.8s ease forwards;
+}
+
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+h1 {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(72px, 10vw, 130px);
+
+    line-height: 0.88;
+
+    font-weight: 400;
+
+    letter-spacing: -6px;
+
+    color: #f1f3f6;
+
+    opacity: 0;
+
+    animation:
+        titleReveal 1s ease forwards;
+
+    animation-delay: 0.1s;
+}
+
+h1 em {
+    font-style: italic;
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
+
+.hero-text {
+
+    margin-top: 30px;
+
+    max-width: 650px;
+
+    color: #9eb0c5;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    animation:
+        fadeUp 0.9s ease forwards;
+
+    animation-delay: 0.3s;
+}
+
+
+/* =====================================================
+   LITTLE CURSOR HINT
+===================================================== */
+
+.cursor-hint {
+
+    margin-top: 32px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #708297;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp 0.9s ease forwards;
+
+    animation-delay: 0.5s;
+}
+
+.cursor-icon {
+
+    width: 27px;
+    height: 27px;
+
+    border:
+        1px solid rgba(255,255,255,0.16);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    animation:
+        tinyFloat 2.5s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   EXPLORE GRID
+===================================================== */
+
+.explore-section {
+
+    padding:
+        20px 0 120px;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.explore-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+
+    min-height: 310px;
+
+    padding: 34px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(255,255,255,0.10);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.035),
+            rgba(255,255,255,0.012)
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    opacity: 0;
+
+    animation:
+        cardReveal 0.8s ease forwards;
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        background 0.5s ease;
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.10s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.20s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.30s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.40s;
+}
+
+
+/* =====================================================
+   CARD HOVER
+===================================================== */
+
+.card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(151,191,225,0.28);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.018)
+        );
+}
+
+
+/* =====================================================
+   CARD NUMBER
+===================================================== */
+
+.card-number {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #66788d;
+
+    transition:
+        color 0.4s ease;
+}
+
+.card:hover .card-number {
+    color: #9dbbd7;
+}
+
+
+/* =====================================================
+   CARD TITLE
+===================================================== */
+
+.card h2 {
+
+    margin: 0 0 12px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    color: #edf1f6;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.card:hover h2 {
+
+    transform:
+        translateX(6px);
+}
+
+
+/* =====================================================
+   CARD DESCRIPTION
+===================================================== */
+
+.card-description {
+
+    margin: 0;
+
+    color: #8fa5bc;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   CARD BOTTOM
+===================================================== */
+
+.card-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+}
+
+.card-action {
+
+    font-size: 13px;
+
+    color: #91b7d8;
+
+    opacity: 0;
+
+    transform:
+        translateX(-10px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.card:hover .card-action {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+}
+
+
+.arrow {
+
+    font-size: 20px;
+
+    color: #a9bed3;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.card:hover .arrow {
+
+    transform:
+        translate(4px, -4px);
+}
+
+
+/* =====================================================
+   CARD DECORATION
+===================================================== */
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -90px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,160,205,0.12),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.8s ease;
+}
+
+.card:hover::before {
+
+    transform:
+        scale(1.7);
+}
+
+
+/* =====================================================
+   INDIVIDUAL CARD PERSONALITIES
+===================================================== */
+
+
+/* KAAM-DHANDHA */
+
+.card-work::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 34px;
+    right: 34px;
+
+    bottom: 28px;
+
+    height: 1px;
+
+    background:
+        rgba(150,190,220,0.10);
+
+    transform:
+        scaleX(0);
+
+    transform-origin: left;
+
+    transition:
+        transform 0.6s ease;
+}
+
+.card-work:hover::after {
+
+    transform:
+        scaleX(1);
+}
+
+
+/* TASVEERIEN */
+
+.card-photo:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(-0.4deg);
+}
+
+
+/* WASHROOM THOUGHTS */
+
+.card-thoughts .card-description {
+
+    font-style: italic;
+}
+
+.card-thoughts:hover .card-description {
+
+    letter-spacing: 0.2px;
+}
+
+
+/* KAHANIYAAN */
+
+.card-story h2 {
+
+    transition:
+        transform 0.5s ease,
+        font-style 0.5s ease;
+}
+
+.card-story:hover h2 {
+
+    font-style: italic;
+
+    transform:
+        translateX(6px);
+}
+
+
+/* =====================================================
+   BOTTOM NOTE
+===================================================== */
+
+.bottom-note {
+
+    margin-top: 35px;
+
+    padding:
+        35px 0;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    color: #708297;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    animation:
+        fadeUp 0.9s ease forwards;
+
+    animation-delay: 0.65s;
+}
+
+.bottom-note strong {
+
+    color: #a6b8cb;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    padding:
+        38px 8%;
+
+    color: #728397;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes titleReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+
+        letter-spacing:
+            -10px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing:
+            -6px;
+    }
+}
+
+
+@keyframes cardReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes breathe {
+
+    0%, 100% {
+
+        transform:
+            scale(1);
+
+        opacity:
+            0.55;
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+        opacity:
+            1;
+    }
+}
+
+
+@keyframes tinyFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-4px);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    nav {
+
+        padding:
+            0 5%;
+    }
+
+    .nav-links {
+
+        gap: 13px;
+    }
+
+    .nav-links a {
+
+        font-size: 12px;
+    }
+
+    .nav-links a:nth-child(3),
+    .nav-links a:nth-child(4) {
+
+        display: none;
+    }
+
+    main {
+
+        width: 90%;
+    }
+
+    .hero {
+
+        padding:
+            75px 0 55px;
+
+        min-height:
+            50vh;
+    }
+
+    h1 {
+
+        font-size:
+            68px;
+
+        letter-spacing:
+            -3px;
+    }
+
+    .hero-text {
+
+        font-size:
+            16px;
+    }
+
+    .explore-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .card {
+
+        min-height:
+            280px;
+    }
+
+    .card h2 {
+
+        font-size:
+            36px;
+    }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
+
+</style>
+
 </head>
+
+
 <body>
-<header class="site-nav"><div class="nav-inner">
-<a class="logo" href="index.html">PRAVEEN SHARMA</a>
-<nav class="nav-links">
-<a href="index.html">Home</a><a href="who-am-i.html">Who Am I?</a><a href="explore.html">Explore</a><a href="kaam-dhandha.html">Kaam-Dhandha</a><a href="connect.html">Let's Connect</a>
-</nav></div></header>
-<main class="container">
-<section class="page"><a class="back" href="index.html">← Back home</a>
-<div class="eyebrow">Explore</div><h1>Pick a side.<br><em>There are several.</em></h1>
-<p class="page-lead">Work, clicks, thoughts or stories — choose your rabbit hole.</p>
-<div class="cards">
-<a class="card" href="kaam-dhandha.html"><span class="icon">▣</span><h3>Kaam-Dhandha</h3><p>The professional journey.</p><span class="arrow">↗</span></a>
-<a class="card" href="tasveerien.html"><span class="icon">⌾</span><h3>Tasveerien</h3><p>The camera roll with a personality.</p><span class="arrow">↗</span></a>
-<a class="card" href="washroom-thoughts.html"><span class="icon">✎</span><h3>Washroom Thoughts</h3><p>Unfiltered thoughts.</p><span class="arrow">↗</span></a>
-<a class="card" href="kahaniyaan.html"><span class="icon">✍</span><h3>Kahaniyaan</h3><p>Things that became words.</p><span class="arrow">↗</span></a>
-</div></section>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+        PRAVEEN SHARMA
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="who-am-i.html">
+            Who Am I?
+        </a>
+
+        <a href="explore.html">
+            Explore
+        </a>
+
+        <a href="kaam-dhandha.html">
+            Kaam-Dhandha
+        </a>
+
+        <a href="connect.html">
+            Let's Connect
+        </a>
+
+        <a href="zoya.html" class="zoya-link">
+            Zoya
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            A few corners worth exploring
+        </div>
+
+
+        <h1>
+
+            Explore.<br>
+
+            <em>Look around.</em>
+
+        </h1>
+
+
+        <p class="hero-text">
+
+            There are a few different versions of me
+            scattered around here. Pick a corner.
+            There's no particular order.
+
+        </p>
+
+
+        <div class="cursor-hint">
+
+            <span class="cursor-icon">
+                🔍
+            </span>
+
+            <span>
+                Move around. You might find something.
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         EXPLORE CARDS
+    ================================================== -->
+
+    <section class="explore-section">
+
+
+        <div class="explore-grid">
+
+
+            <!-- KAAM-DHANDHA -->
+
+            <a
+                href="kaam-dhandha.html"
+                class="card card-work"
+            >
+
+                <div>
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Kaam-Dhandha
+                    </h2>
+
+
+                    <p class="card-description">
+                        The professional journey.
+                    </p>
+
+
+                    <div class="card-bottom">
+
+                        <span class="card-action">
+                            Okay, this one's actually serious →
+                        </span>
+
+                        <span class="arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- TASVEERIEN -->
+
+            <a
+                href="tasveerien.html"
+                class="card card-photo"
+            >
+
+                <div>
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Tasveerien
+                    </h2>
+
+
+                    <p class="card-description">
+                        The camera roll with a personality.
+                    </p>
+
+
+                    <div class="card-bottom">
+
+                        <span class="card-action">
+                            Have a look →
+                        </span>
+
+                        <span class="arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- WASHROOM THOUGHTS -->
+
+            <a
+                href="washroom-thoughts.html"
+                class="card card-thoughts"
+            >
+
+                <div>
+
+                    <div class="card-number">
+                        03
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Washroom Thoughts
+                    </h2>
+
+
+                    <p class="card-description">
+                        Thinking in washroom.
+                    </p>
+
+
+                    <div class="card-bottom">
+
+                        <span class="card-action">
+                            Yeah... those thoughts →
+                        </span>
+
+                        <span class="arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- KAHANIYAAN -->
+
+            <a
+                href="kahaniyaan.html"
+                class="card card-story"
+            >
+
+                <div>
+
+                    <div class="card-number">
+                        04
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Kahaniyaan
+                    </h2>
+
+
+                    <p class="card-description">
+                        Things that became words.
+                    </p>
+
+
+                    <div class="card-bottom">
+
+                        <span class="card-action">
+                            Read one →
+                        </span>
+
+                        <span class="arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOTTOM NOTE
+        ================================================== -->
+
+        <div class="bottom-note">
+
+            <strong>
+                That's pretty much the place.
+            </strong>
+
+            <br>
+
+            The rest you'll probably have to discover yourself.
+
+        </div>
+
+
+    </section>
+
+
 </main>
-<footer class="footer"><div class="container">A little corner of the internet by Praveen Sharma · <span data-year></span></div></footer>
-<script src="script.js"></script>
-</body></html>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    A little corner of the internet by
+    Praveen Sharma · 2026
+
+</footer>
+
+
+
+</body>
+
+</html>
